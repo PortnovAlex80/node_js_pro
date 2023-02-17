@@ -1,5 +1,8 @@
 const { Worker } = require('worker_threads')
 
+process.env.UV_THREADPOOL_SIZE = 4;
+
+
 let array = [];
 
 const compute = (array) => {
@@ -27,7 +30,7 @@ const main =  async () => {
    try {
    
     performance.mark('start');
-    for (let i = 0; i <600000; ++i) {
+    for (let i = 0; i <1600000; ++i) {
         array.push(i)};
     console.log(await compute(array))
      
