@@ -1,7 +1,6 @@
 const { Worker } = require('worker_threads')
 
-process.env.UV_THREADPOOL_SIZE = 4;
-
+process.env.UV_THREADPOOL_SIZE = 2;
 
 let array = [];
 
@@ -32,11 +31,7 @@ const main =  async () => {
     performance.mark('start');
     for (let i = 0; i <1600000; ++i) {
         array.push(i)};
-    console.log(await compute(array))
-     
-    const result = await Promise(compute(array));
-    console.log(result)
-    
+    const result = await Promise.all([compute(array),compute(array),compute(array),compute(array),compute(array),compute(array)]);
     performance.mark('end');
     performance.measure('main', 'start', 'end')
     console.log(performance.getEntriesByName('main'))
@@ -46,4 +41,3 @@ const main =  async () => {
 };
 
 main()
-
