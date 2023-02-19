@@ -1,9 +1,8 @@
-<h1 align="center">Hi there, I'm <a href="https://daniilshat.ru/" target="_blank">Daniil</a> 
-<img src="https://github.com/blackcater/blackcater/raw/main/images/Hi.gif" height="32"/></h1>
-<h3 align="center">Computer science student, IT news writer from Russia 🇷🇺</h3>
+<h1 align="center">Hi there, I'm Aleksei.</h1>
+<h3 align="center">Junior system analyst and junior backend NodeJS developer</h3>
 
-# Hi there, I'm [Daniil](https://daniilshat.ru/) ![](https://github.com/blackcater/blackcater/raw/main/images/Hi.gif) 
-### Computer science student, IT news writer from Russia 🇷🇺
+# Hi there, I'm Aleksei 
+### System analyst junior and Backend NodeJS junior developer. 
 
 Задание 4-1-calc. Сервис Калькулятор.
 
