@@ -2,6 +2,9 @@
 <img src="https://github.com/blackcater/blackcater/raw/main/images/Hi.gif" height="32"/></h1>
 <h3 align="center">Computer science student, IT news writer from Russia 🇷🇺</h3>
 
+# Hi there, I'm [Daniil](https://daniilshat.ru/) ![](https://github.com/blackcater/blackcater/raw/main/images/Hi.gif) 
+### Computer science student, IT news writer from Russia 🇷🇺
+
 Задание 4-1-calc. Сервис Калькулятор.
 
 Исходная формулировка задания:
