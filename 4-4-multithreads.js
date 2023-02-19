@@ -1,17 +1,26 @@
-const { Worker } = require('worker_threads')
+const { Worker } = require('worker_threads');
+const calculate = require('./calculate');
+const coresNumber = 4;
+process.env.UV_THREADPOOL_SIZE = coresNumber;
 
-process.env.UV_THREADPOOL_SIZE = 2;
+let array = [...Array(50000000).keys()];
 
-let array = [];
+const computeOneThread = (array) => {
+    performance.mark('start');
+    calculate(array);
+    //console.log(result)
+    performance.mark('end');
+    performance.measure('main', 'start', 'end') 
+    console.log(performance.getEntriesByName('main'))
+}
 
-const compute = (array) => {
+const computeInWorker = (array) => {
     return new Promise((resolve, reject) => {
         const worker = new Worker('./worker.js', {
             workerData: {
-                array
+                arr: array
             }
         });
-
     worker.on('message', (msg) => {
         console.log(`Worker thread id - ${worker.threadId}`);
         resolve(msg);
@@ -25,19 +34,29 @@ const compute = (array) => {
     });
 };
 
-const main =  async () => {
+const threadArray = (array, coresNumber) => {
+    const res = [];
+    const chunkSize = Math.ceil(array.length / coresNumber);
+    for (let i = 0; i< coresNumber; i++) {
+        const chunk = array.splice(0, chunkSize);
+        res.push(chunk);
+    }
+    return res;
+};
+
+const computeAllThreads =  async (array) => {
    try {
-   
     performance.mark('start');
-    for (let i = 0; i <1600000; ++i) {
-        array.push(i)};
-    const result = await Promise.all([compute(array),compute(array),compute(array),compute(array),compute(array),compute(array)]);
+    splitArr = threadArray(array);
+    await Promise.all(splitArr.map(arr => computeInWorker(arr)));
     performance.mark('end');
-    performance.measure('main', 'start', 'end')
-    console.log(performance.getEntriesByName('main'))
+    performance.measure('threads', 'start', 'end')
+    console.log(performance.getEntriesByName('threads'))
 } catch (e) {
     console.log(e)
 }
 };
 
-main()
+
+//computeOneThread({arr: array});
+computeAllThreads(array);
