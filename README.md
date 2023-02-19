@@ -1,9 +1,4 @@
-<h1 align="center">Hi there, I'm Aleksei.</h1>
-<h3 align="center">Junior system analyst and junior backend NodeJS developer</h3>
-
-# Hi there, I'm Aleksei 
-### System analyst junior and Backend NodeJS junior developer. 
-
+<h1 align="center">Исходная формулировка задания</h1>
 #### Задание 4-1-calc. Сервис Калькулятор.
 
 ##### Исходная формулировка задания:
