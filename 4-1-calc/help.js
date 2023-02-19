@@ -1,3 +1,4 @@
+`use strict`
 function helpDesk() {
 
 console.log(`
@@ -8,15 +9,14 @@ console.log(`
      operaror:
      add - addition
      sub - subtract
-     dev - devision
-     multy - myltuply
+     div - devision
+     mult - myltuply
      
      example:
      call 5 5 add >> 10
 
      default operator = add
      call 5 5 >> 10
-    
      `);};
 
 module.exports = helpDesk;
