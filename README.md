@@ -1,4 +1,4 @@
-<h4 align="center">NodeJS backend</h4>
+<h4 align="center" href="https://learn.purpleschool.ru/public/products">NodeJS backend</h4> 
 <h1 align="center">Исходная формулировка задания</h1>
 <h2 align="center">Задание 4-1-calc</h2>
 <h2 align="center">Сервис Калькулятор-CLI</h2>
