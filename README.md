@@ -150,6 +150,7 @@ graph TD;
 
 ```
 
+```mermaid
 graph LR
 A[Enter First Number] --> B[Enter Second Number]
 B --> C{Select Operation}
@@ -165,7 +166,7 @@ F --> J
 I --> J
 H --> J
 
-<h2 align="center">SRS</h2>
+```
 
 # Введение 
 ## 1.1 Цель документа 
