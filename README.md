@@ -1,7 +1,7 @@
 <h1 align="center">Исходная формулировка задания</h1>
-<h1 align="center">NodeJS backend basic</h1>
-<h2 align="center">Задание 4-1-calc</h1>
-<h2 align="center">Сервис Калькулятор-CLI</h1>
+<h3 align="center">NodeJS backend basic</h3>
+<h2 align="center">Задание 4-1-calc</h2>
+<h2 align="center">Сервис Калькулятор-CLI</h2>
 
 ##### Исходная формулировка задания:
   Разработать простейщий калькулятор (сложение, вычитание, умножение, деление). Входные данные получить из строки запуска в терминале
