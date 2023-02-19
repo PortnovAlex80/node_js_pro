@@ -134,6 +134,21 @@ graph TD;
 
 ```
 
+graph LR
+A[Enter First Number] --> B[Enter Second Number]
+B --> C{Select Operation}
+C -->|Addition| D[Add Two Numbers]
+C -->|Subtraction| E[Subtract Two Numbers]
+C -->|Multiplication| F[Multiply Two Numbers]
+C -->|Division| G[Divide Two Numbers]
+G -->|Divisor = 0| H[Error: Cannot Divide by Zero]
+G -->|Divisor != 0| I[Divide Two Numbers]
+D --> J[Display Result]
+E --> J
+F --> J
+I --> J
+H --> J
+
 <h2 align="center">SRS</h2>
 
 # Введение 
