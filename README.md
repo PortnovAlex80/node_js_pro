@@ -302,3 +302,49 @@ H --> J
 - Приложение должно иметь документацию для пользователей
 - Приложение должно иметь поддержку на форуме разработчиков или службе поддержки
 - Приложение должно иметь возможность автоматического обновления
+
+
+# Software Requirements Specification (SRS) for a Command Line Calculator
+
+1. Introduction
+- Purpose
+- Scope
+- Definitions, Acronyms, and Abbreviations
+- References
+- Overview
+
+2. Overall Description
+- Product Perspective
+- User Characteristics
+- Operating Environment
+- Design and Implementation Constraints
+- Assumptions and Dependencies
+
+3. System Features
+- User Input Validation
+- Addition Operation
+- Subtraction Operation
+- Multiplication Operation
+- Division Operation
+- Error Messages and Handling
+- Help Desk
+
+4. External Interface Requirements
+- User Interfaces
+- Hardware Interfaces
+- Software Interfaces
+- Communication Interfaces
+
+5. Other Nonfunctional Requirements
+- Performance Requirements
+- Security Requirements
+- Software Quality Attributes
+- Constraints
+
+6. Appendices
+- A. Glossary
+- B. Analysis Models
+- C. Issues List
+- D. Bibliography
+
+Note: The above structure is just a sample and may vary based on the specific needs and requirements of the project.
