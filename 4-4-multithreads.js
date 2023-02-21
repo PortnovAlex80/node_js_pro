@@ -1,14 +1,15 @@
 const { Worker } = require('worker_threads');
 const calculate = require('./calculate');
 const coresNumber = 4;
+const arraySize = 50_000_000;
+
 process.env.UV_THREADPOOL_SIZE = coresNumber;
 
-let array = [...Array(50000000).keys()];
+let array = [...Array(arraySize).keys()];
 
 const computeOneThread = (array) => {
     performance.mark('start');
     calculate(array);
-    //console.log(result)
     performance.mark('end');
     performance.measure('main', 'start', 'end') 
     console.log(performance.getEntriesByName('main'))
@@ -33,7 +34,6 @@ const computeInWorker = (array) => {
         });
     });
 };
-
 const threadArray = (array, coresNumber) => {
     const res = [];
     const chunkSize = Math.ceil(array.length / coresNumber);
@@ -57,6 +57,4 @@ const computeAllThreads =  async (array) => {
 }
 };
 
-
-//computeOneThread({arr: array});
 computeAllThreads(array);
