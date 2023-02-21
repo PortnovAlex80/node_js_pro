@@ -1,5 +1,5 @@
 function add(a,b) {
-    return Promise.resolve(a + b);
+    return a + b;
 };
 
 function subtraction(a,b) {

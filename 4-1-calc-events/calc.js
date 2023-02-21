@@ -2,7 +2,6 @@
 const helpDesk = require("./help.js");
 const EventEmiiter = require('events');
 const { add, subtraction, multiply, division } = require("./math");
-const { callbackify } = require("util");
 const calcEmitter = new EventEmiiter();
 
 const [ , , argument1, argument2, operation = 'add'] = process.argv;
@@ -34,9 +33,8 @@ if (operation === 'div' && argument2 === 0) {
 calcEmitter.on('add', (a, b) => { calcEmitter.emit('result' , add(a, b))});
 calcEmitter.on('mult', (a, b) => { calcEmitter.emit('result', multiply(a, b))});
 calcEmitter.on('sub', (a, b) => { calcEmitter.emit('result', subtraction(a, b))});
-calcEmitter.on('dev', (a, b) => { calcEmitter.emit('result', devision(a, b))});
-calcEmitter.on('result', (result) => { return result })
+calcEmitter.on('div', (a, b) => { calcEmitter.emit('result', division(a, b))});
 calcEmitter.on('help', (a, b) => { calcEmitter.emit('result', helpDesk())});
+calcEmitter.on('result', (result) => { console.log(`Calculation ${argument1} ${operation} ${argument2} = ${result}`);});
 
-const result = calcEmitter.emit(operation, Number(argument1), Number(argument2));
-console.log(`Calculation ${argument1} ${operation} ${argument2} = ${result}`);
+calcEmitter.emit(operation, Number(argument1), Number(argument2));
