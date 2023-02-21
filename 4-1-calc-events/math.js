@@ -1,5 +1,5 @@
 function add(a,b) {
-    return a + b;
+    return Promise.resolve(a + b);
 };
 
 function subtraction(a,b) {
@@ -10,9 +10,9 @@ function multiply(a,b) {
     return a * b;
 };
 
-function devision(a,b) {
+function division(a,b) {
     if (b === 0) { return false };
     return a / b;
 };
 
-module.exports = { devision, multiply, add, subtraction };
+module.exports = { division, multiply, add, subtraction };

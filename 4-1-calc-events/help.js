@@ -10,7 +10,7 @@ console.log(`
      add - addition
      sub - subtract
      dev - devision
-     multy - myltuply
+     mult - myltuply
      
      example:
      call 5 5 add >> 10
