@@ -35,10 +35,9 @@ const saveKeyValue =async (key, value) => {
         data = JSON.parse(file);
     };
     data[key] = value;
-
-
-
     await promises.writeFile(filePath, JSON.stringify(data));
 };
+
+
 
 export { saveKeyValue, getKeyValue, TOKEN_DICTIONARY };
