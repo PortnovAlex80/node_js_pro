@@ -1,5 +1,5 @@
 GET http://localhost:8000/hello
 
 ###
-POST http://localhost:8000/users/login
+POST http://localhost:8000/users/register
  
