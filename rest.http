@@ -14,10 +14,8 @@ POST http://localhost:8000/users/register
 Content-Type: application/json
 
 {
+    "name":" Nameee",
     "email": "asdajskj",
     "password": "sdnklxnflsdn"
 }
  
-
-###
-POST http://localhost:8000/users/register

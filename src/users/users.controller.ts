@@ -8,6 +8,7 @@ import { IUserController } from './users.controller.interfaces';
 import { HTTPError } from '../errors/http-error.class';
 import { UserLoginDto } from './dto/user-login.dto';
 import { UserRegisterDto } from './dto/user-register.dto';
+import { User } from './user.entity';
 
 @injectable()
 export class UserController extends BaseController implements IUserController {
@@ -16,6 +17,7 @@ export class UserController extends BaseController implements IUserController {
 		this.bindRoutes([
 			{ path: '/register', method: 'post', func: this.register },
 			{ path: '/login', method: 'post', func: this.login },
+			{ path: '/info', method: 'get', func: this.info },
 		]);
 	}
 
@@ -28,12 +30,22 @@ export class UserController extends BaseController implements IUserController {
 		next(new HTTPError(401, 'error auth', 'login'));
 	}
 
-	register(
-		req: Request<{}, {}, UserRegisterDto>,
+	info(
+		req: Request<{}, {}, UserLoginDto>,
 		res: Response,
 		next: NextFunction,
 	): void {
 		console.log(req.body);
-		this.ok(res, 'register');
+		next(new HTTPError(401, 'error auth', 'login'));
+	}
+
+	async register(
+		{ body }: Request<{}, {}, UserRegisterDto>,
+		res: Response,
+		next: NextFunction,
+	): Promise<void> {
+		const newUser = new User(body.email, body.name);
+		await newUser.setPassword(body.password);
+		this.okk(res, newUser);
 	}
 }
