@@ -21,3 +21,5 @@ export class UserService implements IUserService {
 		return true;
 	}
 }
+
+// https://github.com/AlariCode/4-nodejs-demo-3/blob/master/src/common/validate.middleware.ts
