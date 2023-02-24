@@ -20,7 +20,7 @@ export class App {
 		@inject(TYPES.ExceptionFilter) private exceptionFilter: ExceptionFilter,
 	) {
 		this.app = express();
-		this.port = 8000;
+		this.port = 8001;
 	}
 
 	useRoutes(): void {
