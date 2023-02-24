@@ -5,8 +5,8 @@ POST http://localhost:8000/users/login
 Content-Type: application/json
 
 {
-    "email": "asdajskj",
-    "password": "sdnklxnflsdn"
+    "email": "4@dfsdf.tu",
+    "password": "sdf1"
 }
 
 ###
@@ -14,8 +14,7 @@ POST http://localhost:8000/users/register
 Content-Type: application/json
 
 {
-    "name":"",
-    "email": "",
-    "password": ""
+    "name":"sdfsd",
+    "email": "4@dfsdf.tu",
+    "password": "sdf"
 }
- 

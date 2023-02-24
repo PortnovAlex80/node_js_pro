@@ -9,6 +9,9 @@ import { IExceptionFilter } from './errors/exception.filter.interface';
 import { UserService } from './users/users.service';
 import { IUserService } from './users/users.service.interface';
 import { IUserController } from './users/users.controller.interfaces';
+import { PrismaService } from './database/prisma.service';
+import { UsersRepository } from './users/users.repository';
+import { IUsersRepository } from './users/users.repository.interface';
 
 export interface IBootstrapReturn {
 	appConteiner: Container;
@@ -21,6 +24,10 @@ export const appBingings = new ContainerModule((bind: interfaces.Bind) => {
 	bind<IUserController>(TYPES.UserController).to(UserController);
 	bind<IUserService>(TYPES.UserService).to(UserService);
 	bind<App>(TYPES.Application).to(App);
+	bind<PrismaService>(TYPES.PrismaService).to(PrismaService).inSingletonScope();
+	bind<IUsersRepository>(TYPES.UsersRepository)
+		.to(UsersRepository)
+		.inSingletonScope();
 });
 
 function bootstrap(): IBootstrapReturn {

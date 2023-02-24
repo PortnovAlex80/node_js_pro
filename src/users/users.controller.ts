@@ -27,18 +27,27 @@ export class UserController extends BaseController implements IUserController {
 				func: this.register,
 				middlewares: [new ValidateMiddleware(UserRegisterDto)],
 			},
-			{ path: '/login', method: 'post', func: this.login },
+			{
+				path: '/login',
+				method: 'post',
+				func: this.login,
+				middlewares: [new ValidateMiddleware(UserLoginDto)],
+			},
 			{ path: '/info', method: 'get', func: this.info },
 		]);
 	}
 
-	login(
+	async login(
 		req: Request<{}, {}, UserLoginDto>,
 		res: Response,
 		next: NextFunction,
-	): void {
-		console.log(req.body);
-		next(new HTTPError(401, 'error auth', 'login'));
+	): Promise<void> {
+		const result = await this.userService.validateUser(req.body);
+		if (!result) {
+			console.log(req.body);
+			return next(new HTTPError(401, 'Error auth', 'login'));
+		}
+		this.okk(res, {});
 	}
 
 	info(
@@ -47,7 +56,7 @@ export class UserController extends BaseController implements IUserController {
 		next: NextFunction,
 	): void {
 		console.log(req.body);
-		next(new HTTPError(401, 'error auth', 'login'));
+		return next(new HTTPError(401, 'error auth', 'login'));
 	}
 
 	async register(
@@ -59,6 +68,6 @@ export class UserController extends BaseController implements IUserController {
 		if (!result) {
 			return next(new HTTPError(421, 'User exist'));
 		}
-		this.okk(res, { email: result.email });
+		this.okk(res, { email: result.email, id: result.id });
 	}
 }
