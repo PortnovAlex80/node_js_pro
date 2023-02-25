@@ -30,6 +30,7 @@ export class App {
 
 	public async init(): Promise<void> {
 		this.useRoutes();
+		this.useExceptionFilters();
 		this.server = this.app.listen(this.port);
 		this.logger.log(`Сервер запущен на http://localhost:${this.port}`);
 	}
