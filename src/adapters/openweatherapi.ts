@@ -7,7 +7,7 @@ const logger = new LoggerService();
 const adapterOpenWeatherApi = async (city: string) => {
 	dotenv.config();
 	const token = process.env.TOKEN;
-	console.log(`TOKEN is ${token}`);
+	//console.log(`TOKEN is ${token}`);
 	if (!token) {
 		logger.error('Не задан ключ API');
 	}
@@ -19,7 +19,8 @@ const adapterOpenWeatherApi = async (city: string) => {
 			units: 'metric',
 		},
 	});
-	return data;
+	//console.log(JSON.stringify(data));
+	return JSON.stringify(data);
 };
 
 export { adapterOpenWeatherApi };

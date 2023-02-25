@@ -20,8 +20,8 @@ weatherRouter.get(
 			return next(new HTTPError(404, 'City not found', 'weatherincity'));
 		} else {
 			logger.log(`[ROUTER] City set - ${city}`);
-			const data = adapterOpenWeatherApi(city as string);
-			return res.status(200).send(JSON.stringify(data));
+			const data = adapterOpenWeatherApi(city as string) || 'ZERO';
+			return res.status(200).send(data);
 		}
 	},
 );
