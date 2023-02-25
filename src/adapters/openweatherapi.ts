@@ -1,6 +1,5 @@
 import axios from 'axios';
 import dotenv from 'dotenv';
-import { Logger } from 'tslog';
 import { LoggerService } from '../services/logger.service';
 
 const logger = new LoggerService();
@@ -20,7 +19,7 @@ const adapterOpenWeatherApi = async (city: string) => {
 			units: 'metric',
 		},
 	});
-	return JSON.stringify(data);
+	return data;
 };
 
 export { adapterOpenWeatherApi };
