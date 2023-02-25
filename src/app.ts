@@ -1,30 +1,37 @@
 import express, { Express } from 'express';
 import { Server } from 'http';
-import { json } from 'body-parser';
 import { weatherRouter } from './controller/weather.controller';
+import { ExceptionFilter } from './exceptionhandlers/exception.filter';
+import { LoggerService } from './services/logger.service';
 
 export class App {
 	server: Server;
 	app: Express;
 	port: Number;
+	logger: LoggerService;
+	exceptionFilter: ExceptionFilter;
 
-	constructor() {
+	constructor(logger: LoggerService, exceptionFilter: ExceptionFilter) {
 		this.app = express();
 		this.port = 3000;
+		this.logger = logger;
+		this.exceptionFilter = exceptionFilter;
 	}
 
-	useMiddleware(): void {
-		this.app.use(json());
-	}
+	//	useMiddleware(): void {}
 
 	useRoutes(): void {
 		this.app.use(weatherRouter);
 	}
 
+	useExceptionFilters() {
+		this.app.use(this.exceptionFilter.catch.bind(this.exceptionFilter));
+	}
+
 	public async init(): Promise<void> {
 		this.useRoutes();
 		this.server = this.app.listen(this.port);
-		console.log(`Сервер запущен на http://localhost:${this.port}`);
+		this.logger.log(`Сервер запущен на http://localhost:${this.port}`);
 	}
 
 	public close(): void {

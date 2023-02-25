@@ -1,2 +1,2 @@
 ###
-GET http://localhost:3000/weatherincity
+GET http://localhost:3000/weatherincity?cigty=London
