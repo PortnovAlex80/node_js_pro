@@ -1,4 +1,2 @@
 ###
-GET http://localhost:3000/weatherincity?cigty=London
-
-https://github.com/AlariCode/4-nodejs-demo-3/blob/master/src/logger/logger.service.ts
+GET http://localhost:3000/weatherincity?city=Moscow
