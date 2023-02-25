@@ -3,6 +3,7 @@
 	"version": "1.0.0",
 	"description": "wrapper web weather rest api",
 	"main": "index.js",
+	"type": "commonjs",
 	"scripts": {
 		"start": "node ./dist/main.js",
 		"dev": "nodemon",
