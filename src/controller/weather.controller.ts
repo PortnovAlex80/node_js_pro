@@ -37,8 +37,8 @@ export { weatherRouter };
 
 @injectable()
 export class WeatherController {
-	_router: Router;
-	routes: IRoute[];
+	private _router: Router = express.Router();
+	private routes: IRoute[];
 
 	constructor(@inject(Symbol.for('ILogger')) private logger: ILogger) {
 		this.logger = logger;
