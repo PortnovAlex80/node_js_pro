@@ -8,6 +8,7 @@ export class WeatherConvertorToJson {
 	}
 
 	convertorWeatherApi(data: string): WeatherResponse {
+		this.logger.log('[Weather convert] START ');
 		const result: WeatherResponse = {
 			city: '',
 		};
@@ -61,6 +62,7 @@ export class WeatherConvertorToJson {
 		result['city'] = jsonData.name;
 		result['temp'] = jsonData.main.temp;
 		result['wind'] = jsonData.wind.speed;
+		this.logger.log('[Weather convert] END ');
 		return result;
 	}
 }

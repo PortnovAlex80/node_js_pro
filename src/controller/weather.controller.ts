@@ -21,11 +21,19 @@ weatherRouter.get(
 			return next(new HTTPError(404, 'Something went wrong', 'weatherincity'));
 		} else {
 			logger.log(`[ROUTER] City set - ${city}`);
-			const data = await adapterOpenWeatherApi(city as string);
-			logger.log(`[ROUTER] Send data to service - ${data}`);
-			const weatherConvertor = new WeatherConvertorToJson(logger);
-			const result = weatherConvertor.convertorWeatherApi(data);
-			return res.status(200).send(result);
+			try {
+				const data = await adapterOpenWeatherApi(city as string);
+				const codeResponse = JSON.parse(data).cod;
+				logger.log(`[ROUTER] Send data to service - ${data}`);
+				if (codeResponse !== 200) {
+					return next(new HTTPError(404, 'Unknown error', 'CONTROLLER'));
+				}
+				const weatherConvertor = new WeatherConvertorToJson(logger);
+				const result = weatherConvertor.convertorWeatherApi(data);
+				return res.status(200).send(result);
+			} catch (e) {
+				return next(new HTTPError(404, 'City not found', 'CONTROLLER'));
+			}
 		}
 	},
 );
