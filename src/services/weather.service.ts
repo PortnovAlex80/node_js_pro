@@ -1,8 +1,12 @@
+import { adapterOpenWeatherApi } from '../adapters/openweatherapi';
 import { LoggerService } from './logger.service';
 import { WeatherResponse } from './weater.response.interface';
+import express, { NextFunction, Request, Response, Router } from 'express';
 
-export class WeatherConvertorToJson {
+export class WeatherService {
 	public logger: LoggerService;
+	private _city: string;
+
 	constructor(logger: LoggerService) {
 		this.logger = logger;
 	}
@@ -64,5 +68,47 @@ export class WeatherConvertorToJson {
 		result['wind'] = jsonData.wind.speed;
 		this.logger.log('[Weather convert] END ');
 		return result;
+	}
+
+	async isCityExist(city: string): Promise<boolean> {
+		try {
+			const data = await this.getWeatherApiData(city);
+			const codeResponse = JSON.parse(data).cod;
+			this.logger.log(`[SERVICE] Send data to service - ${data}`);
+			if (codeResponse !== 200) {
+				return false;
+			}
+			this._city = city;
+			this.logger.log(`[siCityExist] city _city - ${this._city}`);
+			return true;
+		} catch (e) {
+			this.logger.log(`[SERVICE] City not found - ${city}`);
+			return false;
+		}
+	}
+
+	async weatherService(city: string): Promise<boolean | WeatherResponse> {
+		const isCity: boolean = await this.isCityExist(city);
+		if (!isCity) {
+			return false;
+		} else {
+			this.logger.log(`[weatherService] City found - ${city}`);
+			this.logger.log(`[weatherService] _city  - ${this._city}`);
+			const data = await this.getWeatherApiData(this._city);
+			this.logger.log(`[weatherService] data from getWeaterApi - ${data}`);
+
+			const result: WeatherResponse = await this.convertorWeatherApi(data);
+			this.logger.log(`[weatherService] result - ${result}`);
+
+			return result;
+		}
+	}
+
+	async getWeatherApiData(city: string): Promise<string> {
+		const data = await adapterOpenWeatherApi(city as string);
+		const codeResponseData: string = JSON.parse(data);
+		this.logger.log(`[getWeaterAPI] data from getWeaterApi - ${data}`);
+
+		return data;
 	}
 }
