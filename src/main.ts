@@ -16,7 +16,6 @@ async function bootstrap(): Promise<IBootstrapReturn> {
 	appConteiner.bind<App>(Symbol.for('App')).to(App);
 
 	const app = appConteiner.get<App>(Symbol.for('App'));
-	const logger = new LoggerService();
 	await app.init();
 	return { app };
 }

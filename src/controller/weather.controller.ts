@@ -4,6 +4,8 @@ import { LoggerService } from '../services/logger.service';
 import { query, validationResult } from 'express-validator';
 import { adapterOpenWeatherApi } from '../adapters/openweatherapi';
 import { WeatherService } from '../services/weather.service';
+import { injectable, inject } from 'inversify';
+import { ILogger } from '../services/logger.interface';
 
 const weatherRouter = Router();
 const logger = new LoggerService();
@@ -32,3 +34,29 @@ weatherRouter.get(
 );
 
 export { weatherRouter };
+
+@injectable()
+export class weatherController {
+	_router: Router;
+	routes: IRoute[];
+
+	constructor(@inject(Symbol.for('ILogger')) private logger: ILogger) {
+		this.logger = logger;
+
+		this.routes = [{ path: '/weatherincity', func: this.getWeatherInCity, method: 'get' }];
+		this.routes.forEach((route) => {
+			(this._router as any)[route.method](route.path), route.func.bind(this);
+		});
+	}
+
+	getWeatherInCity(req: Request, res: Response, next: NextFunction) {
+		this.logger.log(`[CONTROLLER] Call business service...`);
+		//getWeather in city call Weather Service
+	}
+}
+
+interface IRoute {
+	path: string;
+	func: (req: Request, res: Response, next: NextFunction) => void;
+	method: keyof Pick<Router, 'get' | 'post' | 'put' | 'delete' | 'patch'>;
+}

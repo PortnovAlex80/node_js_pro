@@ -4,9 +4,7 @@ import { WeatherResponse } from './weater.response.interface';
 import express, { NextFunction, Request, Response, Router } from 'express';
 import { ILogger } from './logger.interface';
 import { inject, injectable } from 'inversify';
-import 'reflect-metadata';
 
-@injectable()
 export class WeatherService {
 	private _city: string;
 
