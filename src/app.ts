@@ -21,7 +21,9 @@ export class App {
 		this.port = 3000;
 	}
 
-	//	useMiddleware(): void {}
+	useMiddleware(): void {
+		//this.app.use(this)
+	}
 
 	useRoutes(): void {
 		this.app.use(this.weatherController.getRouter());
