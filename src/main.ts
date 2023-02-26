@@ -5,6 +5,7 @@ import { ILogger } from './services/logger.interface';
 import { LoggerService } from './services/logger.service';
 import { IExceptionFilter } from './exceptionhandlers/exception.filter.interface';
 import { WeatherController } from './controller/weather.controller';
+import { ValidatorMiddleware } from './middlewares/validate.request';
 
 export const addBindings = new ContainerModule((bind: interfaces.Bind) => {
 	bind<ILogger>(Symbol.for('ILogger')).to(LoggerService);

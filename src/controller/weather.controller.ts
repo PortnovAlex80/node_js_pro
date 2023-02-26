@@ -55,8 +55,7 @@ export class WeatherController {
 	}
 	getWeatherInCity = (req: Request, res: Response, next: NextFunction) => {
 		this.logger.log(`[CONTROLLER] Call business service...`);
-		this.logger.log(`[CONTROLLER] Test exceprion handlers...`);
-		next(new HTTPError(404, 'City not found', 'WController'));
 		//getWeather in city call Weather Service
+		res.status(201).send('Complete');
 	};
 }
