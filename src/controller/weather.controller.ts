@@ -36,7 +36,7 @@ weatherRouter.get(
 export { weatherRouter };
 
 @injectable()
-export class weatherController {
+export class WeatherController {
 	_router: Router;
 	routes: IRoute[];
 
@@ -45,14 +45,14 @@ export class weatherController {
 
 		this.routes = [{ path: '/weatherincity', func: this.getWeatherInCity, method: 'get' }];
 		this.routes.forEach((route) => {
-			(this._router as any)[route.method](route.path), route.func.bind(this);
+			(this._router as any)[route.method](route.path, route.func.bind(this));
 		});
 	}
 
-	getWeatherInCity(req: Request, res: Response, next: NextFunction) {
+	getWeatherInCity = (req: Request, res: Response, next: NextFunction) => {
 		this.logger.log(`[CONTROLLER] Call business service...`);
 		//getWeather in city call Weather Service
-	}
+	};
 }
 
 interface IRoute {
