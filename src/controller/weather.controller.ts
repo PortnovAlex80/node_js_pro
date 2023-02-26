@@ -6,6 +6,7 @@ import { adapterOpenWeatherApi } from '../adapters/openweatherapi';
 import { WeatherService } from '../services/weather.service';
 import { injectable, inject } from 'inversify';
 import { ILogger } from '../services/logger.interface';
+import { WeatherRequestDto } from '../dto/weather.request.dto';
 import 'reflect-metadata';
 
 // 	'/weatherincity',
