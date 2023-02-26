@@ -8,10 +8,6 @@ import { injectable, inject } from 'inversify';
 import { ILogger } from '../services/logger.interface';
 import 'reflect-metadata';
 
-// const weatherRouter = Router();
-// const logger = new LoggerService();
-
-// weatherRouter.get(
 // 	'/weatherincity',
 // 	[query('city').notEmpty().withMessage('City is required')],
 // 	async (req: Request, res: Response, next: NextFunction) => {
@@ -20,21 +16,12 @@ import 'reflect-metadata';
 // 			return next(new HTTPError(400, 'Not valid query params', 'weatherincity'));
 // 		}
 // 		const { city } = req.query;
-// 		if (!city) {
-// 			return next(new HTTPError(404, 'Something went wrong', 'weatherincity'));
-// 		} else {
-// 			logger.log(`[ROUTER] City set - ${city}`);
-// 			const weatherData = new WeatherService(logger);
-// 			const result = await weatherData.weatherService(city as string);
-// 			if (!result) {
-// 				return next(new HTTPError(404, 'City not found', 'CONTROLLER'));
-// 			}
-// 			return res.status(200).send(result);
-// 		}
-// 	},
-// );
 
-// export { weatherRouter };
+interface IRoute {
+	path: string;
+	func: (req: Request, res: Response, next: NextFunction) => void;
+	method: keyof Pick<Router, 'get' | 'post' | 'put' | 'delete' | 'patch'>;
+}
 
 @injectable()
 export class WeatherController {
@@ -43,25 +30,18 @@ export class WeatherController {
 
 	constructor(@inject(Symbol.for('ILogger')) private logger: ILogger) {
 		this.logger = logger;
-
 		this.routes = [{ path: '/weatherincity', func: this.getWeatherInCity, method: 'get' }];
 		this.routes.forEach((route) => {
 			(this._router as any)[route.method](route.path, route.func.bind(this));
 		});
 	}
-
 	getRouter(): Router {
 		return this._router;
 	}
-
 	getWeatherInCity = (req: Request, res: Response, next: NextFunction) => {
 		this.logger.log(`[CONTROLLER] Call business service...`);
+		this.logger.log(`[CONTROLLER] Test exceprion handlers...`);
+		next(new HTTPError(404, 'City not found', 'WController'));
 		//getWeather in city call Weather Service
 	};
-}
-
-interface IRoute {
-	path: string;
-	func: (req: Request, res: Response, next: NextFunction) => void;
-	method: keyof Pick<Router, 'get' | 'post' | 'put' | 'delete' | 'patch'>;
 }

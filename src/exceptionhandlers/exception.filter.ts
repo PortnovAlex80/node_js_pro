@@ -1,7 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { inject, injectable } from 'inversify';
 import { ILogger } from '../services/logger.interface';
-import { LoggerService } from '../services/logger.service';
 import { IExceptionFilter } from './exception.filter.interface';
 import { HTTPError } from './http-error';
 import 'reflect-metadata';
@@ -13,7 +12,7 @@ export class ExceptionFilter implements IExceptionFilter {
 	}
 	catch(err: Error | HTTPError, req: Request, res: Response, next: NextFunction) {
 		if (err instanceof HTTPError) {
-			this.logger.error(`[${err.context}] Error ${err.statusCode}`);
+			this.logger.error(`[${err.context}] Error ${err.statusCode}: ${err.message}`);
 		} else {
 			this.logger.error(`[${err.message}]`);
 			res.status(500).send({ err: err.message });
