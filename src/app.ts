@@ -2,6 +2,7 @@ import express, { Express } from 'express';
 import { Server } from 'http';
 import { weatherRouter } from './controller/weather.controller';
 import { ExceptionFilter } from './exceptionhandlers/exception.filter';
+import { ILogger } from './services/logger.interface';
 import { LoggerService } from './services/logger.service';
 
 export class App {
@@ -11,7 +12,7 @@ export class App {
 	logger: LoggerService;
 	exceptionFilter: ExceptionFilter;
 
-	constructor(logger: LoggerService, exceptionFilter: ExceptionFilter) {
+	constructor(logger: ILogger, exceptionFilter: ExceptionFilter) {
 		this.app = express();
 		this.port = 3000;
 		this.logger = logger;
