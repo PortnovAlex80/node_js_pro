@@ -1,22 +1,23 @@
 import express, { Express } from 'express';
 import { Server } from 'http';
+import { inject, injectable } from 'inversify';
 import { weatherRouter } from './controller/weather.controller';
 import { ExceptionFilter } from './exceptionhandlers/exception.filter';
 import { ILogger } from './services/logger.interface';
-import { LoggerService } from './services/logger.service';
+import 'reflect-metadata';
 
+@injectable()
 export class App {
 	server: Server;
 	app: Express;
 	port: Number;
-	logger: LoggerService;
-	exceptionFilter: ExceptionFilter;
 
-	constructor(logger: ILogger, exceptionFilter: ExceptionFilter) {
+	constructor(
+		@inject(Symbol.for('ILogger')) private logger: ILogger,
+		@inject(Symbol.for('IExceptionFilter')) private exceptionFilter: ExceptionFilter,
+	) {
 		this.app = express();
 		this.port = 3000;
-		this.logger = logger;
-		this.exceptionFilter = exceptionFilter;
 	}
 
 	//	useMiddleware(): void {}

@@ -2,12 +2,15 @@ import { adapterOpenWeatherApi } from '../adapters/openweatherapi';
 import { LoggerService } from './logger.service';
 import { WeatherResponse } from './weater.response.interface';
 import express, { NextFunction, Request, Response, Router } from 'express';
+import { ILogger } from './logger.interface';
+import { inject, injectable } from 'inversify';
+import 'reflect-metadata';
 
+@injectable()
 export class WeatherService {
-	public logger: LoggerService;
 	private _city: string;
 
-	constructor(logger: LoggerService) {
+	constructor(@inject(Symbol.for('ILogger')) private logger: ILogger) {
 		this.logger = logger;
 	}
 
