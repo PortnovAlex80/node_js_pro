@@ -49,6 +49,10 @@ export class WeatherController {
 		});
 	}
 
+	getRouter(): Router {
+		return this._router;
+	}
+
 	getWeatherInCity = (req: Request, res: Response, next: NextFunction) => {
 		this.logger.log(`[CONTROLLER] Call business service...`);
 		//getWeather in city call Weather Service
