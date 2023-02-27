@@ -5,7 +5,6 @@ import { WeatherController } from './controller/weather.controller';
 import { ExceptionFilter } from './exceptionhandlers/exception.filter';
 import { ILogger } from './services/logger.interface';
 import 'reflect-metadata';
-import { ValidatorMiddleware } from './middlewares/validate.request';
 
 @injectable()
 export class App {
@@ -20,10 +19,6 @@ export class App {
 	) {
 		this.app = express();
 		this.port = 3000;
-	}
-
-	useMiddleware(): void {
-		//this.app.use(this)
 	}
 
 	useRoutes(): void {

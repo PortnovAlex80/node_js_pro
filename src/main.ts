@@ -5,7 +5,6 @@ import { ILogger } from './services/logger.interface';
 import { LoggerService } from './services/logger.service';
 import { IExceptionFilter } from './exceptionhandlers/exception.filter.interface';
 import { WeatherController } from './controller/weather.controller';
-import { ValidatorMiddleware } from './middlewares/validate.request';
 import { WeatherService } from './services/weather.service';
 
 export const addBindings = new ContainerModule((bind: interfaces.Bind) => {
