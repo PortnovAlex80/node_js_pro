@@ -1,16 +1,11 @@
 import express, { NextFunction, Request, Response, Router } from 'express';
 import { HTTPError } from '../exceptionhandlers/http-error';
-import { LoggerService } from '../services/logger.service';
-import { query, validationResult } from 'express-validator';
-import { adapterOpenWeatherApi } from '../adapters/openweatherapi';
 import { WeatherService } from '../services/weather.service';
 import { injectable, inject } from 'inversify';
 import { ILogger } from '../services/logger.interface';
-import { WeatherRequestDto } from '../dto/weather.request.dto';
 import 'reflect-metadata';
 import { ValidatorMiddleware } from '../middlewares/validate.request';
 import { IMiddleware } from '../middlewares/middleware.interface';
-import { WeatherResponse } from '../services/weater.response.interface';
 
 interface IRoute {
 	path: string;
@@ -51,7 +46,6 @@ export class WeatherController {
 	getWeatherInCity = async (req: Request, res: Response, next: NextFunction) => {
 		this.logger.log(`[CONTROLLER] Call business service...`);
 		const result = await this.weatherService.weatherService(req.query.city as string);
-		//getWeather in city call Weather Service
 		if (!result) {
 			return next(new HTTPError(403, 'City not found'));
 		}
