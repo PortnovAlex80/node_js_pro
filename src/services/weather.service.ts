@@ -1,10 +1,10 @@
 import { adapterOpenWeatherApi } from '../adapters/openweatherapi';
-import { LoggerService } from './logger.service';
 import { WeatherResponse } from './weater.response.interface';
 import express, { NextFunction, Request, Response, Router } from 'express';
 import { ILogger } from './logger.interface';
 import { inject, injectable } from 'inversify';
 
+@injectable()
 export class WeatherService {
 	private _city: string;
 

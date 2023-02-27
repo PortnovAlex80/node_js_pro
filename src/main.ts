@@ -6,11 +6,13 @@ import { LoggerService } from './services/logger.service';
 import { IExceptionFilter } from './exceptionhandlers/exception.filter.interface';
 import { WeatherController } from './controller/weather.controller';
 import { ValidatorMiddleware } from './middlewares/validate.request';
+import { WeatherService } from './services/weather.service';
 
 export const addBindings = new ContainerModule((bind: interfaces.Bind) => {
 	bind<ILogger>(Symbol.for('ILogger')).to(LoggerService);
 	bind<IExceptionFilter>(Symbol.for('IExceptionFilter')).to(ExceptionFilter);
 	bind<WeatherController>(Symbol.for('WeatherController')).to(WeatherController);
+	bind<WeatherService>(Symbol.for('WeatherService')).to(WeatherService);
 	bind<App>(Symbol.for('App')).to(App);
 });
 

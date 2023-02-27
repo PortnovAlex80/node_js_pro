@@ -10,15 +10,7 @@ import { WeatherRequestDto } from '../dto/weather.request.dto';
 import 'reflect-metadata';
 import { ValidatorMiddleware } from '../middlewares/validate.request';
 import { IMiddleware } from '../middlewares/middleware.interface';
-
-// 	'/weatherincity',
-// 	[query('city').notEmpty().withMessage('City is required')],
-// 	async (req: Request, res: Response, next: NextFunction) => {
-// 		const errors = validationResult(req);
-// 		if (!errors.isEmpty()) {
-// 			return next(new HTTPError(400, 'Not valid query params', 'weatherincity'));
-// 		}
-// 		const { city } = req.query;
+import { WeatherResponse } from '../services/weater.response.interface';
 
 interface IRoute {
 	path: string;
@@ -32,7 +24,10 @@ export class WeatherController {
 	private _router: Router = express.Router();
 	private routes: IRoute[];
 
-	constructor(@inject(Symbol.for('ILogger')) private logger: ILogger) {
+	constructor(
+		@inject(Symbol.for('ILogger')) private logger: ILogger,
+		@inject(Symbol.for('WeatherService')) private weatherService: WeatherService,
+	) {
 		this.logger = logger;
 		this.routes = [
 			{
@@ -53,9 +48,13 @@ export class WeatherController {
 	getRouter(): Router {
 		return this._router;
 	}
-	getWeatherInCity = (req: Request, res: Response, next: NextFunction) => {
+	getWeatherInCity = async (req: Request, res: Response, next: NextFunction) => {
 		this.logger.log(`[CONTROLLER] Call business service...`);
+		const result = await this.weatherService.weatherService(req.query.city as string);
 		//getWeather in city call Weather Service
-		res.status(201).send('Complete');
+		if (!result) {
+			return next(new HTTPError(403, 'City not found'));
+		}
+		return res.status(200).send(result);
 	};
 }
