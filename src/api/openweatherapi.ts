@@ -4,7 +4,7 @@ import { LoggerService } from '../services/logger.service';
 
 const logger = new LoggerService();
 
-const adapterOpenWeatherApi = async (city: string) => {
+const openWeatherApi = async (city: string) => {
 	dotenv.config();
 	const token = process.env.TOKEN;
 	if (!token) {
@@ -21,4 +21,4 @@ const adapterOpenWeatherApi = async (city: string) => {
 	return JSON.stringify(data);
 };
 
-export { adapterOpenWeatherApi };
+export { openWeatherApi };
