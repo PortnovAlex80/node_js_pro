@@ -23,13 +23,12 @@ export class WeatherController {
 		@inject(Symbol.for('ILogger')) private logger: ILogger,
 		@inject(Symbol.for('WeatherService')) private weatherService: WeatherService,
 	) {
-		this.logger = logger;
 		this.routes = [
 			{
 				path: '/weatherincity',
 				func: this.getWeatherInCity,
 				method: 'get',
-				middlewares: [new ValidatorMiddleware()],
+				middlewares: [new ValidatorMiddleware(this.logger)],
 			},
 		];
 		this.routes.forEach((route) => {

@@ -9,9 +9,7 @@ import { WeatherResponse } from '../services/weater.response.interface';
 export class OpenWeatherApi {
 	private openweatherAPI_URL = 'https://api.openweathermap.org/data/2.5/weather';
 	result: WeatherResponse;
-	constructor(@inject(Symbol.for('ILogger')) private logger: ILogger) {
-		this.logger = logger;
-	}
+	constructor(@inject(Symbol.for('ILogger')) private logger: ILogger) {}
 
 	openWeatherApi = async (city: string): Promise<boolean | WeatherResponse> => {
 		dotenv.config();

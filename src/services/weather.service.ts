@@ -8,10 +8,7 @@ export class WeatherService {
 	constructor(
 		@inject(Symbol.for('ILogger')) private logger: ILogger,
 		@inject(Symbol.for('OpenWeatherApi')) private openWeatherApi: OpenWeatherApi,
-	) {
-		this.logger = logger;
-		this.openWeatherApi = openWeatherApi;
-	}
+	) {}
 
 	async isCityExist(city: string): Promise<boolean | WeatherResponse> {
 		try {
