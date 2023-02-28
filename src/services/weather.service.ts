@@ -1,4 +1,4 @@
-import { openWeatherApi } from '../api/openweatherapi';
+import { OpenWeatherApi } from '../api/openweatherapi';
 import { WeatherResponse } from './weater.response.interface';
 import { ILogger } from './logger.interface';
 import { inject, injectable } from 'inversify';
@@ -8,13 +8,17 @@ export class WeatherService {
 	private _city: string;
 	private _weatherjson: WeatherResponse;
 
-	constructor(@inject(Symbol.for('ILogger')) private logger: ILogger) {
+	constructor(
+		@inject(Symbol.for('ILogger')) private logger: ILogger,
+		@inject(Symbol.for('OpenWeatherApi')) private openWeatherApi: OpenWeatherApi,
+	) {
 		this.logger = logger;
+		this.openWeatherApi = openWeatherApi;
 	}
 
 	async isCityExist(city: string): Promise<boolean> {
 		try {
-			const response = await openWeatherApi(city as string);
+			const response = await this.openWeatherApi.openWeatherApi(city as string);
 			const data = JSON.parse(response);
 			if (data.cod !== 200) {
 				this.logger.log(`[SERVICE] Error - ${data.cod}`);
@@ -35,8 +39,6 @@ export class WeatherService {
 
 	async weatherService(city: string): Promise<boolean | WeatherResponse> {
 		const isCity: boolean = await this.isCityExist(city);
-		const response = await openWeatherApi(city as string);
-		const data = JSON.parse(response).cod;
 		if (!isCity) {
 			return false;
 		} else {

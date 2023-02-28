@@ -8,7 +8,6 @@ import { HTTPError } from '../exceptionhandlers/http-error';
 @injectable()
 export class ValidatorMiddleware implements IMiddleware {
 	async execute(req: Request, res: Response, next: NextFunction): Promise<void> {
-		console.log('[Middleware] START');
 		const city = new WeatherRequestDto();
 		city.city = req.query.city as string;
 		const errors = await validate(city);
