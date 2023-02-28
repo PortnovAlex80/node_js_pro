@@ -43,8 +43,8 @@ export class WeatherController {
 		return this._router;
 	}
 	getWeatherInCity = async (req: Request, res: Response, next: NextFunction) => {
-		this.logger.log(`[CONTROLLER] Call SERVICE`);
 		try {
+			this.logger.log(`[CONTROLLER] Call SERVICE`);
 			const result = await this.weatherService.weatherService(req.query.city as string);
 			if (!result) {
 				return next(new HTTPError(403, 'City not found'));
