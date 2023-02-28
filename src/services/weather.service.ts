@@ -5,9 +5,6 @@ import { inject, injectable } from 'inversify';
 
 @injectable()
 export class WeatherService {
-	private _city: string;
-	private _weatherjson: WeatherResponse;
-
 	constructor(
 		@inject(Symbol.for('ILogger')) private logger: ILogger,
 		@inject(Symbol.for('OpenWeatherApi')) private openWeatherApi: OpenWeatherApi,
@@ -16,7 +13,7 @@ export class WeatherService {
 		this.openWeatherApi = openWeatherApi;
 	}
 
-	async isCityExist(city: string): Promise<boolean> {
+	async isCityExist(city: string): Promise<boolean | String> {
 		try {
 			const response = await this.openWeatherApi.openWeatherApi(city as string);
 			const data = JSON.parse(response);
@@ -24,13 +21,7 @@ export class WeatherService {
 				this.logger.log(`[SERVICE] Error - ${data.cod}`);
 				return false;
 			}
-			this._city = city;
-			this._weatherjson = {
-				city: this._city,
-				temp: data.main.temp,
-				wind: data.wind.speed,
-			};
-			return true;
+			return JSON.stringify(data);
 		} catch (e) {
 			this.logger.log(`[SERVICE] City not found - ${city}`);
 			return false;
@@ -38,11 +29,17 @@ export class WeatherService {
 	}
 
 	async weatherService(city: string): Promise<boolean | WeatherResponse> {
-		const isCity: boolean = await this.isCityExist(city);
+		const isCity = await this.isCityExist(city);
 		if (!isCity) {
 			return false;
 		} else {
-			return this._weatherjson;
+			const data = JSON.parse(isCity as string);
+			const result = {
+				city: data.name,
+				temp: data.main.temp,
+				wind: data.wind.speed,
+			};
+			return result;
 		}
 	}
 }
