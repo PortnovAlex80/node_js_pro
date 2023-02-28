@@ -33,7 +33,7 @@ export class WeatherController {
 			},
 		];
 		this.routes.forEach((route) => {
-			this.logger.log(`[BINDINGS] ${route.method}:${route.path}`);
+			this.logger.warn(`[BINDINGS] ${route.method}:${route.path}`);
 			const middleware = route.middlewares?.map((m) => m.execute.bind(m));
 			const handler = route.func.bind(this);
 			const pipeline = middleware ? [...middleware, handler] : handler;
