@@ -36,7 +36,7 @@ export class WeatherController {
 			const middleware = route.middlewares?.map((m) => m.execute.bind(m));
 			const handler = route.func.bind(this);
 			const pipeline = middleware ? [...middleware, handler] : handler;
-			(this._router as any)[route.method](route.path, pipeline);
+			this._router[route.method](route.path, pipeline);
 		});
 	}
 	getRouter(): Router {
@@ -44,10 +44,14 @@ export class WeatherController {
 	}
 	getWeatherInCity = async (req: Request, res: Response, next: NextFunction) => {
 		this.logger.log(`[CONTROLLER] Call SERVICE`);
-		const result = await this.weatherService.weatherService(req.query.city as string);
-		if (!result) {
-			return next(new HTTPError(403, 'City not found'));
+		try {
+			const result = await this.weatherService.weatherService(req.query.city as string);
+			if (!result) {
+				return next(new HTTPError(403, 'City not found'));
+			}
+			return res.status(200).send(result);
+		} catch (err) {
+			next(err);
 		}
-		return res.status(200).send(result);
 	};
 }
