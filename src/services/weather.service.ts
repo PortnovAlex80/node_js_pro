@@ -13,33 +13,27 @@ export class WeatherService {
 		this.openWeatherApi = openWeatherApi;
 	}
 
-	async isCityExist(city: string): Promise<boolean | String> {
+	async isCityExist(city: string): Promise<boolean | WeatherResponse> {
 		try {
-			const response = await this.openWeatherApi.openWeatherApi(city as string);
-			const data = JSON.parse(response);
-			if (data.cod !== 200) {
-				this.logger.log(`[SERVICE] Error - ${data.cod}`);
+			const response: WeatherResponse | boolean = await this.openWeatherApi.openWeatherApi(
+				city as string,
+			);
+			if (!response) {
+				this.logger.error(`[SERVICE] Not weather information`);
 				return false;
 			}
-			return JSON.stringify(data);
+			return response;
 		} catch (e) {
-			this.logger.log(`[SERVICE] City not found - ${city}`);
+			this.logger.error(`[SERVICE] Error ${e}`);
 			return false;
 		}
 	}
 
 	async weatherService(city: string): Promise<boolean | WeatherResponse> {
-		const isCity = await this.isCityExist(city);
-		if (!isCity) {
-			return false;
-		} else {
-			const data = JSON.parse(isCity as string);
-			const result = {
-				city: data.name,
-				temp: data.main.temp,
-				wind: data.wind.speed,
-			};
-			return result;
+		const data = await this.isCityExist(city);
+		if (data) {
+			return data;
 		}
+		return false;
 	}
 }
