@@ -58,5 +58,86 @@
 
 Формула требований: [Условие][Субъект][Действие][Объект][Ограничение/Значение]  
 
+## Дополнительные требования
 
+Документацию на API привести в формате openAPI. Предоставить swagger.
 
+## Модель предметной области. ER diagram
+
+```mermaid
+erDiagram
+    Warehouse ||..o{ Products : save
+
+    Products ||..|| Category : has
+
+    Products ||..|| Suppliers : has
+    
+    Warehouse ||..o{ Employeers : has
+    Warehouse ||..o{ Clients : has
+    Clients ||..o{ Orders : has
+    Orders ||..o{ Order_cartID : has
+    Products ||..|| Order_cartID : has
+
+    Warehouse {
+        int ID
+        string Address
+        string Area
+        int Max_capacity
+    }
+    Products {
+        int ID
+        string Name
+        string Description
+        int Quantity
+        float Price
+        int CategoryID
+        int SupplierID
+    }
+
+    Category {
+        int ID
+        string Name
+        string Description
+    }
+
+    Suppliers {
+        int ID
+        string Company_name
+        string Contact_information
+    }
+
+    Employeers {
+        int ID
+        string First_Name
+        string Last_Name
+        string Login
+        string Password
+        string Role
+    }
+
+    Clients {
+        int ID
+        string First_Name
+        string Last_Name
+        string Login
+        string Password
+        string Role
+    }
+
+    Orders {
+        int ID
+        date Order_data
+        string Storage_start
+        string Storage_end
+        string Status
+        int Order_cartID
+        int CategoryID
+        int ClientID
+    }
+
+Order_cartID {
+        int ID
+        int OrderID
+        int ProductID
+}
+```
