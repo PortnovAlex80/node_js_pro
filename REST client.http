@@ -1,2 +1,2 @@
 ###
-GET http://localhost:3000/weatherincity?city=kiev
+GET http://localhost:3000/weatherincity?city=kie
