@@ -28,6 +28,7 @@ CRUD для управления новыми пользователями в р
 - https://pandao.github.io/editor.md/en.html
 - https://editor.swagger.io/
 - https://emojio.ru/objects/d83ddee0-1f6e0-molot-i-gaechnyy-klyuch.html
+- https://www.udemy.com/course/microservices-with-node-js-and-react/learn/lecture/19099026#overview пример проектирования метода by Stephen Grider
 ------------
 
 
