@@ -17,6 +17,7 @@
 
 ## Тип проекта: серверная часть (бекенд NodeJS) системы управления складом  
 - доп материал https://github.com/GnuriaN/format-README/blob/master/README.md
+- научится 4с model https://structurizr.com/
 
 ## Карточка проекта (Концепция системы)
 
