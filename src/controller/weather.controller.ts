@@ -46,7 +46,7 @@ export class WeatherController {
 		try {
 			this.logger.log(`[CONTROLLER] Call SERVICE`);
 			const result = await this.weatherService.weatherService(req.query.city as string);
-			if (!result) {
+			if (!result || result.response) {
 				return next(new HTTPError(403, 'City not found', 'CONTROLLER'));
 			}
 			return res.status(200).send({
