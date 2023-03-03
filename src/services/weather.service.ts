@@ -5,41 +5,51 @@ import { inject, injectable } from 'inversify';
 
 @injectable()
 export class WeatherService {
+	private _result: WeatherResponse;
+
 	constructor(
 		@inject(Symbol.for('ILogger')) private logger: ILogger,
 		@inject(Symbol.for('OpenWeatherApi')) private openWeatherApi: OpenWeatherApi,
 	) {}
 
-	async isCityExist(city: string): Promise<WeatherResponse> {
+	errorResult = (): WeatherResponse => {
+		return {
+			response: false,
+		};
+	};
+
+	async getWeatherData(city: string): Promise<boolean> {
 		try {
 			const response: WeatherResponse = await this.openWeatherApi.openWeatherApi(city as string);
 			if (!response) {
 				this.logger.error(`[SERVICE] Not weather information`);
-				return {
-					response: false,
-				};
+				return false;
 			}
-			return response;
+			this._result = response;
+			return true;
 		} catch (e) {
 			this.logger.error(`[SERVICE] Error ${e}`);
-			return {
-				response: false,
-			};
+			return false;
 		}
 	}
 
+	isCityExist(): boolean {
+		if (!this._result.city) {
+			return false;
+		}
+		return true;
+	}
+
 	async weatherService(city: string): Promise<WeatherResponse> {
-		const data = await this.isCityExist(city);
-		if (data) {
+		await this.getWeatherData(city);
+		if (this.isCityExist()) {
 			return {
 				response: true,
-				city: data.city,
-				temp: data?.temp,
-				wind: data?.wind,
+				city: this._result.city,
+				temp: this._result?.temp,
+				wind: this._result?.wind,
 			};
 		}
-		return {
-			response: false,
-		};
+		return this.errorResult();
 	}
 }
