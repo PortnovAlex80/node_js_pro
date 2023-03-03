@@ -1,5 +1,6 @@
 export interface WeatherResponse {
-	city: string;
+	response: boolean;
+	city?: string;
 	temp?: number;
 	wind?: number;
 }

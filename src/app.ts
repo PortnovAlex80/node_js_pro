@@ -5,6 +5,7 @@ import { WeatherController } from './controller/weather.controller';
 import { ExceptionFilter } from './exceptionhandlers/exception.filter';
 import { ILogger } from './services/logger.interface';
 import 'reflect-metadata';
+import dotenv from 'dotenv';
 
 @injectable()
 export class App {
@@ -18,7 +19,13 @@ export class App {
 		@inject(Symbol.for('WeatherController')) private weatherController: WeatherController,
 	) {
 		this.app = express();
-		this.port = 3000;
+		dotenv.config();
+		const port = process.env.PORT;
+		if (!port) {
+			this.logger.error('Не задан server port');
+		} else if (!isNaN(parseInt(port))) {
+			this.port = Number(process.env.PORT);
+		}
 	}
 
 	useRoutes(): void {

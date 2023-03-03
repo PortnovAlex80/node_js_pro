@@ -22,9 +22,9 @@ export interface IBootstrapReturn {
 }
 
 async function bootstrap(): Promise<IBootstrapReturn> {
-	const appConteiner = new Container();
-	appConteiner.load(addBindings);
-	const app = appConteiner.get<App>(Symbol.for('App'));
+	const appContainer = new Container();
+	appContainer.load(addBindings);
+	const app = appContainer.get<App>(Symbol.for('App'));
 	await app.init();
 	return { app };
 }

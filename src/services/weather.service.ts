@@ -10,27 +10,36 @@ export class WeatherService {
 		@inject(Symbol.for('OpenWeatherApi')) private openWeatherApi: OpenWeatherApi,
 	) {}
 
-	async isCityExist(city: string): Promise<boolean | WeatherResponse> {
+	async isCityExist(city: string): Promise<WeatherResponse> {
 		try {
-			const response: WeatherResponse | boolean = await this.openWeatherApi.openWeatherApi(
-				city as string,
-			);
+			const response: WeatherResponse = await this.openWeatherApi.openWeatherApi(city as string);
 			if (!response) {
 				this.logger.error(`[SERVICE] Not weather information`);
-				return false;
+				return {
+					response: false,
+				};
 			}
 			return response;
 		} catch (e) {
 			this.logger.error(`[SERVICE] Error ${e}`);
-			return false;
+			return {
+				response: false,
+			};
 		}
 	}
 
-	async weatherService(city: string): Promise<boolean | WeatherResponse> {
+	async weatherService(city: string): Promise<WeatherResponse> {
 		const data = await this.isCityExist(city);
 		if (data) {
-			return data;
+			return {
+				response: true,
+				city: data.city,
+				temp: data?.temp,
+				wind: data?.wind,
+			};
 		}
-		return false;
+		return {
+			response: false,
+		};
 	}
 }

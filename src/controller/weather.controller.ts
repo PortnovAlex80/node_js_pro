@@ -49,7 +49,11 @@ export class WeatherController {
 			if (!result) {
 				return next(new HTTPError(403, 'City not found', 'CONTROLLER'));
 			}
-			return res.status(200).send(result);
+			return res.status(200).send({
+				city: result.city,
+				temp: result.temp,
+				wind: result.wind,
+			});
 		} catch (err) {
 			next(err);
 		}
