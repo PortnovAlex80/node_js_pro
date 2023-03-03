@@ -1,4 +1,102 @@
-[![Container diagram for Internet Banking System](https://www.plantuml.com/plantuml/png/hLPDRzj64BthLqoL76I0jb2akHGm45bY6mUIfOfoqqC1OKYEg4MMkyJkq1ye-jyxIr6YAQT8WUOYS6TttdlxE3FK1y_ek2xru0TbCbtd17lcolyy7Zjyl2eKx-kqzkGoQvWCNsMs75SQJSYvz9nhbOwdFrskGkX-CH-Nw9cSXBPJoK1bo5rL0N-GV5n-tgxYTRAysoxlD_FRktXqCPZaUQof5EWD5gDXYjaNClafTnZ1svqifbPRT_qsdiUB-6wp_MKfFzFbVBcM_RGux0xVl7ltVZPv7tBy7YkwZbMnvqJbb2TXFRgG7Ks546peYQ-FR90TwVuq55B0XvnXesvDkb66_jba0PebjPKpMQ_bJaSTMX3-TIFXPqtNC_HxokVAY9OUUW0VVnyAoznH35Yn9ZZv2Rd2mc49E-lWrZ0vGmmtQBueKq3ox9dAmM15pbipochFjYGNmVJqD9p0CGns1xmdI2KxWaSf5QYQHDHD333BR6tO3qN70Nfx8u4StVCe-r6mpWKCB-2l0G1qUaUFb6wngkJmPqfXKbLQPSZAcg64Fk43Hf1KBeXV_3uDiHbfzI0o6ccUvMm6RV42chm9dtZJuyLN4n7PP_OL2bmYsvekLrXGO3-o9fbJ5KSmCKMjqONmoja7bPC7rFhhBBlQP44wQiNFm5QSR8pqyA0mf2W7Sbz8dNtqv5ufAcsgDBLsBCBYf6dw9e8_i4Hnegy5j2eLKmw-JZqnsDr_rkPVYJi8W9mUL4RdycRfA4V653s5rz0-1ZN9RtFehTawyX362ZWgb6U7WHkKaR8ic-S8zasl0DQyXynHJeOLQX-5iYBlGTj25iJPrIkZshuMfrIesDNjrmjdPkMOw_9wpdt3eM2A03VTYeM_VZMvHDJVfxAFdtX49IgzzKr0YEBBXQpRbWlCcps1QaXHmq9bpdgxOuYViZsQWk2GAR0lC5jj7QfWcft3aivwkhCzbEUn2Z89dExtmdp0rDRSbK1qQkK8sA7ns3ZHsJzOatunBhgclVVa0_V7pMQLoC7-EL_XDy-qHT_1jNJRkp2gKzkDY0Qk6m0jKXFi5qHBU1Zf4NoIBzAu8U_UPhFL8dGA_X_GzaQIEzbTi_H1ruIvXvspPJEl7frYyi0s4BKyivkfG9umNxXrLcI9m7gWon1jC3eXP_NOrz3FgxtKHqUVB3Qh5kXqcLxwMLLsFdLVEPbMY_cvLzssm1_-BypZN-ExsUXYy47GwrB_0m00 "Container diagram for Internet Banking System")](//www.plantuml.com/plantuml/uml/hLPDRzj64BthLqoL76I0jb2akHGm45bY6mUIfOfoqqC1OKYEg4MMkyJkq1ye-jyxIr6YAQT8WUOYS6TttdlxE3FK1y_ek2xru0TbCbtd17lcolyy7Zjyl2eKx-kqzkGoQvWCNsMs75SQJSYvz9nhbOwdFrskGkX-CH-Nw9cSXBPJoK1bo5rL0N-GV5n-tgxYTRAysoxlD_FRktXqCPZaUQof5EWD5gDXYjaNClafTnZ1svqifbPRT_qsdiUB-6wp_MKfFzFbVBcM_RGux0xVl7ltVZPv7tBy7YkwZbMnvqJbb2TXFRgG7Ks546peYQ-FR90TwVuq55B0XvnXesvDkb66_jba0PebjPKpMQ_bJaSTMX3-TIFXPqtNC_HxokVAY9OUUW0VVnyAoznH35Yn9ZZv2Rd2mc49E-lWrZ0vGmmtQBueKq3ox9dAmM15pbipochFjYGNmVJqD9p0CGns1xmdI2KxWaSf5QYQHDHD333BR6tO3qN70Nfx8u4StVCe-r6mpWKCB-2l0G1qUaUFb6wngkJmPqfXKbLQPSZAcg64Fk43Hf1KBeXV_3uDiHbfzI0o6ccUvMm6RV42chm9dtZJuyLN4n7PP_OL2bmYsvekLrXGO3-o9fbJ5KSmCKMjqONmoja7bPC7rFhhBBlQP44wQiNFm5QSR8pqyA0mf2W7Sbz8dNtqv5ufAcsgDBLsBCBYf6dw9e8_i4Hnegy5j2eLKmw-JZqnsDr_rkPVYJi8W9mUL4RdycRfA4V653s5rz0-1ZN9RtFehTawyX362ZWgb6U7WHkKaR8ic-S8zasl0DQyXynHJeOLQX-5iYBlGTj25iJPrIkZshuMfrIesDNjrmjdPkMOw_9wpdt3eM2A03VTYeM_VZMvHDJVfxAFdtX49IgzzKr0YEBBXQpRbWlCcps1QaXHmq9bpdgxOuYViZsQWk2GAR0lC5jj7QfWcft3aivwkhCzbEUn2Z89dExtmdp0rDRSbK1qQkK8sA7ns3ZHsJzOatunBhgclVVa0_V7pMQLoC7-EL_XDy-qHT_1jNJRkp2gKzkDY0Qk6m0jKXFi5qHBU1Zf4NoIBzAu8U_UPhFL8dGA_X_GzaQIEzbTi_H1ruIvXvspPJEl7frYyi0s4BKyivkfG9umNxXrLcI9m7gWon1jC3eXP_NOrz3FgxtKHqUVB3Qh5kXqcLxwMLLsFdLVEPbMY_cvLzssm1_-BypZN-ExsUXYy47GwrB_0m00)
+## Условия задачи:
+
+Разработать приложение на NodeJS с использованием TS и библиотеки Express, которое предоставляет интерфейс в виде end-point RESTful API (http) для получения погоды в указанном городе. Получить температуру, влажность и скорость ветра.
+
+Ограничения реализации: 
+- **Протокол**: HTTP  
+- **Формат данных**: JSON. Результаты погоды передавать в виде json.  
+- Запрос только одного города (бесплатная лицензия поддерживает ограниченное кол-во запросов)
+
+⚠️ Важное сообщение: данным пример учебный. По сути это просто враппер над https://openweathermap.org/api, который имеет все уже необходимые API. 
 
 
-![test](https://www.plantuml.com/plantuml/png/ZOvFIyGm4CNl-HIrfowupSMJfvNrk6BnprccwT069fEGcI3zzhO5YoAAf_VcmVlDEub2rXB8N7bsL0Qi9jKajzPcU6z7hrFfYs1saHLPMnU3JGIyTewY0_dUdc-EtHgzFbni057CI_HsNXhW6NERLhxfC4la9croHnxakgelq2FLYtbCwYC3LVSeBlljgWzcXpJkq_selg2RE58Svpz0pxCeXaOs-UztyuJqVV3lAtR4bpa7Sq8UIg0F "test")
+## Функциональные требования
+Релиз 1.
+Обеспечить получение текущей погоды в указанном городе  
+Релиз 2.
+Поддержка разных единиц измерения погоды (градусы Цельсия, Фаренгейта)  
+Релиз 3.
+Получение прогноза погоды в указанном городе на количество дней вперед  
+Релиз 4.
+Сравнение погоды в разных городах  
+Релиз 5.
+Сравнение прогноза погоды в разных городах  
+
+## Пользовательские требования
+Пользователь обращается к системе с помощью HTTP запросов, указав город в строке запроса.
+
+## Проектирование REST API
+Процесс интеграции: Запрос с клиента состояние погоды в указанном городе.
+### Участники:
+Клиент  
+Система погоды
+### Процесс:
+Клиент составляет запрос, указав в запросе город, в котором его интересует погода  
+Система получает запрос  
+Система проверяет запрос на корректность  
+Система проверяет есть ли такой город в базе погоды  
+Система отдает ответ на запрос с погодой в виде json   
+### Проектирование метода.
+#### Диаграмма последовательности
+```mermaid
+sequenceDiagram
+actor User
+User -> Controller: weather in city {city}
+Controller -> Service: call service {city}
+Service -> WeatherServiceController: call the weather data 
+WeatherServiceController --> Service: return weather data
+Service --> Controller: return data 
+Controller --> User: response
+Note right of Controller: {"city": "Москва", "temperature": "-5 °C", "weather": "Облачно с прояснениями", "wind": "10 км/ч"}
+```
+#### Запрос погоды в заданном городе
+| Метод | Описание |
+| --- | --- |
+| `GET` | Получение информации о погоде в заданном городе |
+| **URL-адрес** | `/api/v1/weatherincity?city={city}` |
+| **Параметры запроса** | `city` - название города, для которого запрашивается информация о погоде |
+| **Тело запроса** | Нет |
+| **Заголовки запроса** | Нет |
+| **Успешный ответ** | Код состояния: `200 OK`<br>Тело ответа: JSON-объект, содержащий информацию о погоде в заданном городе |
+| **Ошибка запроса** | Код состояния: `404 Not Found`<br>Тело ответа: JSON-объект с сообщением об ошибке |
+#### Параметры запроса
+| Параметр | Тип | Описание |
+| --- | --- | --- |
+| `city` | строка | **Обязательный.** Название города, для которого запрашивается погода. |
+| `units` | строка | Единицы измерения, используемые для температуры. Возможные значения: `metric`, `imperial`, `standard`. По умолчанию используются единицы измерения по системе СИ (метрическая система). |
+| `lang` | строка | Язык, на котором должен быть возвращен ответ. Возможные значения: `en`, `ru`, `uk`, `pl`, `de`, `es`, `fr`, `it`, `pt`, `ro`, `tr`. По умолчанию используется английский язык (`en`). |
+| `appid` | строка | **Обязательный.** Ключ API, используемый для доступа к данным о погоде. |
+#### Пример запроса
+```http
+GET /api/v1/weatherincity?city=London&units=metric&lang=en&appid=abcdefg123456
+```
+#### Пример ответа
+```json
+    {
+      "city": "Москва",
+      "temperature": "-5 °C",
+      "weather": "Облачно с прояснениями",
+      "wind": "10 км/ч"
+    }
+```
+## Архитектура системы и проектное решение
+
+- Пользовательский интерфейс
+  - Представлен RESTful API на Node.js с использованием пакета express
+- Middleware
+  - Обрабатывает GET запроса по роуту /api/v1/weatherincity
+  - Валидирует параметры запроса на наличие обязательного параметра `city`
+- Controller
+  - Использует маршрутизацию запросов с помощью пакета express
+  - При получении запроса на /api/v1/weatherincity передает его в слой бизнес-логики
+- Adapter
+  - Обращается к API сервису https://openweathermap.org/api с помощью пакета axios
+  - Передает параметры запроса в формате, необходимом для API сервиса с ключом API и названием города
+- Бизнес-логика
+  - Получает запрос от Controller и трансформирует его в формат, необходимый для API сервиса, добавляя к запросу ключ API и приводит название города к нужному формату.
+  - Отправляет запрос к API сервису с помощью Adapter и получает ответ
+  - Обрабатывает полученные данные, выбирая только необходимые поля и трансформируя их для передачи в ответ клиенту в формате json
+- Exceprion handler
+  - Обрабатывает ошибки, возникающие в Middleware, Controller и Business Logic.
+  - Возврат пользователю ответа в едином формате с уведомлением об ошибке
+  - Логирование ошибок для последующего анализа
