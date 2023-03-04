@@ -1,11 +1,23 @@
 ###
-GET http://localhost:3000/users/users/5/roles
-
-###
 GET http://localhost:3000/users/users
-
 ###
-POST http://localhost:3000/users/login
+GET http://localhost:3000/users/users/2
+###
+POST  http://localhost:3000/users/users
+###
+PUT  http://localhost:3000/users/users/4
+###
+DELETE   http://localhost:3000/users/users/5
+###
+GET   http://localhost:3000/users/users/6/roles
+###
+POST  http://localhost:3000/users/users/7/roles
+###
+DELETE   http://localhost:3000/users/users/8/roles/8
+###
+POST    http://localhost:3000/users/login
+
+
 
 # | **№** | **Path**                   | **Method** | **Body**  | **Response**              | **Description**                                |
 # |-------|----------------------------|------------|-----------|---------------------------|------------------------------------------------|

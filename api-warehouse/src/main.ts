@@ -1,30 +1,26 @@
-import { Container } from 'inversify';
+import { Container, ContainerModule, interfaces } from 'inversify';
 import { App } from './app';
 import { ExceptionFilter } from './errors/exception.filter';
 import { ILogger } from './logger/logger.interface';
 import { TYPES } from './types';
 import { UserController } from './users/users.controller';
+import { IUserController } from './users/users.controller.interface';
 import { LoggerService } from './logger/logger';
 import { IExceptionFilter } from './errors/exception.filter.interface';
 
-// async function bootstrap() {
-// 	const appContainer = new Container();
-// 	appContainer.bind<ILogger>(TYPES.ILogger).to(LoggerService);
-// 	appContainer.bind<IExceptionFilter>(TYPES.ExceptionFilter).to(ExceptionFilter);
-// 	appContainer.bind<UserController>(TYPES.UserController).to(UserController);
-// 	appContainer.bind<App>(TYPES.Application).to(App);
-// 	const app = appContainer.get<App>(TYPES.Application);
-// 	await app.init();
-// }
+export const appBindings = new ContainerModule((bind: interfaces.Bind) => {
+	bind<ILogger>(TYPES.ILogger).to(LoggerService);
+	bind<IExceptionFilter>(TYPES.ExceptionFilter).to(ExceptionFilter);
+	bind<IUserController>(TYPES.UserController).to(UserController);
+	bind<App>(TYPES.Application).to(App);
+});
 
-// bootstrap();
+export function bootstrap() {
+	const appContainer = new Container();
+	appContainer.load(appBindings);
+	const app = appContainer.get<App>(TYPES.Application);
+	app.init();
+	return { app };
+}
 
-const appContainer = new Container();
-appContainer.bind<ILogger>(TYPES.ILogger).to(LoggerService);
-appContainer.bind<IExceptionFilter>(TYPES.ExceptionFilter).to(ExceptionFilter);
-appContainer.bind<UserController>(TYPES.UserController).to(UserController);
-appContainer.bind<App>(TYPES.Application).to(App);
-const app = appContainer.get<App>(TYPES.Application);
-app.init();
-
-export { app };
+export const { app } = bootstrap();
