@@ -1,9 +1,15 @@
 import { BaseController } from '../common/base.controller';
 import { Response, Request, NextFunction } from 'express';
+import { HTTPError } from '../errors/http-error.class';
+import { TYPES } from '../types';
+import { ILogger } from '../logger/logger.interface';
+import { inject, injectable } from 'inversify';
+import 'reflect-metadata';
 
+@injectable()
 export class UserController extends BaseController {
-	constructor() {
-		super();
+	constructor(@inject(TYPES.ILogger) private loggerService: ILogger) {
+		super(loggerService);
 		this.bindRoutes([
 			{ path: '/users', method: 'get', func: this.getUsers },
 			{ path: '/users/:id', method: 'get', func: this.getUserById },
@@ -52,6 +58,7 @@ export class UserController extends BaseController {
 	}
 	// | 9     | /login                     | POST       | User creds | Jwt token                | Аутентификация пользователя                    |
 	login(req: Request, res: Response, next: NextFunction) {
-		this.ok(res, 'Аутентификация пользователя');
+		//this.ok(res, 'Аутентификация пользователя');
+		next(new HTTPError(403, 'Forbidden', 'CONTROLLER'));
 	}
 }

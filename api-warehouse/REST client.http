@@ -1,5 +1,8 @@
 ###
-GET http://localhost:3000/users/users/
+GET http://localhost:3000/users/users/5/roles
+
+###
+GET http://localhost:3000/users/users
 
 ###
 POST http://localhost:3000/users/login
