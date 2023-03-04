@@ -10,9 +10,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const app_1 = require("./app");
+const users_controller_1 = require("./users/users.controller");
 function bootstrap() {
     return __awaiter(this, void 0, void 0, function* () {
-        const app = new app_1.App();
+        const app = new app_1.App(new users_controller_1.UserController());
         yield app.init();
     });
 }
