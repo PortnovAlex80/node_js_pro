@@ -23,7 +23,7 @@ export abstract class BaseController {
 		}
 	}
 
-	public jsonResponse(res: Response, code: number, message: string) {
+	public jsonResponse<T>(res: Response, code: number, message: T) {
 		res.type('application/json');
 		return res.status(code).json(message);
 	}
@@ -32,7 +32,7 @@ export abstract class BaseController {
 		return res.sendStatus(201);
 	}
 
-	public ok(res: Response, message: string) {
-		return this.jsonResponse(res, 200, message);
+	public ok<T>(res: Response, message: T) {
+		return this.jsonResponse<T>(res, 200, message);
 	}
 }

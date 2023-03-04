@@ -8,6 +8,7 @@ import 'reflect-metadata';
 import { IUserController } from './users.controller.interface';
 import { UserLoginDto } from './dto/user-login.dto';
 import { UserRegisterDto } from './dto/user-register.dto';
+import { User } from './user.entity';
 
 @injectable()
 export class UserController extends BaseController implements IUserController {
@@ -67,8 +68,14 @@ export class UserController extends BaseController implements IUserController {
 		next(new HTTPError(401, 'Forbidden', 'CONTROLLER'));
 	}
 
-	register(req: Request<{}, {}, UserRegisterDto>, res: Response, next: NextFunction) {
+	async register(
+		{ body }: Request<{}, {}, UserRegisterDto>,
+		res: Response,
+		next: NextFunction,
+	): Promise<void> {
 		//this.ok(res, 'Аутентификация пользователя');
-		next(new HTTPError(403, 'Forbidden', 'CONTROLLER'));
+		const newUser = new User(1, 'MyLogin', body.name, body.email, 'Admin');
+		await newUser.setPassword(body.password);
+		this.ok(res, newUser);
 	}
 }

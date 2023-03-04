@@ -19,9 +19,19 @@ POST    http://localhost:3000/users/login
 Content-Type: application/json
 
 {
-    "email": "aaa@a.aa",
+    "email": "john@john.com",
     "password": "asdf"
 }
+
+###
+POST    http://localhost:3000/users/register
+Content-Type: application/json
+
+{
+    "email": "john@john.com",
+    "password": "asdf"
+}
+
 
 # | **№** | **Path**                   | **Method** | **Body**  | **Response**              | **Description**                                |
 # |-------|----------------------------|------------|-----------|---------------------------|------------------------------------------------|
