@@ -21,5 +21,5 @@ export interface IUserController {
 	deleteRoleOfUserById: (req: Request, res: Response, next: NextFunction) => void;
 	// | 9     | /login                     | POST       | User creds | Jwt token                | Аутентификация пользователя                    |
 	login: (req: Request, res: Response, next: NextFunction) => void;
-	//this.ok(res, 'Аутентификация пользователя')
+	register: (req: Request, res: Response, next: NextFunction) => void;
 }

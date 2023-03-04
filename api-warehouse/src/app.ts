@@ -1,5 +1,5 @@
+import { json } from 'body-parser';
 import express, { Express } from 'express';
-// import { userRouter } from './users/users';
 import { Server } from 'http';
 import { inject, injectable } from 'inversify';
 import { ExceptionFilter } from './errors/exception.filter';
@@ -22,6 +22,10 @@ export class App {
 		this.port = 3000;
 	}
 
+	useMiddleware(): void {
+		this.app.use(json());
+	}
+
 	useRoutes() {
 		this.app.use('/users', this.userController.router);
 	}
@@ -31,6 +35,7 @@ export class App {
 	}
 
 	public async init() {
+		this.useMiddleware();
 		this.useRoutes();
 		this.useExceptionFilters();
 		this.server = this.app.listen(this.port);

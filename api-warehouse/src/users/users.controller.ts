@@ -6,6 +6,8 @@ import { ILogger } from '../logger/logger.interface';
 import { inject, injectable } from 'inversify';
 import 'reflect-metadata';
 import { IUserController } from './users.controller.interface';
+import { UserLoginDto } from './dto/user-login.dto';
+import { UserRegisterDto } from './dto/user-register.dto';
 
 @injectable()
 export class UserController extends BaseController implements IUserController {
@@ -21,6 +23,7 @@ export class UserController extends BaseController implements IUserController {
 			{ path: '/users/:id/roles', method: 'post', func: this.addRoleToUserById },
 			{ path: '/users/:id/roles/:roleId', method: 'delete', func: this.deleteRoleOfUserById },
 			{ path: '/login', method: 'post', func: this.login },
+			{ path: '/register', method: 'post', func: this.register },
 		]);
 	}
 	// | **№** | **Path**                   | **Method** | **Body**  | **Response**              | **Description**                                |
@@ -58,7 +61,13 @@ export class UserController extends BaseController implements IUserController {
 		this.ok(res, '8 Удалить роль у пользователя ');
 	}
 	// | 9     | /login                     | POST       | User creds | Jwt token                | Аутентификация пользователя                    |
-	login(req: Request, res: Response, next: NextFunction) {
+	login(req: Request<{}, {}, UserLoginDto>, res: Response, next: NextFunction) {
+		//this.ok(res, 'Аутентификация пользователя');
+		console.log(req.body);
+		next(new HTTPError(401, 'Forbidden', 'CONTROLLER'));
+	}
+
+	register(req: Request<{}, {}, UserRegisterDto>, res: Response, next: NextFunction) {
 		//this.ok(res, 'Аутентификация пользователя');
 		next(new HTTPError(403, 'Forbidden', 'CONTROLLER'));
 	}
