@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
+import { UserLoginDto } from './dto/user-login.dto';
 import { UserRegisterDto } from './dto/user-register.dto';
 import { User } from './user.entity';
 
@@ -10,7 +11,7 @@ export interface IUserService {
 	// | 2     | /users/{id}                | GET        | -         | Информация о пользователе | Получить информацию о конкретном пользователе  |
 	//	getUserById: (req: Request, res: Response, next: NextFunction) => void;
 	// | 3     | /users                     | POST       | User data | Новый пользователь        | Создать нового пользователя                    |
-	createUser: (dto: UserRegisterDto) => void;
+	createUser: (dto: UserRegisterDto) => Promise<User | null>;
 	// | 4     | /users/{id}                | PUT        | User data | Обновленный пользователь  | Обновить информацию о пользователе             |
 	//	updateUserById: (req: Request, res: Response, next: NextFunction) => void;
 	// | 5     | /users/{id}                | DELETE     | -         | -                         | Удалить пользователя                           |
@@ -24,4 +25,5 @@ export interface IUserService {
 	// | 9     | /login                     | POST       | User creds | Jwt token                | Аутентификация пользователя                    |
 	//	login: (req: Request, res: Response, next: NextFunction) => void;
 	//	register: (req: Request, res: Response, next: NextFunction) => void;
+	validateUser: (dto: UserLoginDto) => Promise<boolean>;
 }
