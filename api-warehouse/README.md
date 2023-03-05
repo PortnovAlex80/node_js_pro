@@ -510,7 +510,6 @@ erDiagram
       lastName   String
       login      String   @unique
       password   String
-      password   String
       email   String
       role       Role     @default(USER)
     }

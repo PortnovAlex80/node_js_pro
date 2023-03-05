@@ -8,7 +8,6 @@ import { IExceptionFilter } from './errors/exception.filter.interface';
 import { ILogger } from './logger/logger.interface';
 import { TYPES } from './types';
 import { UserController } from './users/users.controller';
-import { IUserController } from './users/users.controller.interface';
 import 'reflect-metadata';
 
 @injectable()
