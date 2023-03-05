@@ -10,6 +10,7 @@ import { UserLoginDto } from './dto/user-login.dto';
 import { UserRegisterDto } from './dto/user-register.dto';
 import { User } from './user.entity';
 import { IUserService } from './user.service.interface';
+import { ValidateMiddleware } from '../common/validate.middleware';
 
 @injectable()
 export class UserController extends BaseController implements IUserController {
@@ -28,7 +29,12 @@ export class UserController extends BaseController implements IUserController {
 			{ path: '/users/:id/roles', method: 'post', func: this.addRoleToUserById },
 			{ path: '/users/:id/roles/:roleId', method: 'delete', func: this.deleteRoleOfUserById },
 			{ path: '/login', method: 'post', func: this.login },
-			{ path: '/register', method: 'post', func: this.register },
+			{
+				path: '/register',
+				method: 'post',
+				func: this.register,
+				middlewares: [new ValidateMiddleware(UserRegisterDto)],
+			},
 		]);
 	}
 	// | **№** | **Path**                   | **Method** | **Body**  | **Response**              | **Description**                                |
