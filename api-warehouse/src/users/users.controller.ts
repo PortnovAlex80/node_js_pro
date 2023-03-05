@@ -90,6 +90,6 @@ export class UserController extends BaseController implements IUserController {
 			return next(new HTTPError(409, `Пользователь с указанным email уже существует `));
 		}
 
-		this.ok(res, { email: result.email });
+		this.ok(res, { email: result.email, id: result.id });
 	}
 }

@@ -5,16 +5,16 @@ export class User {
 	private _password: string;
 
 	constructor(
-		private readonly _ID: number,
+		// private readonly _ID: number,
 		private readonly _login: string,
 		private readonly _name: string,
 		private readonly _email: string,
-		private readonly _roleID: string,
+		private readonly _role: string,
 	) {}
 
-	get ID(): number {
-		return this._ID;
-	}
+	// get ID(): number {
+	// 	return this._ID;
+	// }
 
 	get login(): string {
 		return this._login;
@@ -28,11 +28,11 @@ export class User {
 		return this._email;
 	}
 
-	get roleID(): string {
-		return this._roleID;
+	get role(): string {
+		return this._role;
 	}
 
-	get passord(): string {
+	get password(): string {
 		return this._password;
 	}
 
