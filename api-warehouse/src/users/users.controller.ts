@@ -11,6 +11,7 @@ import { UserRegisterDto } from './dto/user-register.dto';
 import { User } from './user.entity';
 import { IUserService } from './user.service.interface';
 import { ValidateMiddleware } from '../common/validate.middleware';
+import 'reflect-metadata';
 
 @injectable()
 export class UserController extends BaseController implements IUserController {
