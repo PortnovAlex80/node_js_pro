@@ -24,7 +24,7 @@ export class App {
 		@inject(TYPES.ConfigService) private configService: IConfigService,
 	) {
 		this.app = express();
-		this.port = 3000;
+		this.port = Number(this.configService.get('PORT'));
 	}
 
 	useMiddleware(): void {
