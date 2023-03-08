@@ -8,7 +8,7 @@ const MIN_DELAY = 1555;
 const MAX_DELAY = 555;
 
 const userAgent =
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36";
+  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/91.0.4472.124 Safari/537.36";
 const acceptLanguage = "en-US,en;q=0.9";
 const acceptEncoding = "gzip, deflate, br";
 const upgradeInsecureRequests = "1";
@@ -19,7 +19,7 @@ const accept =
 puppeteer.use(StealthPlugin());
 
 (async () => {
-  let counter = 17936;
+  let counter = 1;
 
   const browser = await puppeteer.launch({
     headless: false,
@@ -34,8 +34,8 @@ puppeteer.use(StealthPlugin());
       `--accept=${accept}`,
       `--accept-language=${acceptLanguage}`,
       `--accept-encoding=${acceptEncoding}`,
-      `--upgrade-insecure-requests=${upgradeInsecureRequests}`,
-      `--referer=${referer}`,
+      //     `--upgrade-insecure-requests=${upgradeInsecureRequests}`,
+      //      `--referer=${referer}`,
     ],
   });
 
@@ -47,9 +47,7 @@ puppeteer.use(StealthPlugin());
   });
 
   await page.goto(`https://www.bmwclub.ru/forums`);
-          await new Promise((r) =>
-            setTimeout(r, 25000 + Math.random() * 15000)
-          );
+  await new Promise((r) => setTimeout(r, 25000 + Math.random() * 15000));
 
   try {
     // Читаем содержимое входного файла с коллекцией ссылок
