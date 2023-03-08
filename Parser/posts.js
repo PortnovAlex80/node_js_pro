@@ -10,10 +10,10 @@ const MAX_DELAY = 555;
 puppeteer.use(StealthPlugin());
 
 (async () => {
-  let counter = 1;
+  let counter = 17936;
 
   const browser = await puppeteer.launch({
-    headless: false,
+    headless: true,
     slowMo: 100,
     devtools: false,
     executablePath: "/usr/bin/chromium",
