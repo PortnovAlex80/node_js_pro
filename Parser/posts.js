@@ -26,6 +26,7 @@ puppeteer.use(StealthPlugin());
     slowMo: 500,
     devtools: false,
     executablePath: "/usr/bin/chromium",
+    ignoreDefaultArgs: ['--disable-blink-features=AutomationControlled'],
     args: [
       "--no-sandbox",
       "--disable-setuid-sandbox",
