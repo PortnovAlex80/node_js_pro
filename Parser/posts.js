@@ -1,11 +1,15 @@
 const inputFile = "input.txt";
 const outputFile = "output.txt";
 const fs = require("fs");
-const puppeteer = require("puppeteer");
+const puppeteer = require("puppeteer-extra");
+const StealthPlugin = require("puppeteer-extra-plugin-stealth");
+
+const MIN_DELAY = 1555;
+const MAX_DELAY = 555;
+
+puppeteer.use(StealthPlugin());
 
 (async () => {
-  let flag = true;
-  let res = [];
   let counter = 1;
 
   const browser = await puppeteer.launch({
@@ -29,9 +33,12 @@ const puppeteer = require("puppeteer");
     const stream = fs.createWriteStream(outputFile, { flags: "a" });
     // Перебираем ссылки и проверяем каждую с помощью checkLockdAlertExists
     for (const url of urls) {
+      console.log(`Open topic - ${url}`);
       await page.goto(`${url}`);
+
       await page.waitForSelector("div.titleBar");
 
+      console.log(`Verify N-${counter} url:${url}`);
       // Ожидаем появления элемента на странице
       //await page.waitForSelector("dd.lockedAlert", { timeout: 2000 });
       // Ищем элемент на странице
@@ -39,12 +46,20 @@ const puppeteer = require("puppeteer");
       // Проверяем, существует ли элемент
       const result = lockedAlert ? true : false;
       if (!result) {
-        console.log("Сохраняем пост");
+        console.log(`Сохраняем пост ${url}`);
         // Если checkLockedAlertExists возвращает false, сохраняем ссылку в выходной файл
         stream.write(url + "\n");
       } else {
-        console.log("Топик закрыт");
+        console.log(`Топик закрыт ${url}`);
       }
+      counter++;
+
+      const delay = MIN_DELAY + Math.random() * MAX_DELAY;
+      console.log(`Delay - ${delay}`);
+      await page.waitForTimeout(delay);
+      const pause = await new Promise((r) =>
+        setTimeout(r, 250 + Math.random() * 250)
+      );
     }
     // Закрываем выходной файл
     stream.end();
