@@ -13,6 +13,8 @@ const acceptLanguage = "en-US,en;q=0.9";
 const acceptEncoding = "gzip, deflate, br";
 const upgradeInsecureRequests = "1";
 const referer = "https://www.bmwclub.com/forums/";
+const accept =
+  "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8";
 
 puppeteer.use(StealthPlugin());
 
@@ -43,6 +45,8 @@ puppeteer.use(StealthPlugin());
     height: 900,
   });
 
+  await page.goto(`https://www.bmwclub.ru/forums`);
+
   try {
     // Читаем содержимое входного файла с коллекцией ссылок
     const urls = fs.readFileSync(inputFile, "utf-8").split("\n");
@@ -51,9 +55,25 @@ puppeteer.use(StealthPlugin());
     // Перебираем ссылки и проверяем каждую с помощью checkLockdAlertExists
     for (const url of urls) {
       console.log(`Open topic - ${url}`);
-      await page.goto(`${url}`);
 
-      await page.waitForSelector("div.titleBar");
+      try {
+        await page.goto(`${url}`);
+      } catch (e) {
+        console.log(`Second try - ${url}`);
+        await new Promise((r) => setTimeout(r, 15000 + Math.random() * 15000));
+      }
+
+      let dY = 50 + Math.random() * 1000;
+      await page.mouse.wheel({ deltaY: dY });
+
+      try {
+        await page.waitForSelector("div.titleBar");
+      } catch (e) {
+        console.log(e);
+      }
+
+      dY = -Math.random() * 1000;
+      await page.mouse.wheel({ deltaY: dY });
 
       console.log(`Verify N-${counter} url:${url}`);
       // Ожидаем появления элемента на странице
@@ -74,9 +94,7 @@ puppeteer.use(StealthPlugin());
       const delay = MIN_DELAY + Math.random() * MAX_DELAY;
       console.log(`Delay - ${delay}`);
       await page.waitForTimeout(delay);
-      await new Promise((r) =>
-        setTimeout(r, 500 + Math.random() * 500)
-      );
+      await new Promise((r) => setTimeout(r, 500 + Math.random() * 500));
     }
     // Закрываем выходной файл
     stream.end();
