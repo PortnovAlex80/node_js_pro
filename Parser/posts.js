@@ -26,7 +26,7 @@ puppeteer.use(StealthPlugin());
     slowMo: 500,
     devtools: false,
     executablePath: "/usr/bin/chromium",
-    ignoreDefaultArgs: ['--disable-blink-features=AutomationControlled'],
+    ignoreDefaultArgs: ["--disable-blink-features=AutomationControlled"],
     args: [
       "--no-sandbox",
       "--disable-setuid-sandbox",
@@ -47,6 +47,9 @@ puppeteer.use(StealthPlugin());
   });
 
   await page.goto(`https://www.bmwclub.ru/forums`);
+          await new Promise((r) =>
+            setTimeout(r, 25000 + Math.random() * 15000)
+          );
 
   try {
     // Читаем содержимое входного файла с коллекцией ссылок
@@ -61,7 +64,7 @@ puppeteer.use(StealthPlugin());
         await page.goto(`${url}`);
       } catch (e) {
         console.log(`Second try - ${url}`);
-        await new Promise((r) => setTimeout(r, 15000 + Math.random() * 15000));
+        await new Promise((r) => setTimeout(r, 35000 + Math.random() * 35000));
       }
 
       let dY = 50 + Math.random() * 1000;
