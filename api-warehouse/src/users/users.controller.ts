@@ -12,6 +12,7 @@ import { User } from './user.entity';
 import { IUserService } from './user.service.interface';
 import { ValidateMiddleware } from '../common/validate.middleware';
 import 'reflect-metadata';
+import bodyParser from 'body-parser';
 
 @injectable()
 export class UserController extends BaseController implements IUserController {
@@ -86,10 +87,19 @@ export class UserController extends BaseController implements IUserController {
 		this.ok(res, '8 Удалить роль у пользователя ');
 	}
 	// | 9     | /login                     | POST       | User creds | Jwt token                | Аутентификация пользователя                    |
-	login(req: Request<{}, {}, UserLoginDto>, res: Response, next: NextFunction) {
+	async login(
+		req: Request<{}, {}, UserLoginDto>,
+		res: Response,
+		next: NextFunction,
+	): Promise<void> {
 		//this.ok(res, 'Аутентификация пользователя');
+		const result = await this.userService.validateUser(req.body);
 		console.log(req.body);
-		next(new HTTPError(401, 'Forbidden', 'CONTROLLER'));
+		if (!result) {
+			return next(new HTTPError(401, 'Forbidden', 'CONTROLLER'));
+		} else {
+			this.ok(res, {});
+		}
 	}
 
 	async register(

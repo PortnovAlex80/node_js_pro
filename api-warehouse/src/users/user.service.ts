@@ -8,6 +8,7 @@ import { IConfigService } from '../config/config.service.interface';
 import { TYPES } from '../types';
 import { IUsersRepository } from './users.repository.interface';
 import { UserModel } from '@prisma/client';
+import e from 'express';
 
 @injectable()
 export class UserService implements IUserService {
@@ -38,8 +39,13 @@ export class UserService implements IUserService {
 		if (!existUser) {
 			return false;
 		}
-		const newUser = new User('MyLogin', 'name', email, 'user');
-
-		return true;
+		const newUser = new User(
+			'MyLogin',
+			'name',
+			existUser.email,
+			'user',
+			existUser.password,
+		);
+		return newUser.comparePassword(password);
 	}
 }

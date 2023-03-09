@@ -10,7 +10,12 @@ export class User {
 		private readonly _name: string,
 		private readonly _email: string,
 		private readonly _role: string,
-	) {}
+		passwordHash?: string,
+	) {
+		if (passwordHash) {
+			this._password = passwordHash;
+		}
+	}
 
 	// get ID(): number {
 	// 	return this._ID;
@@ -40,8 +45,8 @@ export class User {
 		this._password = await hash(pass, salt);
 	}
 
-	public async comparePassword(pass: string, hash: string): Promise<boolean> {
-		return await compare(pass, hash);
+	public async comparePassword(pass: string): Promise<boolean> {
+		return await compare(pass, this._password);
 	}
 }
 
