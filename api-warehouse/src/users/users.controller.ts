@@ -11,14 +11,16 @@ import { UserRegisterDto } from './dto/user-register.dto';
 import { User } from './user.entity';
 import { IUserService } from './user.service.interface';
 import { ValidateMiddleware } from '../common/validate.middleware';
-import 'reflect-metadata';
 import bodyParser from 'body-parser';
+import { sign } from 'jsonwebtoken';
+import { IConfigService } from '../config/config.service.interface';
 
 @injectable()
 export class UserController extends BaseController implements IUserController {
 	constructor(
 		@inject(TYPES.ILogger) private loggerService: ILogger,
 		@inject(TYPES.UserService) private userService: IUserService,
+		@inject(TYPES.ConfigService) private configService: IConfigService,
 	) {
 		super(loggerService);
 		this.bindRoutes([
@@ -98,7 +100,12 @@ export class UserController extends BaseController implements IUserController {
 		if (!result) {
 			return next(new HTTPError(401, 'Forbidden', 'CONTROLLER'));
 		} else {
-			this.ok(res, {});
+			const Jwt = await this.signJWT(
+				req.body.email,
+				this.configService.get('SECRET'),
+				'user',
+			);
+			this.ok(res, { Jwt });
 		}
 	}
 
@@ -116,5 +123,29 @@ export class UserController extends BaseController implements IUserController {
 		}
 
 		this.ok(res, { email: result.email, id: result.id });
+	}
+
+	private signJWT(
+		email: string,
+		secret: string,
+		role: string,
+	): Promise<string> {
+		return new Promise<string>((resolve, reject) => {
+			sign(
+				{
+					email,
+					role,
+					iat: Math.floor(Date.now() / 1000),
+				},
+				secret,
+				{ algorithm: 'HS256' },
+				(err, token) => {
+					if (err) {
+						reject(err);
+					}
+					resolve(token as string);
+				},
+			);
+		});
 	}
 }
