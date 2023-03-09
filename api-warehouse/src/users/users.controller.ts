@@ -27,9 +27,22 @@ export class UserController extends BaseController implements IUserController {
 			{ path: '/users/:id', method: 'put', func: this.updateUserById },
 			{ path: '/users/:id', method: 'delete', func: this.deleteUserById },
 			{ path: '/users/:id/roles', method: 'get', func: this.getUserRolesById },
-			{ path: '/users/:id/roles', method: 'post', func: this.addRoleToUserById },
-			{ path: '/users/:id/roles/:roleId', method: 'delete', func: this.deleteRoleOfUserById },
-			{ path: '/login', method: 'post', func: this.login },
+			{
+				path: '/users/:id/roles',
+				method: 'post',
+				func: this.addRoleToUserById,
+			},
+			{
+				path: '/users/:id/roles/:roleId',
+				method: 'delete',
+				func: this.deleteRoleOfUserById,
+			},
+			{
+				path: '/login',
+				method: 'post',
+				func: this.login,
+				middlewares: [new ValidateMiddleware(UserLoginDto)],
+			},
 			{
 				path: '/register',
 				method: 'post',
@@ -87,7 +100,9 @@ export class UserController extends BaseController implements IUserController {
 		//this.ok(res, 'Аутентификация пользователя');
 		const result = await this.userService.createUser(body);
 		if (!result) {
-			return next(new HTTPError(409, `Пользователь с указанным email уже существует `));
+			return next(
+				new HTTPError(409, `Пользователь с указанным email уже существует `),
+			);
 		}
 
 		this.ok(res, { email: result.email, id: result.id });
