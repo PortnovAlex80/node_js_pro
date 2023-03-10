@@ -1,5 +1,4 @@
 import { compare, hash } from 'bcryptjs';
-import { interfaces } from 'inversify';
 
 export class User {
 	private _password: string;
