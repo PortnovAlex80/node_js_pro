@@ -1,3 +1,10 @@
 node_modules
+dist
+prisma/dev.db
+prisma/dev.dd-journal
 # Keep environment variables out of version control
+api-warehouse/node_modules
+api-warehouse/dist
+api-warehouse/prisma/dev.db
+api-warehouse/prisma/dev.dd-journal
 .env

@@ -17,21 +17,34 @@ import { UsersRepository } from './users/users.repository';
 
 export const appBindings = new ContainerModule((bind: interfaces.Bind) => {
 	bind<ILogger>(TYPES.ILogger).to(LoggerService).inSingletonScope();
-	bind<IExceptionFilter>(TYPES.ExceptionFilter).to(ExceptionFilter).inSingletonScope();
-	bind<IUserController>(TYPES.UserController).to(UserController).inSingletonScope();
+	bind<IExceptionFilter>(TYPES.ExceptionFilter)
+		.to(ExceptionFilter)
+		.inSingletonScope();
+	bind<IUserController>(TYPES.UserController)
+		.to(UserController)
+		.inSingletonScope();
 	bind<IUserService>(TYPES.UserService).to(UserService).inSingletonScope();
-	bind<IConfigService>(TYPES.ConfigService).to(ConfigService).inSingletonScope();
+	bind<IConfigService>(TYPES.ConfigService)
+		.to(ConfigService)
+		.inSingletonScope();
 	bind<PrismaService>(TYPES.PrismaService).to(PrismaService).inSingletonScope();
-	bind<IUsersRepository>(TYPES.UsersRepository).to(UsersRepository).inSingletonScope();
+	bind<IUsersRepository>(TYPES.UsersRepository)
+		.to(UsersRepository)
+		.inSingletonScope();
 	bind<App>(TYPES.Application).to(App).inSingletonScope();
 });
 
-export function bootstrap() {
+export interface IBootstrapReturn {
+	appContainer: Container;
+	app: App;
+}
+
+async function bootstrap(): Promise<IBootstrapReturn> {
 	const appContainer = new Container();
 	appContainer.load(appBindings);
 	const app = appContainer.get<App>(TYPES.Application);
-	app.init();
-	return { app };
+	await app.init();
+	return { appContainer, app };
 }
 
-export const { app } = bootstrap();
+export const boot = bootstrap();
