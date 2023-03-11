@@ -18,8 +18,13 @@ export interface IUserController {
 	// | 7     | /users/{id}/roles          | POST       | Role data | -                         | Добавить роль пользователю                     |
 	addRoleToUserById: (req: Request, res: Response, next: NextFunction) => void;
 	// | 8     | /users/{id}/roles/{roleId} | DELETE     | -         | -                         | Удалить роль у пользователя                    |
-	deleteRoleOfUserById: (req: Request, res: Response, next: NextFunction) => void;
+	deleteRoleOfUserById: (
+		req: Request,
+		res: Response,
+		next: NextFunction,
+	) => void;
 	// | 9     | /login                     | POST       | User creds | Jwt token                | Аутентификация пользователя                    |
 	login: (req: Request, res: Response, next: NextFunction) => void;
 	register: (req: Request, res: Response, next: NextFunction) => void;
+	info: (req: Request, res: Response, next: NextFunction) => void;
 }

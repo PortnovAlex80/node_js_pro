@@ -52,6 +52,12 @@ export class UserController extends BaseController implements IUserController {
 				func: this.register,
 				middlewares: [new ValidateMiddleware(UserRegisterDto)],
 			},
+			{
+				path: '/info',
+				method: 'get',
+				func: this.info,
+				middlewares: [],
+			},
 		]);
 	}
 	// | **№** | **Path**                   | **Method** | **Body**  | **Response**              | **Description**                                |
@@ -147,5 +153,13 @@ export class UserController extends BaseController implements IUserController {
 				},
 			);
 		});
+	}
+
+	async info(
+		{ user }: Request,
+		res: Response,
+		next: NextFunction,
+	): Promise<void> {
+		this.ok(res, { email: user });
 	}
 }

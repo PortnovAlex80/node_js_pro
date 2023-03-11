@@ -34,7 +34,9 @@ Content-Type: application/json
     "password": "asdf"
 }
 
-
+###
+GET http://localhost:3000/users/info
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5Aam9obi5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY3ODUyNjY3N30.4QpaKKeGz54ZmwmGAlqse5ZjHYARixIcy-B0DEP32Bo
 # | **№** | **Path**                   | **Method** | **Body**  | **Response**              | **Description**                                |
 # |-------|----------------------------|------------|-----------|---------------------------|------------------------------------------------|
 # | 1     | /users                     | GET        | -         | Список пользователей      | Получить список всех пользователей             |
