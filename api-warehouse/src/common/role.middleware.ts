@@ -1,14 +1,10 @@
 import { NextFunction, Response, Request, Router } from 'express';
 import { IMiddleware } from './middleware.interface';
-import { Jwt } from 'jsonwebtoken';
-import { HTTPError } from '../errors/http-error.class';
 import { verify } from 'jsonwebtoken';
-import { IConfigService } from '../config/config.service.interface';
-import { injectable, inject } from 'inversify';
+import { injectable} from 'inversify';
 import 'reflect-metadata';
-import { TYPES } from '../types';
 import { PERMISSIONS } from '../roles/permissions';
-import { JwtPayLoad } from './jwt.payload.interface';
+import { JwtPayload } from './jwt.payload.interface';
 
 @injectable()
 export class RoleMiddleware implements IMiddleware {
@@ -21,14 +17,10 @@ export class RoleMiddleware implements IMiddleware {
 		} else {
 			try {
 				console.log('try');
-				const decoded = verify(token, this.secret) as JwtPayLoad;
+				const decoded = verify(token, this.secret) as JwtPayload;
 				const { method, path } = req;
 				const userRoles = decoded.roles;
-				const permissionRoles = PERMISSIONS;
-				// if (permissionRoles.length === 0) {
-				// 	next();
-				// 	return;
-				// }
+				const permissionRoles = PERMISSIONS[path].[method] || [];
 				if (permissionRoles.includes(userRoles)) {
 					next();
 				}
@@ -40,6 +32,9 @@ export class RoleMiddleware implements IMiddleware {
 	}
 }
 
+interface IMethods {
+	method: keyof Pick<Router, 'get' | 'post' | 'delete' | 'patch' | 'put'>;
+}
 /*
 export class AuthMiddleware implements IMiddleware {
 	 {}

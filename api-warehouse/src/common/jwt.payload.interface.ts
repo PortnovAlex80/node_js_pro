@@ -1,6 +1,6 @@
 import { UserRole } from '../roles/permissions';
 
-export interface JwtPayLoad {
+export interface JwtPayload {
 	email: string;
 	roles: UserRole;
 	iat?: number;

@@ -15,7 +15,7 @@ import bodyParser from 'body-parser';
 import { sign } from 'jsonwebtoken';
 import { IConfigService } from '../config/config.service.interface';
 import { AuthGuard } from '../common/auth.guard';
-import { JwtPayLoad } from '../common/jwt.payload.interface';
+import { JwtPayload } from '../common/jwt.payload.interface';
 
 @injectable()
 export class UserController extends BaseController implements IUserController {
@@ -143,7 +143,7 @@ export class UserController extends BaseController implements IUserController {
 					email,
 					roles: role,
 					iat: Math.floor(Date.now() / 1000),
-				} as JwtPayLoad,
+				} as JwtPayload,
 				secret,
 				{ algorithm: 'HS256' },
 				(err, token) => {
