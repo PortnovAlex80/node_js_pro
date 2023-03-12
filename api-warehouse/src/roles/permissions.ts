@@ -13,7 +13,7 @@ export enum UserRole {
 export const PERMISSIONS: IPermissions = {
 	// Получить список всех пользователей
 	'/users/users': {
-		get: [UserRole.Manager],
+		get: [UserRole.Admin],
 		post: [UserRole.Admin],
 	},
 	// Получить информацию о конкретном пользователе
@@ -21,6 +21,10 @@ export const PERMISSIONS: IPermissions = {
 		// get: [UserRole.Admin],
 		// put: [UserRole.Admin],
 		delete: [UserRole.Manager],
+	},
+	'/users/users/info': {
+		get: [UserRole.Admin, UserRole.Manager],
+		// put: [UserRole.Admin],
 	},
 };
 
