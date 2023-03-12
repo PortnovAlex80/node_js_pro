@@ -18,6 +18,18 @@
 14. [Физическая модель данных для ORM Prisma NodeJS](#физическая-модель-данных-для-orm-prisma-nodejs)
 
 ------------
+**⚠️ RUN**  
+1 env config:
+
+PORT=set the port as number  
+SALT=set the salt as number  
+SECRET='set the secret as string' 
+
+2 npm ci && npm start 
+
+3 e2e test: npm test:e2e
+
+
 **⚠️ ПРИМЕЧАНИЕ**
 
 _Это учебный проект курса https://www.udemy.com/course/nodejs-start/ (https://learn.purpleschool.ru/public/products) в рамках которого необходимо отработать навык реализации слоеной архитектуры (middlewares, exceptions filters,  controller, error handler, services, repository, orm prisma) для выполнения CRUD операций с ресурсом (товары на складе) и JWT авторизация с ролевой моделью. Просьба не брать описание проекта за основу, так как он не выверен профессиональными системными аналитиками. Документацию на API привести в формате openAPI. Предоставить swagger.

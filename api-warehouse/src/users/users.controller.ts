@@ -121,7 +121,6 @@ export class UserController extends BaseController implements IUserController {
 		res: Response,
 		next: NextFunction,
 	): Promise<void> {
-		//this.ok(res, 'Аутентификация пользователя');
 		const result = await this.userService.createUser(body);
 		if (!result) {
 			return next(
