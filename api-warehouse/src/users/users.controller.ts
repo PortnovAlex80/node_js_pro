@@ -107,12 +107,12 @@ export class UserController extends BaseController implements IUserController {
 		if (!result) {
 			return next(new HTTPError(401, 'Forbidden', 'CONTROLLER'));
 		} else {
-			const Jwt = await this.signJWT(
+			const jwt = await this.signJWT(
 				req.body.email,
 				this.configService.get('SECRET'),
 				'user',
 			);
-			this.ok(res, { Jwt });
+			this.ok(res, { jwt });
 		}
 	}
 
