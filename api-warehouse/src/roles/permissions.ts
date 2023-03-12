@@ -1,26 +1,30 @@
-import { NextFunction, Response, Request, Router } from 'express';
+import { Router } from 'express';
 
-// interface IPermissions {
-// 	path: string;
-// 	method: keyof Pick<Router, 'get' | 'post' | 'delete' | 'patch' | 'put'>;
-// 	roles: UserRole[];
-// }
-
-interface Permissions {
+interface IPermissions {
 	[path: string]: {
-		[
-			method: keyof Pick<Router, 'get' | 'post' | 'delete' | 'patch' | 'put'>
-		]: UserRole[];
+		[method in keyof Pick<
+			Router,
+			'get' | 'post' | 'delete' | 'patch' | 'put'
+		>]?: UserRole[];
 	};
 }
 
-enum UserRole {
+export enum UserRole {
 	Admin = 'admin',
 	Manager = 'manager',
 	User = 'user',
 }
 
-export const PERMISSIONS: Permissions = {};
+export const PERMISSIONS: IPermissions = {
+	// Получить список всех пользователей
+	'/users': {
+		get: [UserRole.Admin, UserRole.Manager],
+	},
+	// Получить информацию о конкретном пользователе
+	'/users/{id}': {
+		get: [UserRole.Admin],
+	},
+};
 
 /*
 # | **№** | **Path**                   | **Method** | **Body**  | **Response**              | **Description**                                |
