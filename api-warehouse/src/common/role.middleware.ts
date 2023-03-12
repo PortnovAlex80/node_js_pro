@@ -39,7 +39,7 @@ export class RoleMiddleware implements IMiddleware {
 				) {
 					return next();
 				} else {
-					res.status(403).send('Access denied');
+					res.status(403).send('Forbidden');
 				}
 			} catch (error) {
 				console.log(this.secret);
