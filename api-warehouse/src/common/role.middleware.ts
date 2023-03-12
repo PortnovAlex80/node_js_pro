@@ -1,7 +1,7 @@
 import { NextFunction, Response, Request, Router } from 'express';
 import { IMiddleware } from './middleware.interface';
 import { verify } from 'jsonwebtoken';
-import { injectable} from 'inversify';
+import { injectable } from 'inversify';
 import 'reflect-metadata';
 import { PERMISSIONS } from '../roles/permissions';
 import { JwtPayload } from './jwt.payload.interface';
@@ -20,11 +20,15 @@ export class RoleMiddleware implements IMiddleware {
 				const decoded = verify(token, this.secret) as JwtPayload;
 				const { method, path } = req;
 				const userRoles = decoded.roles;
-				const permissionRoles = PERMISSIONS[path].[method] || [];
-				if (permissionRoles.includes(userRoles)) {
+				if (!method) {
 					next();
 				}
-				next();
+				const permissionRoles = PERMISSIONS[path];
+				const met = permissionRoles?[method];
+				// if (permissionRoles.includes(userRoles)) {
+				// 	return next();
+				// }
+				return next();
 			} catch (error) {
 				res.status(403).send('Invalid token Access denied');
 			}
