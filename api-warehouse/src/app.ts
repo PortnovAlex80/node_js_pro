@@ -13,6 +13,7 @@ import { PrismaService } from './database/prisma.service';
 import { AuthMiddleware } from './common/auth.middleware';
 import { RoleMiddleware } from './common/role.middleware';
 
+export const pathRouteExtension = '/users';
 @injectable()
 export class App {
 	app: Express;
@@ -36,14 +37,15 @@ export class App {
 	useMiddleware(): void {
 		this.app.use(json());
 		const secret = this.configService.get('SECRET');
-		const authMiddleware = new AuthMiddleware(secret);
+
 		const roleMiddleware = new RoleMiddleware(secret);
+		const authMiddleware = new AuthMiddleware(secret);
 		this.app.use(roleMiddleware.execute.bind(roleMiddleware));
 		this.app.use(authMiddleware.execute.bind(authMiddleware));
 	}
 
 	useRoutes() {
-		this.app.use('/users', this.userController.router);
+		this.app.use(pathRouteExtension, this.userController.router);
 	}
 
 	useExceptionFilters() {

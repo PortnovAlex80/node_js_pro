@@ -111,7 +111,7 @@ export class UserController extends BaseController implements IUserController {
 			const jwt = await this.signJWT(
 				req.body.email,
 				this.configService.get('SECRET'),
-				'user',
+				'admin', // hard code
 			);
 			this.ok(res, { jwt });
 		}
@@ -161,7 +161,9 @@ export class UserController extends BaseController implements IUserController {
 		res: Response,
 		next: NextFunction,
 	): Promise<void> {
+		console.log(`[CONTROLLER] User info from req = ${user}`);
 		const userInfo = await this.userService.getUserInfo(user);
+		console.log(`user info from getUserInfo SERVICE ${userInfo}`);
 		this.ok(res, { email: userInfo?.email, id: userInfo?.id });
 	}
 }

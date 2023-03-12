@@ -1,5 +1,10 @@
-###
+### Send request with JWT
 GET http://localhost:3000/users/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG43QGpvaG4uY29tIiwicm9sZXMiOiJhZG1pbiIsImlhdCI6MTY3ODY1MjQ4OX0.WodBAuBs_p8mcSA58BoNOyOyM-EAniIc5ZXi0XESO8U
+
+### Send request without JWT
+GET http://localhost:3000/users/users
+
 ###
 GET http://localhost:3000/users/users/2
 ###
@@ -8,6 +13,8 @@ POST  http://localhost:3000/users/users
 PUT  http://localhost:3000/users/users/4
 ###
 DELETE   http://localhost:3000/users/users/5
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG43QGpvaG4uY29tIiwicm9sZXMiOiJhZG1pbiIsImlhdCI6MTY3ODY1MjQ4OX0.WodBAuBs_p8mcSA58BoNOyOyM-EAniIc5ZXi0XESO8U
+
 ###
 GET   http://localhost:3000/users/users/6/roles
 ###
@@ -19,7 +26,7 @@ POST    http://localhost:3000/users/login
 Content-Type: application/json
 
 {
-    "email": "john@john.com",
+    "email": "john7@john.com",
     "password": "asdf"
 }
 
@@ -28,7 +35,7 @@ POST    http://localhost:3000/users/register
 Content-Type: application/json
 
 {
-    "email": "john4@john.com",
+    "email": "john7@john.com",
     "login": "J1",
     "name": "John",
     "password": "asdf"
@@ -36,7 +43,7 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3000/users/info
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5Aam9obi5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTY3ODUyNjY3N30.4QpaKKeGz54ZmwmGAlqse5ZjHYARixIcy-B0DEP32Bo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG43QGpvaG4uY29tIiwicm9sZXMiOiJhZG1pbiIsImlhdCI6MTY3ODY1MjQ4OX0.WodBAuBs_p8mcSA58BoNOyOyM-EAniIc5ZXi0XESO8U
 # | **№** | **Path**                   | **Method** | **Body**  | **Response**              | **Description**                                |
 # |-------|----------------------------|------------|-----------|---------------------------|------------------------------------------------|
 # | 1     | /users                     | GET        | -         | Список пользователей      | Получить список всех пользователей             |
