@@ -1,6 +1,6 @@
 import { UserLoginDto } from './dto/user-login.dto';
 import { UserRegisterDto } from './dto/user-register.dto';
-import { IUserService } from './user.service.interface';
+import { IUserService as IUsersService } from './user.service.interface';
 import { User } from './user.entity';
 import { inject, injectable } from 'inversify';
 import 'reflect-metadata';
@@ -8,15 +8,14 @@ import { IConfigService } from '../config/config.service.interface';
 import { TYPES } from '../types';
 import { IUsersRepository } from './users.repository.interface';
 import { UserModel } from '@prisma/client';
-import e from 'express';
 
 @injectable()
-export class UserService implements IUserService {
+export class UsersService implements IUsersService {
 	constructor(
 		@inject(TYPES.ConfigService)
 		private configService: IConfigService,
 		@inject(TYPES.UsersRepository)
-		private userRepository: IUsersRepository,
+		private usersRepository: IUsersRepository,
 	) {}
 
 	async createUser({
@@ -27,15 +26,15 @@ export class UserService implements IUserService {
 		const newUser = new User('MyLogin', name, email, 'admin');
 		const salt = this.configService.get('SALT');
 		await newUser.setPassword(password, Number(salt));
-		const existedUser = await this.userRepository.findByEmail(email);
+		const existedUser = await this.usersRepository.findByEmail(email);
 		if (existedUser) {
 			return null;
 		}
-		return this.userRepository.create(newUser);
+		return this.usersRepository.create(newUser);
 	}
 
 	async validateUser({ email, password }: UserLoginDto): Promise<boolean> {
-		const existUser = await this.userRepository.findByEmail(email);
+		const existUser = await this.usersRepository.findByEmail(email);
 		if (!existUser) {
 			return false;
 		}
@@ -50,6 +49,6 @@ export class UserService implements IUserService {
 	}
 
 	async getUserInfo(email: string): Promise<UserModel | null> {
-		return this.userRepository.findByEmail(email);
+		return this.usersRepository.findByEmail(email);
 	}
 }

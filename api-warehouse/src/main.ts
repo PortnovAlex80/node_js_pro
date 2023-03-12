@@ -8,7 +8,7 @@ import { IUserController } from './users/users.controller.interface';
 import { LoggerService } from './logger/logger';
 import { IExceptionFilter } from './errors/exception.filter.interface';
 import { IUserService } from './users/user.service.interface';
-import { UserService } from './users/user.service';
+import { UsersService } from './users/user.service';
 import { IConfigService } from './config/config.service.interface';
 import { ConfigService } from './config/config.service';
 import { PrismaService } from './database/prisma.service';
@@ -23,7 +23,7 @@ export const appBindings = new ContainerModule((bind: interfaces.Bind) => {
 	bind<IUserController>(TYPES.UserController)
 		.to(UserController)
 		.inSingletonScope();
-	bind<IUserService>(TYPES.UserService).to(UserService).inSingletonScope();
+	bind<IUserService>(TYPES.UserService).to(UsersService).inSingletonScope();
 	bind<IConfigService>(TYPES.ConfigService)
 		.to(ConfigService)
 		.inSingletonScope();

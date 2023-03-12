@@ -3,7 +3,7 @@ import { Container } from 'inversify';
 import { IConfigService } from '../config/config.service.interface';
 import { TYPES } from '../types';
 import { User } from './user.entity';
-import { UserService } from './user.service';
+import { UsersService } from './user.service';
 import { IUserService } from './user.service.interface';
 import { IUsersRepository } from './users.repository.interface';
 import 'reflect-metadata';
@@ -25,7 +25,7 @@ let usersRepository: IUsersRepository;
 let usersService: IUserService;
 
 beforeAll(() => {
-	container.bind<IUserService>(TYPES.UserService).to(UserService);
+	container.bind<IUserService>(TYPES.UserService).to(UsersService);
 	container
 		.bind<IConfigService>(TYPES.ConfigService)
 		.toConstantValue(ConfigServiceMock);
