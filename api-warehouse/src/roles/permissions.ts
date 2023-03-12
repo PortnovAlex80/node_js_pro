@@ -1,11 +1,6 @@
-import { Router } from 'express';
-
 interface IPermissions {
 	[path: string]: {
-		[method in keyof Pick<
-			Router,
-			'get' | 'post' | 'delete' | 'patch' | 'put'
-		>]?: UserRole[];
+		[method in HttpMethod]?: UserRole[];
 	};
 }
 
@@ -18,7 +13,8 @@ export enum UserRole {
 export const PERMISSIONS: IPermissions = {
 	// Получить список всех пользователей
 	'/users': {
-		get: [UserRole.Admin, UserRole.Manager],
+		get: [UserRole.Admin],
+		post: [UserRole.Admin],
 	},
 	// Получить информацию о конкретном пользователе
 	'/users/{id}': {
@@ -26,6 +22,7 @@ export const PERMISSIONS: IPermissions = {
 	},
 };
 
+export type HttpMethod = 'get' | 'post' | 'delete' | 'patch' | 'put';
 /*
 # | **№** | **Path**                   | **Method** | **Body**  | **Response**              | **Description**                                |
 # |-------|----------------------------|------------|-----------|---------------------------|------------------------------------------------|

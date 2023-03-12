@@ -3,9 +3,8 @@ import { IMiddleware } from './middleware.interface';
 import { verify } from 'jsonwebtoken';
 import { injectable } from 'inversify';
 import 'reflect-metadata';
-import { PERMISSIONS } from '../roles/permissions';
+import { HttpMethod, PERMISSIONS } from '../roles/permissions';
 import { JwtPayload } from './jwt.payload.interface';
-
 @injectable()
 export class RoleMiddleware implements IMiddleware {
 	constructor(private secret: string) {}
@@ -18,46 +17,20 @@ export class RoleMiddleware implements IMiddleware {
 			try {
 				console.log('try');
 				const decoded = verify(token, this.secret) as JwtPayload;
-				const { method, path } = req;
+				const path = req.path;
+				const method: HttpMethod = req.method.toLocaleLowerCase() as HttpMethod;
 				const userRoles = decoded.roles;
-				if (!method) {
+				const permissionRoles = PERMISSIONS[path]?.[method] || [];
+				const logns = PERMISSIONS['users/']['post'];
+				console.log(logns);
+				if (permissionRoles.includes(userRoles)) {
 					next();
+				} else {
+					res.status(403).send('Access denied');
 				}
-				const permissionRoles = PERMISSIONS[path];
-				const met = permissionRoles?[method];
-				// if (permissionRoles.includes(userRoles)) {
-				// 	return next();
-				// }
-				return next();
 			} catch (error) {
-				res.status(403).send('Invalid token Access denied');
+				res.status(403).send('Invalid token');
 			}
 		}
 	}
 }
-
-interface IMethods {
-	method: keyof Pick<Router, 'get' | 'post' | 'delete' | 'patch' | 'put'>;
-}
-/*
-export class AuthMiddleware implements IMiddleware {
-	 {}
-
-	execute(req: Request, res: Response, next: NextFunction): void {
-		if (req.headers.authorization) {
-			const token = req.headers.authorization.split(' ')[1];
-			verify(token, this.secret, (err, payload) => {
-				if (err) {
-					next();
-				} else if (payload && typeof payload !== 'string') {
-					req.user = payload.email;
-					next();
-				}
-			});
-		} else {
-			next();
-		}
-	}
-}
-
-*/

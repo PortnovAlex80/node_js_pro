@@ -11,6 +11,7 @@ import { UserController } from './users/users.controller';
 import 'reflect-metadata';
 import { PrismaService } from './database/prisma.service';
 import { AuthMiddleware } from './common/auth.middleware';
+import { RoleMiddleware } from './common/role.middleware';
 
 @injectable()
 export class App {
@@ -34,7 +35,10 @@ export class App {
 
 	useMiddleware(): void {
 		this.app.use(json());
-		const authMiddleware = new AuthMiddleware(this.configService.get('SECRET'));
+		const secret = this.configService.get('SECRET');
+		const authMiddleware = new AuthMiddleware(secret);
+		const roleMiddleware = new RoleMiddleware(secret);
+		this.app.use(roleMiddleware.execute.bind(roleMiddleware));
 		this.app.use(authMiddleware.execute.bind(authMiddleware));
 	}
 
