@@ -9,7 +9,6 @@ import { TYPES } from '../types';
 import { IUsersRepository } from './users.repository.interface';
 import { UserModel } from '@prisma/client';
 import { UserRole } from '../roles/roles';
-
 @injectable()
 export class UsersService implements IUsersService {
 	constructor(
@@ -37,7 +36,6 @@ export class UsersService implements IUsersService {
 		await newUser.setPassword(password, Number(salt));
 		const existedUser = await this.usersRepository.findByEmail(email);
 		if (existedUser) {
-			console.log('[USER SERVICE] User exist');
 			return null;
 		}
 		return this.usersRepository.create(newUser);

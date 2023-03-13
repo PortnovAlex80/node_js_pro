@@ -4,21 +4,18 @@ import { HTTPError } from '../errors/http-error.class';
 import { TYPES } from '../types';
 import { ILogger } from '../logger/logger.interface';
 import { inject, injectable } from 'inversify';
-import 'reflect-metadata';
 import { IUserController } from './users.controller.interface';
 import { UserLoginDto } from './dto/user-login.dto';
 import { UserRegisterDto } from './dto/user-register.dto';
-import { User } from './user.entity';
 import { IUserService } from './user.service.interface';
 import { ValidateMiddleware } from '../common/validate.middleware';
-import bodyParser from 'body-parser';
 import { sign } from 'jsonwebtoken';
 import { IConfigService } from '../config/config.service.interface';
 import { AuthGuard } from '../common/auth.guard';
 import { JwtPayload } from '../common/jwt.payload.interface';
 import { RoleMiddleware } from '../common/role.middleware';
 import { UserRole } from '../roles/roles';
-
+import 'reflect-metadata';
 @injectable()
 export class UserController extends BaseController implements IUserController {
 	constructor(
@@ -101,15 +98,13 @@ export class UserController extends BaseController implements IUserController {
 	deleteRoleOfUserById(req: Request, res: Response, next: NextFunction) {
 		this.ok(res, '8 Удалить роль у пользователя ');
 	}
-	// | 9     | /login                     | POST       | User creds | Jwt token                | Аутентификация пользователя                    |
+
 	async login(
 		req: Request<{}, {}, UserLoginDto>,
 		res: Response,
 		next: NextFunction,
 	): Promise<void> {
-		//this.ok(res, 'Аутентификация пользователя');
 		const result = await this.userService.validateUser(req.body);
-		console.log(req.body);
 		if (!result) {
 			return next(new HTTPError(401, 'Forbidden', 'CONTROLLER'));
 		} else {
@@ -134,7 +129,6 @@ export class UserController extends BaseController implements IUserController {
 				new HTTPError(409, `Пользователь с указанным email уже существует `),
 			);
 		}
-
 		this.ok(res, { email: result.email, id: result.id });
 	}
 
