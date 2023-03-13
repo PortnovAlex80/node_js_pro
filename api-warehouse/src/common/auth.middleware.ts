@@ -3,14 +3,9 @@ import { verify } from 'jsonwebtoken';
 import { IMiddleware } from './middleware.interface';
 
 export class AuthMiddleware implements IMiddleware {
-	constructor(private secret: string) {
-		console.log('[AuthMiddleware activated]');
-	}
+	constructor(private secret: string) {}
 
 	execute(req: Request, res: Response, next: NextFunction): void {
-		console.log(
-			`[AuthMiddleware] check headers.authorization --> ${req.headers.authorization}`,
-		);
 		if (req.headers.authorization) {
 			const token = req.headers.authorization.split(' ')[1];
 			verify(token, this.secret, (err, payload) => {
@@ -19,10 +14,6 @@ export class AuthMiddleware implements IMiddleware {
 				} else if (payload && typeof payload !== 'string') {
 					req.user = payload.email;
 					req.roles = payload.roles;
-					console.log(
-						`[AuthMiddleware] check ${payload.email} and ${payload.roles}`,
-					);
-
 					next();
 				}
 			});

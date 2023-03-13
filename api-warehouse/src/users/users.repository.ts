@@ -13,11 +13,11 @@ export class UsersRepository implements IUsersRepository {
 		@inject(TYPES.ILogger) private loggerService: ILogger,
 		@inject(TYPES.PrismaService) private prismaService: PrismaService,
 	) {
-		this.prismaService.client.role.create({
-			data: {
-				Role: 'admin',
-			},
-		});
+		// this.prismaService.client.role.create({
+		// 	data: {
+		// 		Role: 'admin',
+		// 	},
+		// });
 	}
 
 	async create({
@@ -32,7 +32,7 @@ export class UsersRepository implements IUsersRepository {
 				login,
 				password,
 				firstName: name,
-				lastName: '',
+				lastName: name,
 				email,
 				role,
 			},
@@ -40,11 +40,6 @@ export class UsersRepository implements IUsersRepository {
 		return result;
 	}
 	async findByEmail(email: string): Promise<UserModel | null> {
-		// const result = this.prismaService.client.userModel.findFirst({
-		// 	where: {
-		// 		email,
-		// 	},
-		// });
 		return this.prismaService.client.userModel.findFirst({
 			where: {
 				email,

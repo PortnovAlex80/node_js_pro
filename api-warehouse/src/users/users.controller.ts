@@ -16,6 +16,8 @@ import { sign } from 'jsonwebtoken';
 import { IConfigService } from '../config/config.service.interface';
 import { AuthGuard } from '../common/auth.guard';
 import { JwtPayload } from '../common/jwt.payload.interface';
+import { RoleMiddleware } from '../common/role.middleware';
+import { UserRole } from '../roles/roles';
 
 @injectable()
 export class UserController extends BaseController implements IUserController {
@@ -58,7 +60,13 @@ export class UserController extends BaseController implements IUserController {
 				path: '/info',
 				method: 'get',
 				func: this.info,
-				middlewares: [new AuthGuard()],
+				middlewares: [
+					new AuthGuard(),
+					new RoleMiddleware(
+						[UserRole.Admin],
+						this.configService.get('SECRET'),
+					),
+				],
 			},
 		]);
 	}
@@ -108,10 +116,11 @@ export class UserController extends BaseController implements IUserController {
 		if (!result) {
 			return next(new HTTPError(401, 'Forbidden', 'CONTROLLER'));
 		} else {
+			const role = (await this.userService.getUserRole(req.body.email)) || '';
 			const jwt = await this.signJWT(
 				req.body.email,
 				this.configService.get('SECRET'),
-				'admin', // hard code
+				role,
 			);
 			this.ok(res, { jwt });
 		}
@@ -161,9 +170,7 @@ export class UserController extends BaseController implements IUserController {
 		res: Response,
 		next: NextFunction,
 	): Promise<void> {
-		console.log(`[CONTROLLER] User info from req = ${user}`);
 		const userInfo = await this.userService.getUserInfo(user);
-		console.log(`user info from getUserInfo SERVICE ${userInfo}`);
 		this.ok(res, { email: userInfo?.email, id: userInfo?.id });
 	}
 }

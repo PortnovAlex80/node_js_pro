@@ -27,4 +27,5 @@ export interface IUserService {
 	//	register: (req: Request, res: Response, next: NextFunction) => void;
 	validateUser: (dto: UserLoginDto) => Promise<boolean>;
 	getUserInfo: (email: string) => Promise<UserModel | null>;
+	getUserRole: (email: string) => Promise<string | null>;
 }

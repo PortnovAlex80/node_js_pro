@@ -8,7 +8,7 @@ import { IConfigService } from '../config/config.service.interface';
 import { TYPES } from '../types';
 import { IUsersRepository } from './users.repository.interface';
 import { UserModel } from '@prisma/client';
-import { UserRole } from '../roles/permissions';
+import { UserRole } from '../roles/roles';
 
 @injectable()
 export class UsersService implements IUsersService {
@@ -23,13 +23,21 @@ export class UsersService implements IUsersService {
 		email,
 		password,
 		name,
+		login,
+		role,
 	}: UserRegisterDto): Promise<UserModel | null> {
-		const newUser = new User('MyLogin', name, email, UserRole.Admin);
+		if (!login) {
+			login = '';
+		}
+		if (!role) {
+			role = 'user';
+		}
+		const newUser = new User(login, name, email, role);
 		const salt = this.configService.get('SALT');
 		await newUser.setPassword(password, Number(salt));
 		const existedUser = await this.usersRepository.findByEmail(email);
 		if (existedUser) {
-			console.log('[USER SERVICE] User not exist');
+			console.log('[USER SERVICE] User exist');
 			return null;
 		}
 		return this.usersRepository.create(newUser);
@@ -41,8 +49,8 @@ export class UsersService implements IUsersService {
 			return false;
 		}
 		const newUser = new User(
-			'MyLogin',
-			'name',
+			existUser.login,
+			existUser.firstName,
 			existUser.email,
 			existUser.role,
 			existUser.password,
@@ -51,7 +59,14 @@ export class UsersService implements IUsersService {
 	}
 
 	async getUserInfo(email: string): Promise<UserModel | null> {
-		console.log(`[USER SERVICE] getUserInfo email - ${email}`);
 		return this.usersRepository.findByEmail(email);
+	}
+
+	async getUserRole(email: string): Promise<string | null> {
+		const user = await this.usersRepository.findByEmail(email);
+		if (!user) {
+			return null;
+		}
+		return user.role;
 	}
 }

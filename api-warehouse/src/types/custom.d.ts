@@ -1,4 +1,4 @@
-import { UserRole } from '../roles/permissions';
+import { UserRole } from '../roles/roles';
 import { Request } from 'express';
 
 declare global {

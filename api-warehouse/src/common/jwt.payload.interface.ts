@@ -1,4 +1,4 @@
-import { UserRole } from '../roles/permissions';
+import { UserRole } from '../roles/roles';
 
 export interface JwtPayload {
 	email: string;

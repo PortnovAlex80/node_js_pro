@@ -43,7 +43,6 @@ CRUD для управления новыми пользователями в р
 - https://editor.swagger.io/
 - https://emojio.ru/objects/d83ddee0-1f6e0-molot-i-gaechnyy-klyuch.html
 - https://www.udemy.com/course/microservices-with-node-js-and-react/learn/lecture/19099026#overview пример проектирования метода by Stephen Grider
-- https://itnan.ru/post.php?c=1&p=700144 Ролевая модель ABAC
 ------------
 
 
