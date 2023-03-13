@@ -62,10 +62,7 @@ export class UserController extends BaseController implements IUserController {
 				func: this.info,
 				middlewares: [
 					new AuthGuard(),
-					new RoleMiddleware(
-						[UserRole.Admin],
-						this.configService.get('SECRET'),
-					),
+					new RoleMiddleware(UserRole.Admin, this.configService.get('SECRET')),
 				],
 			},
 		]);
