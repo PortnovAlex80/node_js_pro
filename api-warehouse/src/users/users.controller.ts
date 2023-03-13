@@ -64,38 +64,68 @@ export class UserController extends BaseController implements IUserController {
 			},
 		]);
 	}
-	// | **№** | **Path**                   | **Method** | **Body**  | **Response**              | **Description**                                |
-	// |-------|----------------------------|------------|-----------|---------------------------|------------------------------------------------|
-	// | 1     | /users                     | GET        | -         | Список пользователей      | Получить список всех пользователей             |
-	getUsers(req: Request, res: Response, next: NextFunction) {
+
+	async getUsers(
+		req: Request,
+		res: Response,
+		next: NextFunction,
+	): Promise<void> {
 		this.ok(res, '1 Список пользователей ');
 	}
-	// | 2     | /users/{id}                | GET        | -         | Информация о пользователе | Получить информацию о конкретном пользователе  |
-	getUserById(req: Request, res: Response, next: NextFunction) {
+
+	async getUserById(
+		req: Request,
+		res: Response,
+		next: NextFunction,
+	): Promise<void> {
 		this.ok(res, '2 Информация о пользователе');
 	}
-	// | 3     | /users                     | POST       | User data | Новый пользователь        | Создать нового пользователя                    |
-	createUser(req: Request, res: Response, next: NextFunction) {
+
+	async createUser(
+		req: Request,
+		res: Response,
+		next: NextFunction,
+	): Promise<void> {
 		this.ok(res, '3 Новый пользователь ');
 	}
-	// | 4     | /users/{id}                | PUT        | User data | Обновленный пользователь  | Обновить информацию о пользователе             |
-	updateUserById(req: Request, res: Response, next: NextFunction) {
+
+	async updateUserById(
+		req: Request,
+		res: Response,
+		next: NextFunction,
+	): Promise<void> {
 		this.ok(res, '4 Обновленный пользователь ');
 	}
-	// | 5     | /users/{id}                | DELETE     | -         | -                         | Удалить пользователя                           |
-	deleteUserById(req: Request, res: Response, next: NextFunction) {
+
+	async deleteUserById(
+		req: Request,
+		res: Response,
+		next: NextFunction,
+	): Promise<void> {
 		this.ok(res, '5 Удалить пользователя ');
 	}
-	// | 6     | /users/{id}/roles          | GET        | -         | Список ролей пользователя | Получить список ролей пользователя             |
-	getUserRolesById(req: Request, res: Response, next: NextFunction) {
+
+	async getUserRolesById(
+		req: Request,
+		res: Response,
+		next: NextFunction,
+	): Promise<void> {
 		this.ok(res, '6 писок ролей пользователя');
 	}
-	// | 7     | /users/{id}/roles          | POST       | Role data | -                         | Добавить роль пользователю                     |
-	addRoleToUserById(req: Request, res: Response, next: NextFunction) {
+
+	async addRoleToUserById(
+		req: Request,
+		res: Response,
+		next: NextFunction,
+	): Promise<void> {
 		this.ok(res, '7 Добавить роль пользователю ');
 	}
-	// | 8     | /users/{id}/roles/{roleId} | DELETE     | -         | -                         | Удалить роль у пользователя                    |
-	deleteRoleOfUserById(req: Request, res: Response, next: NextFunction) {
+
+	async deleteRoleOfUserById(
+		req: Request,
+		res: Response,
+		next: NextFunction,
+	): Promise<void> {
 		this.ok(res, '8 Удалить роль у пользователя ');
 	}
 
