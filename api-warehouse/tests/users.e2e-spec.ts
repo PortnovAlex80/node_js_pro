@@ -12,7 +12,7 @@ beforeAll(async () => {
 describe('Users e2e', () => {
 	it('Register - error', async () => {
 		const res = await request(application.app).post('/users/register').send({
-			email: 'john5@john.com',
+			email: 'john1@john.com',
 			login: 'J1',
 			name: 'John',
 			password: 'asdf',
@@ -23,9 +23,11 @@ describe('Users e2e', () => {
 	it('Login - success', async () => {
 		const res = await request(application.app)
 			.post('/users/login')
-			.send({ email: 'john5@john.com', password: 'asdf' });
-		console.log(` JWT token -${res.body.Jwt}`);
-		expect(res.body.Jwt).not.toBeUndefined();
+			.send({ email: 'john9@john.com', password: 'asdf' });
+		console.log(`Test login-success-jwt token is ${res.body.jwt}`);
+
+		console.log(` JWT token -${res.body.jwt}`);
+		expect(res.body.jwt).not.toBeUndefined();
 	});
 
 	it('Login - error', async () => {
@@ -41,7 +43,7 @@ describe('Users e2e', () => {
 			.send({ email: 'john5@john.com', password: 'asdf' });
 		const res = await request(application.app)
 			.get('/users/info')
-			.set('Authorization', `Bearer ${login.body.Jwt}`);
+			.set('Authorization', `Bearer ${login.body.jwt}`);
 		expect(res.body.email).toBe('john5@john.com');
 	});
 
