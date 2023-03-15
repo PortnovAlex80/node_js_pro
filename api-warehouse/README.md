@@ -75,6 +75,25 @@ _Лексическая формула требований: [Условие][С
 
 ## Пользователи системы
 
+```mermaid
+graph TD
+
+    User["User"]
+    Authorization["Authorization"]
+    RoleModel["Role Model"]
+    StorageCapacity["Storage Capacity"]
+    WarehouseInventory["Warehouse Inventory"]
+    ProductManagement["Product Management"]
+    ProductSearch["Product Search"]
+
+    User --> Authorization
+    User --> RoleModel
+    User --> StorageCapacity
+    User --> WarehouseInventory
+    User --> ProductManagement
+    User --> ProductSearch
+```
+
 | Пользователь | Описание                                       |
 |------------------------------------|---|
 | Работник | Работник склада. Роль - Администратор системы      |
