@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1678911320113" clover="3.2.0">
-  <project timestamp="1678911320113" name="All files">
-    <metrics statements="275" coveredstatements="233" conditionals="54" coveredconditionals="36" methods="69" coveredmethods="53" elements="398" coveredelements="322" complexity="0" loc="275" ncloc="275" packages="9" files="20" classes="20"/>
+<coverage generated="1678912708087" clover="3.2.0">
+  <project timestamp="1678912708088" name="All files">
+    <metrics statements="280" coveredstatements="238" conditionals="54" coveredconditionals="36" methods="69" coveredmethods="53" elements="403" coveredelements="327" complexity="0" loc="280" ncloc="280" packages="9" files="20" classes="20"/>
     <package name="src">
       <metrics statements="56" coveredstatements="56" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="8"/>
       <file name="app.ts" path="/home/lisboasun/Documents/node_js_pro-1/api-warehouse/src/app.ts">
@@ -71,7 +71,7 @@
       </file>
     </package>
     <package name="src.common">
-      <metrics statements="57" coveredstatements="53" conditionals="27" coveredconditionals="22" methods="16" coveredmethods="15"/>
+      <metrics statements="62" coveredstatements="58" conditionals="27" coveredconditionals="22" methods="16" coveredmethods="15"/>
       <file name="auth.guard.ts" path="/home/lisboasun/Documents/node_js_pro-1/api-warehouse/src/common/auth.guard.ts">
         <metrics statements="4" coveredstatements="4" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="3" count="1" type="stmt"/>
@@ -116,21 +116,26 @@
         <line num="39" count="15" type="stmt"/>
       </file>
       <file name="role.middleware.ts" path="/home/lisboasun/Documents/node_js_pro-1/api-warehouse/src/common/role.middleware.ts">
-        <metrics statements="14" coveredstatements="11" conditionals="11" coveredconditionals="8" methods="2" coveredmethods="2"/>
+        <metrics statements="19" coveredstatements="16" conditionals="11" coveredconditionals="8" methods="2" coveredmethods="2"/>
         <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="10" type="stmt"/>
-        <line num="7" count="7" type="cond" truecount="3" falsecount="1"/>
-        <line num="8" count="7" type="cond" truecount="1" falsecount="1"/>
-        <line num="9" count="0" type="stmt"/>
-        <line num="11" count="7" type="stmt"/>
-        <line num="12" count="7" type="stmt"/>
-        <line num="13" count="7" type="cond" truecount="3" falsecount="0"/>
-        <line num="14" count="7" type="stmt"/>
-        <line num="15" count="7" type="cond" truecount="1" falsecount="1"/>
-        <line num="16" count="0" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="10" type="stmt"/>
+        <line num="13" count="7" type="cond" truecount="3" falsecount="1"/>
+        <line num="14" count="7" type="cond" truecount="1" falsecount="1"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="17" count="7" type="stmt"/>
         <line num="18" count="7" type="stmt"/>
+        <line num="19" count="7" type="cond" truecount="3" falsecount="0"/>
+        <line num="20" count="7" type="stmt"/>
+        <line num="21" count="7" type="cond" truecount="1" falsecount="1"/>
         <line num="22" count="0" type="stmt"/>
+        <line num="24" count="7" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
       </file>
       <file name="validate.middleware.ts" path="/home/lisboasun/Documents/node_js_pro-1/api-warehouse/src/common/validate.middleware.ts">
         <metrics statements="9" coveredstatements="9" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
