@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1678816298950" clover="3.2.0">
-  <project timestamp="1678816298950" name="All files">
-    <metrics statements="275" coveredstatements="228" conditionals="54" coveredconditionals="38" methods="69" coveredmethods="48" elements="398" coveredelements="314" complexity="0" loc="275" ncloc="275" packages="9" files="20" classes="20"/>
+<coverage generated="1678911320113" clover="3.2.0">
+  <project timestamp="1678911320113" name="All files">
+    <metrics statements="275" coveredstatements="233" conditionals="54" coveredconditionals="36" methods="69" coveredmethods="53" elements="398" coveredelements="322" complexity="0" loc="275" ncloc="275" packages="9" files="20" classes="20"/>
     <package name="src">
       <metrics statements="56" coveredstatements="56" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="8"/>
       <file name="app.ts" path="/home/lisboasun/Documents/node_js_pro-1/api-warehouse/src/app.ts">
@@ -71,65 +71,65 @@
       </file>
     </package>
     <package name="src.common">
-      <metrics statements="57" coveredstatements="53" conditionals="27" coveredconditionals="24" methods="16" coveredmethods="15"/>
+      <metrics statements="57" coveredstatements="53" conditionals="27" coveredconditionals="22" methods="16" coveredmethods="15"/>
       <file name="auth.guard.ts" path="/home/lisboasun/Documents/node_js_pro-1/api-warehouse/src/common/auth.guard.ts">
         <metrics statements="4" coveredstatements="4" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="3" count="1" type="stmt"/>
-        <line num="5" count="2" type="cond" truecount="1" falsecount="0"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
+        <line num="5" count="14" type="cond" truecount="1" falsecount="0"/>
+        <line num="6" count="7" type="stmt"/>
+        <line num="8" count="7" type="stmt"/>
       </file>
       <file name="auth.middleware.ts" path="/home/lisboasun/Documents/node_js_pro-1/api-warehouse/src/common/auth.middleware.ts">
         <metrics statements="13" coveredstatements="13" conditionals="7" coveredconditionals="7" methods="3" coveredmethods="3"/>
         <line num="2" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
-        <line num="9" count="6" type="cond" truecount="2" falsecount="0"/>
-        <line num="10" count="2" type="stmt"/>
-        <line num="11" count="2" type="stmt"/>
-        <line num="12" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="9" count="24" type="cond" truecount="2" falsecount="0"/>
+        <line num="10" count="8" type="stmt"/>
+        <line num="11" count="8" type="stmt"/>
+        <line num="12" count="8" type="cond" truecount="2" falsecount="0"/>
         <line num="13" count="1" type="stmt"/>
-        <line num="14" count="1" type="cond" truecount="3" falsecount="0"/>
-        <line num="15" count="1" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
-        <line num="17" count="1" type="stmt"/>
-        <line num="21" count="4" type="stmt"/>
+        <line num="14" count="7" type="cond" truecount="3" falsecount="0"/>
+        <line num="15" count="7" type="stmt"/>
+        <line num="16" count="7" type="stmt"/>
+        <line num="17" count="7" type="stmt"/>
+        <line num="21" count="16" type="stmt"/>
       </file>
       <file name="base.controller.ts" path="/home/lisboasun/Documents/node_js_pro-1/api-warehouse/src/common/base.controller.ts">
-        <metrics statements="17" coveredstatements="16" conditionals="6" coveredconditionals="6" methods="7" coveredmethods="6"/>
+        <metrics statements="17" coveredstatements="16" conditionals="6" coveredconditionals="4" methods="7" coveredmethods="6"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
-        <line num="16" count="12" type="stmt"/>
+        <line num="16" count="13" type="stmt"/>
         <line num="20" count="1" type="stmt"/>
-        <line num="21" count="11" type="stmt"/>
-        <line num="22" count="11" type="cond" truecount="4" falsecount="0"/>
-        <line num="23" count="11" type="stmt"/>
-        <line num="24" count="11" type="cond" truecount="2" falsecount="0"/>
-        <line num="25" count="11" type="stmt"/>
-        <line num="30" count="3" type="stmt"/>
-        <line num="31" count="3" type="stmt"/>
+        <line num="21" count="12" type="stmt"/>
+        <line num="22" count="22" type="cond" truecount="3" falsecount="1"/>
+        <line num="23" count="12" type="stmt"/>
+        <line num="24" count="12" type="cond" truecount="1" falsecount="1"/>
+        <line num="25" count="12" type="stmt"/>
+        <line num="30" count="15" type="stmt"/>
+        <line num="31" count="15" type="stmt"/>
         <line num="35" count="0" type="stmt"/>
-        <line num="39" count="3" type="stmt"/>
+        <line num="39" count="15" type="stmt"/>
       </file>
       <file name="role.middleware.ts" path="/home/lisboasun/Documents/node_js_pro-1/api-warehouse/src/common/role.middleware.ts">
         <metrics statements="14" coveredstatements="11" conditionals="11" coveredconditionals="8" methods="2" coveredmethods="2"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="7" count="1" type="cond" truecount="3" falsecount="1"/>
-        <line num="8" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="5" count="10" type="stmt"/>
+        <line num="7" count="7" type="cond" truecount="3" falsecount="1"/>
+        <line num="8" count="7" type="cond" truecount="1" falsecount="1"/>
         <line num="9" count="0" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="13" count="1" type="cond" truecount="3" falsecount="0"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="15" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="11" count="7" type="stmt"/>
+        <line num="12" count="7" type="stmt"/>
+        <line num="13" count="7" type="cond" truecount="3" falsecount="0"/>
+        <line num="14" count="7" type="stmt"/>
+        <line num="15" count="7" type="cond" truecount="1" falsecount="1"/>
         <line num="16" count="0" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
+        <line num="18" count="7" type="stmt"/>
         <line num="22" count="0" type="stmt"/>
       </file>
       <file name="validate.middleware.ts" path="/home/lisboasun/Documents/node_js_pro-1/api-warehouse/src/common/validate.middleware.ts">
@@ -138,11 +138,11 @@
         <line num="2" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
         <line num="6" count="2" type="stmt"/>
-        <line num="9" count="4" type="stmt"/>
-        <line num="10" count="4" type="stmt"/>
-        <line num="11" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="9" count="10" type="stmt"/>
+        <line num="10" count="10" type="stmt"/>
+        <line num="11" count="10" type="cond" truecount="2" falsecount="0"/>
         <line num="12" count="1" type="stmt"/>
-        <line num="14" count="3" type="stmt"/>
+        <line num="14" count="9" type="stmt"/>
       </file>
     </package>
     <package name="src.config">
@@ -160,7 +160,7 @@
         <line num="14" count="0" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
         <line num="17" count="1" type="stmt"/>
-        <line num="22" count="5" type="stmt"/>
+        <line num="22" count="20" type="stmt"/>
       </file>
     </package>
     <package name="src.database">
@@ -216,7 +216,7 @@
         <line num="4" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
-        <line num="19" count="14" type="stmt"/>
+        <line num="19" count="15" type="stmt"/>
         <line num="23" count="1" type="stmt"/>
         <line num="27" count="0" type="stmt"/>
       </file>
@@ -232,24 +232,24 @@
       </file>
     </package>
     <package name="src.users">
-      <metrics statements="98" coveredstatements="62" conditionals="20" coveredconditionals="10" methods="32" coveredmethods="14"/>
+      <metrics statements="98" coveredstatements="67" conditionals="20" coveredconditionals="10" methods="32" coveredmethods="19"/>
       <file name="user.entity.ts" path="/home/lisboasun/Documents/node_js_pro-1/api-warehouse/src/users/user.entity.ts">
         <metrics statements="15" coveredstatements="9" conditionals="1" coveredconditionals="1" methods="8" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
-        <line num="6" count="3" type="stmt"/>
-        <line num="7" count="3" type="stmt"/>
-        <line num="8" count="3" type="stmt"/>
-        <line num="9" count="3" type="stmt"/>
-        <line num="12" count="3" type="cond" truecount="1" falsecount="0"/>
-        <line num="13" count="3" type="stmt"/>
+        <line num="6" count="9" type="stmt"/>
+        <line num="7" count="9" type="stmt"/>
+        <line num="8" count="9" type="stmt"/>
+        <line num="9" count="9" type="stmt"/>
+        <line num="12" count="9" type="cond" truecount="1" falsecount="0"/>
+        <line num="13" count="9" type="stmt"/>
         <line num="18" count="0" type="stmt"/>
         <line num="22" count="0" type="stmt"/>
         <line num="26" count="0" type="stmt"/>
         <line num="30" count="0" type="stmt"/>
         <line num="34" count="0" type="stmt"/>
         <line num="38" count="0" type="stmt"/>
-        <line num="42" count="3" type="stmt"/>
+        <line num="42" count="9" type="stmt"/>
       </file>
       <file name="user.service.ts" path="/home/lisboasun/Documents/node_js_pro-1/api-warehouse/src/users/user.service.ts">
         <metrics statements="28" coveredstatements="15" conditionals="5" coveredconditionals="0" methods="5" coveredmethods="4"/>
@@ -271,19 +271,19 @@
         <line num="38" count="0" type="cond" truecount="0" falsecount="1"/>
         <line num="39" count="0" type="stmt"/>
         <line num="41" count="0" type="stmt"/>
-        <line num="45" count="3" type="stmt"/>
-        <line num="46" count="3" type="cond" truecount="0" falsecount="1"/>
+        <line num="45" count="9" type="stmt"/>
+        <line num="46" count="9" type="cond" truecount="0" falsecount="1"/>
         <line num="47" count="0" type="stmt"/>
-        <line num="49" count="3" type="stmt"/>
-        <line num="56" count="3" type="stmt"/>
+        <line num="49" count="9" type="stmt"/>
+        <line num="56" count="9" type="stmt"/>
         <line num="60" count="1" type="stmt"/>
-        <line num="64" count="2" type="stmt"/>
-        <line num="65" count="2" type="cond" truecount="0" falsecount="1"/>
+        <line num="64" count="8" type="stmt"/>
+        <line num="65" count="8" type="cond" truecount="0" falsecount="1"/>
         <line num="66" count="0" type="stmt"/>
-        <line num="68" count="2" type="stmt"/>
+        <line num="68" count="8" type="stmt"/>
       </file>
       <file name="users.controller.ts" path="/home/lisboasun/Documents/node_js_pro-1/api-warehouse/src/users/users.controller.ts">
-        <metrics statements="43" coveredstatements="30" conditionals="14" coveredconditionals="9" methods="15" coveredmethods="6"/>
+        <metrics statements="43" coveredstatements="35" conditionals="14" coveredconditionals="9" methods="15" coveredmethods="11"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
@@ -302,31 +302,31 @@
         <line num="24" count="1" type="stmt"/>
         <line num="26" count="1" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
-        <line num="73" count="0" type="stmt"/>
-        <line num="81" count="0" type="stmt"/>
-        <line num="89" count="0" type="stmt"/>
-        <line num="97" count="0" type="stmt"/>
-        <line num="105" count="0" type="stmt"/>
-        <line num="113" count="0" type="stmt"/>
-        <line num="121" count="0" type="stmt"/>
-        <line num="129" count="0" type="stmt"/>
-        <line num="137" count="3" type="stmt"/>
-        <line num="138" count="3" type="cond" truecount="2" falsecount="0"/>
-        <line num="139" count="1" type="stmt"/>
-        <line num="141" count="2" type="cond" truecount="1" falsecount="1"/>
-        <line num="142" count="2" type="stmt"/>
-        <line num="147" count="2" type="stmt"/>
-        <line num="156" count="0" type="stmt"/>
-        <line num="157" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="158" count="0" type="stmt"/>
+        <line num="138" count="1" type="stmt"/>
+        <line num="146" count="2" type="stmt"/>
+        <line num="154" count="0" type="stmt"/>
         <line num="162" count="0" type="stmt"/>
-        <line num="170" count="2" type="stmt"/>
-        <line num="171" count="2" type="stmt"/>
-        <line num="180" count="2" type="cond" truecount="0" falsecount="1"/>
-        <line num="181" count="0" type="stmt"/>
-        <line num="183" count="2" type="stmt"/>
+        <line num="170" count="0" type="stmt"/>
+        <line num="178" count="1" type="stmt"/>
+        <line num="186" count="1" type="stmt"/>
         <line num="194" count="1" type="stmt"/>
-        <line num="195" count="1" type="cond" truecount="6" falsecount="2"/>
+        <line num="202" count="9" type="stmt"/>
+        <line num="203" count="9" type="cond" truecount="2" falsecount="0"/>
+        <line num="204" count="1" type="stmt"/>
+        <line num="206" count="8" type="cond" truecount="1" falsecount="1"/>
+        <line num="207" count="8" type="stmt"/>
+        <line num="212" count="8" type="stmt"/>
+        <line num="221" count="0" type="stmt"/>
+        <line num="222" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="223" count="0" type="stmt"/>
+        <line num="227" count="0" type="stmt"/>
+        <line num="235" count="8" type="stmt"/>
+        <line num="236" count="8" type="stmt"/>
+        <line num="245" count="8" type="cond" truecount="0" falsecount="1"/>
+        <line num="246" count="0" type="stmt"/>
+        <line num="248" count="8" type="stmt"/>
+        <line num="259" count="1" type="stmt"/>
+        <line num="260" count="1" type="cond" truecount="6" falsecount="2"/>
       </file>
       <file name="users.repository.ts" path="/home/lisboasun/Documents/node_js_pro-1/api-warehouse/src/users/users.repository.ts">
         <metrics statements="12" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="2"/>
@@ -339,7 +339,7 @@
         <line num="14" count="1" type="stmt"/>
         <line num="24" count="0" type="stmt"/>
         <line num="34" count="0" type="stmt"/>
-        <line num="38" count="6" type="stmt"/>
+        <line num="38" count="18" type="stmt"/>
         <line num="46" count="0" type="stmt"/>
         <line num="51" count="0" type="stmt"/>
       </file>

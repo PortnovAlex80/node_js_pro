@@ -45,6 +45,7 @@ Content-Type: application/json
 ###
 GET http://localhost:3000/users/info
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG45QGpvaG4uY29tIiwicm9sZXMiOiJ1c2VyIiwiaWF0IjoxNjc4NzM3NTg1fQ.2swW3Awx9M2NRP7dAqlV-r_FWhsIi0BN4Acx5m8tYys
+
 # | **№** | **Path**                   | **Method** | **Body**  | **Response**              | **Description**                                |
 # |-------|----------------------------|------------|-----------|---------------------------|------------------------------------------------|
 # | 1     | /users                     | GET        | -         | Список пользователей      | Получить список всех пользователей             |

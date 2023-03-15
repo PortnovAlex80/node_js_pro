@@ -25,21 +25,86 @@ export class UserController extends BaseController implements IUserController {
 	) {
 		super(loggerService);
 		this.bindRoutes([
-			{ path: '/users', method: 'get', func: this.getUsers },
-			{ path: '/users/:id', method: 'get', func: this.getUserById },
-			{ path: '/users', method: 'post', func: this.createUser },
-			{ path: '/users/:id', method: 'put', func: this.updateUserById },
-			{ path: '/users/:id', method: 'delete', func: this.deleteUserById },
-			{ path: '/users/:id/roles', method: 'get', func: this.getUserRolesById },
+			{
+				path: '/users',
+				method: 'get',
+				func: this.getUsers,
+				middlewares: [
+					new AuthGuard(),
+					new RoleMiddleware(UserRole.Admin, this.configService.get('SECRET')),
+				],
+			},
+			{
+				path: '/users/:id',
+				method: 'get',
+				func: this.getUserById,
+				middlewares: [
+					new AuthGuard(),
+					new RoleMiddleware(UserRole.Admin, this.configService.get('SECRET')),
+				],
+			},
+			{
+				path: '/users/:id',
+				method: 'get',
+				func: this.getUserById,
+				middlewares: [
+					new AuthGuard(),
+					new RoleMiddleware(UserRole.Admin, this.configService.get('SECRET')),
+				],
+			},
+			{
+				path: '/users',
+				method: 'post',
+				func: this.createUser,
+				middlewares: [
+					new AuthGuard(),
+					new RoleMiddleware(UserRole.Admin, this.configService.get('SECRET')),
+				],
+			},
+			{
+				path: '/users/:id',
+				method: 'put',
+				func: this.updateUserById,
+				middlewares: [
+					new AuthGuard(),
+					new RoleMiddleware(UserRole.Admin, this.configService.get('SECRET')),
+				],
+			},
+			{
+				path: '/users/:id',
+				method: 'delete',
+				func: this.deleteUserById,
+				middlewares: [
+					new AuthGuard(),
+					new RoleMiddleware(UserRole.Admin, this.configService.get('SECRET')),
+				],
+			},
+			{
+				path: '/users/:id/roles',
+				method: 'get',
+				func: this.getUserRolesById,
+				middlewares: [
+					new AuthGuard(),
+					new RoleMiddleware(UserRole.Admin, this.configService.get('SECRET')),
+				],
+			},
 			{
 				path: '/users/:id/roles',
 				method: 'post',
 				func: this.addRoleToUserById,
+				middlewares: [
+					new AuthGuard(),
+					new RoleMiddleware(UserRole.Admin, this.configService.get('SECRET')),
+				],
 			},
 			{
 				path: '/users/:id/roles/:roleId',
 				method: 'delete',
 				func: this.deleteRoleOfUserById,
+				middlewares: [
+					new AuthGuard(),
+					new RoleMiddleware(UserRole.Admin, this.configService.get('SECRET')),
+				],
 			},
 			{
 				path: '/login',
