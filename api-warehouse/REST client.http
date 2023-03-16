@@ -1,6 +1,6 @@
 ### Send request with JWT
 GET http://localhost:3000/users/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG43QGpvaG4uY29tIiwicm9sZXMiOiJhZG1pbiIsImlhdCI6MTY3ODY1MjQ4OX0.WodBAuBs_p8mcSA58BoNOyOyM-EAniIc5ZXi0XESO8U
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG45QGpvaG4uY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2NzkwMDA0Njd9.77Os9XENrJ4NzK2Ar_BDzFtS2oETv3py3u4S0hO0zEg
 
 ### Send request without JWT
 GET http://localhost:3000/users/users
@@ -13,7 +13,7 @@ POST  http://localhost:3000/users/users
 PUT  http://localhost:3000/users/users/4
 ###
 DELETE   http://localhost:3000/users/users/5
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG43QGpvaG4uY29tIiwicm9sZXMiOiJhZG1pbiIsImlhdCI6MTY3ODY1MjQ4OX0.WodBAuBs_p8mcSA58BoNOyOyM-EAniIc5ZXi0XESO8U
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG45QGpvaG4uY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2NzkwMDA0Njd9.77Os9XENrJ4NzK2Ar_BDzFtS2oETv3py3u4S0hO0zEg
 
 ###
 GET   http://localhost:3000/users/users/6/roles
@@ -26,7 +26,7 @@ POST    http://localhost:3000/users/login
 Content-Type: application/json
 
 {
-    "email": "john9@john.com",
+    "email": "john7@john.com",
     "password": "asdf"
 }
 
@@ -45,7 +45,7 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3000/users/info
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG45QGpvaG4uY29tIiwicm9sZXMiOiJ1c2VyIiwiaWF0IjoxNjc4NzM3NTg1fQ.2swW3Awx9M2NRP7dAqlV-r_FWhsIi0BN4Acx5m8tYys
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG45QGpvaG4uY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2NzkwMDA0Njd9.77Os9XENrJ4NzK2Ar_BDzFtS2oETv3py3u4S0hO0zEg
 
 # | **№** | **Path**                   | **Method** | **Body**  | **Response**              | **Description**                                |
 # |-------|----------------------------|------------|-----------|---------------------------|------------------------------------------------|

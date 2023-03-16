@@ -26,6 +26,7 @@ export class UserController extends BaseController implements IUserController {
 		super(loggerService);
 		const secret = this.configService.get('SECRET');
 		const roleAdmin = new RoleMiddleware(UserRole.Admin, secret);
+		const roleUser = new RoleMiddleware(UserRole.User, secret);
 		const authGuard = new AuthGuard();
 		const USER_PATH = '/users';
 		this.bindRoutes([

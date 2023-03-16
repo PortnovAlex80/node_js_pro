@@ -3,6 +3,14 @@ import { boot } from '../src/main';
 import request from 'supertest';
 
 let application: App;
+const FAKE_USER = {
+	email: 'john7@john.com',
+	password: 'sdf',
+};
+const SUCCESS_USER = {
+	email: 'john7@john.com',
+	password: 'asdf',
+};
 
 beforeAll(async () => {
 	const { app } = await boot;
@@ -13,25 +21,25 @@ describe('Authorizations e2e tests', () => {
 	it('Login - success', async () => {
 		const res = await request(application.app)
 			.post('/users/login')
-			.send({ email: 'john9@john.com', password: 'asdf' });
+			.send(SUCCESS_USER);
 		expect(res.body.jwt).not.toBeUndefined();
 	});
 
 	it('Login - error', async () => {
 		const res = await request(application.app)
 			.post('/users/login')
-			.send({ email: 'john5@john.com', password: '1' });
+			.send(FAKE_USER);
 		expect(res.statusCode).toBe(401);
 	});
 
 	it('Info - success', async () => {
 		const login = await request(application.app)
 			.post('/users/login')
-			.send({ email: 'john5@john.com', password: 'asdf' });
+			.send(SUCCESS_USER);
 		const res = await request(application.app)
 			.get('/users/info')
 			.set('Authorization', `Bearer ${login.body.jwt}`);
-		expect(res.body.email).toBe('john5@john.com');
+		expect(res.body.email).toBe(SUCCESS_USER.email);
 	});
 
 	it('Info - error', async () => {
@@ -45,10 +53,10 @@ describe('Authorizations e2e tests', () => {
 describe('CRUD Users e2e tests', () => {
 	it('Register - error', async () => {
 		const res = await request(application.app).post('/users/register').send({
-			email: 'john7@john.com',
+			email: SUCCESS_USER.email,
 			login: 'J1',
 			name: 'John',
-			password: 'asdf',
+			password: SUCCESS_USER.password,
 		});
 		expect(res.statusCode).toBe(409);
 	});
@@ -61,7 +69,7 @@ describe('CRUD Users e2e tests', () => {
 	it('GET users token - ok', async () => {
 		const login = await request(application.app)
 			.post('/users/login')
-			.send({ email: 'john5@john.com', password: 'asdf' });
+			.send(SUCCESS_USER);
 		const res = await request(application.app)
 			.get('/users/users')
 			.set('Authorization', `Bearer ${login.body.jwt}`);
@@ -76,7 +84,7 @@ describe('CRUD Users e2e tests', () => {
 	it('GET users/:id token - ok', async () => {
 		const login = await request(application.app)
 			.post('/users/login')
-			.send({ email: 'john5@john.com', password: 'asdf' });
+			.send(SUCCESS_USER);
 		const res = await request(application.app)
 			.get('/users/users/5')
 			.set('Authorization', `Bearer ${login.body.jwt}`);
@@ -91,7 +99,7 @@ describe('CRUD Users e2e tests', () => {
 	it('PUT users/:id token - ok', async () => {
 		const login = await request(application.app)
 			.post('/users/login')
-			.send({ email: 'john5@john.com', password: 'asdf' });
+			.send(SUCCESS_USER);
 		const res = await request(application.app)
 			.get('/users/users/5')
 			.set('Authorization', `Bearer ${login.body.jwt}`);
@@ -106,7 +114,7 @@ describe('CRUD Users e2e tests', () => {
 	it('GET users/:id/roles token - ok', async () => {
 		const login = await request(application.app)
 			.post('/users/login')
-			.send({ email: 'john5@john.com', password: 'asdf' });
+			.send(SUCCESS_USER);
 		const res = await request(application.app)
 			.get('/users/users/5/roles')
 			.set('Authorization', `Bearer ${login.body.jwt}`);
@@ -121,7 +129,7 @@ describe('CRUD Users e2e tests', () => {
 	it('POST users/:id/roles token - ok', async () => {
 		const login = await request(application.app)
 			.post('/users/login')
-			.send({ email: 'john5@john.com', password: 'asdf' });
+			.send(SUCCESS_USER);
 		const res = await request(application.app)
 			.post('/users/users/5/roles')
 			.set('Authorization', `Bearer ${login.body.jwt}`);
@@ -138,7 +146,7 @@ describe('CRUD Users e2e tests', () => {
 	it('DELETE users/:id/roles token - ok', async () => {
 		const login = await request(application.app)
 			.post('/users/login')
-			.send({ email: 'john5@john.com', password: 'asdf' });
+			.send(SUCCESS_USER);
 		const res = await request(application.app)
 			.delete('/users/users/5/roles/admin')
 			.set('Authorization', `Bearer ${login.body.jwt}`);

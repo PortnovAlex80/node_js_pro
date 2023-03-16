@@ -13,7 +13,7 @@ export class AuthMiddleware implements IMiddleware {
 					next();
 				} else if (payload && typeof payload !== 'string') {
 					req.user = payload.email;
-					req.roles = payload.roles;
+					req.roles = payload.role;
 					next();
 				}
 			});
