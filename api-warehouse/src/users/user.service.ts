@@ -1,7 +1,7 @@
 import { UserLoginDto } from './dto/user-login.dto';
 import { UserRegisterDto } from './dto/user-register.dto';
 import { IUserService as IUsersService } from './user.service.interface';
-import { User } from './user.entity';
+import { User, IUser } from './user.entity';
 import { inject, injectable } from 'inversify';
 import 'reflect-metadata';
 import { IConfigService } from '../config/config.service.interface';
@@ -18,20 +18,15 @@ export class UsersService implements IUsersService {
 		private usersRepository: IUsersRepository,
 	) {}
 
-	async createUser({
-		email,
-		password,
-		name,
-		login,
-		role,
-	}: UserRegisterDto): Promise<UserModel | null> {
-		if (!login) {
-			login = '';
-		}
-		if (!role) {
-			role = 'user';
-		}
-		const newUser = new User(login, name, email, role);
+	async createUser(dto: UserRegisterDto): Promise<UserModel | null> {
+		const { email, password, name, login = '', role = 'user' } = dto;
+		const user: IUser = {
+			_login: login,
+			_name: name,
+			_email: email,
+			_role: role,
+		};
+		const newUser = new User(user);
 		const salt = this.configService.get('SALT');
 		await newUser.setPassword(password, Number(salt));
 		const existedUser = await this.usersRepository.findByEmail(email);
@@ -47,10 +42,12 @@ export class UsersService implements IUsersService {
 			return false;
 		}
 		const newUser = new User(
-			existUser.login,
-			existUser.firstName,
-			existUser.email,
-			existUser.role,
+			{
+				_login: existUser.login,
+				_name: existUser.firstName,
+				_email: existUser.email,
+				_role: existUser.role,
+			},
 			existUser.password,
 		);
 		return newUser.comparePassword(password);

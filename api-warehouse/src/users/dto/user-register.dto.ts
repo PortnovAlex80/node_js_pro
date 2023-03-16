@@ -6,6 +6,8 @@ export class UserRegisterDto {
 	password: string;
 	@IsString({ message: `Name is empty` })
 	name: string;
+	@IsString()
+	lastName?: string;
 	@IsString({ message: `Login is empty` })
 	login?: string;
 	@IsString({ message: `Roles is empty` })

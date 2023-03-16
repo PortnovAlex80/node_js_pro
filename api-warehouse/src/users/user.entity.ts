@@ -1,14 +1,25 @@
 import { compare, hash } from 'bcryptjs';
+
+export interface IUser {
+	_login: string;
+	_name: string;
+	_email: string;
+	_role: string;
+}
+
 export class User {
 	private _password: string;
+	private _login: string;
+	private _name: string;
+	private _email: string;
+	private _role: string;
 
-	constructor(
-		private readonly _login: string,
-		private readonly _name: string,
-		private readonly _email: string,
-		private readonly _role: string,
-		passwordHash?: string,
-	) {
+	constructor(user: IUser, passwordHash?: string) {
+		this._login = user._login;
+		this._email = user._email;
+		this._name = user._name;
+		this._role = user._role;
+
 		if (passwordHash) {
 			this._password = passwordHash;
 		}

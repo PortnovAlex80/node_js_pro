@@ -24,87 +24,64 @@ export class UserController extends BaseController implements IUserController {
 		@inject(TYPES.ConfigService) private configService: IConfigService,
 	) {
 		super(loggerService);
+		const secret = this.configService.get('SECRET');
+		const roleAdmin = new RoleMiddleware(UserRole.Admin, secret);
+		const authGuard = new AuthGuard();
+		const USER_PATH = '/users';
 		this.bindRoutes([
 			{
-				path: '/users',
+				path: USER_PATH,
 				method: 'get',
 				func: this.getUsers,
-				middlewares: [
-					new AuthGuard(),
-					new RoleMiddleware(UserRole.Admin, this.configService.get('SECRET')),
-				],
+				middlewares: [authGuard, roleAdmin],
 			},
 			{
-				path: '/users/:id',
+				path: `${USER_PATH}/:id`,
 				method: 'get',
 				func: this.getUserById,
-				middlewares: [
-					new AuthGuard(),
-					new RoleMiddleware(UserRole.Admin, this.configService.get('SECRET')),
-				],
+				middlewares: [authGuard, roleAdmin],
 			},
 			{
-				path: '/users/:id',
+				path: `${USER_PATH}/:id`,
 				method: 'get',
 				func: this.getUserById,
-				middlewares: [
-					new AuthGuard(),
-					new RoleMiddleware(UserRole.Admin, this.configService.get('SECRET')),
-				],
+				middlewares: [authGuard, roleAdmin],
 			},
 			{
-				path: '/users',
+				path: `${USER_PATH}`,
 				method: 'post',
 				func: this.createUser,
-				middlewares: [
-					new AuthGuard(),
-					new RoleMiddleware(UserRole.Admin, this.configService.get('SECRET')),
-				],
+				middlewares: [authGuard, roleAdmin],
 			},
 			{
-				path: '/users/:id',
+				path: `${USER_PATH}/:id`,
 				method: 'put',
 				func: this.updateUserById,
-				middlewares: [
-					new AuthGuard(),
-					new RoleMiddleware(UserRole.Admin, this.configService.get('SECRET')),
-				],
+				middlewares: [authGuard, roleAdmin],
 			},
 			{
-				path: '/users/:id',
+				path: `${USER_PATH}/:id`,
 				method: 'delete',
 				func: this.deleteUserById,
-				middlewares: [
-					new AuthGuard(),
-					new RoleMiddleware(UserRole.Admin, this.configService.get('SECRET')),
-				],
+				middlewares: [authGuard, roleAdmin],
 			},
 			{
-				path: '/users/:id/roles',
+				path: `${USER_PATH}/:id/roles`,
 				method: 'get',
 				func: this.getUserRolesById,
-				middlewares: [
-					new AuthGuard(),
-					new RoleMiddleware(UserRole.Admin, this.configService.get('SECRET')),
-				],
+				middlewares: [authGuard, roleAdmin],
 			},
 			{
-				path: '/users/:id/roles',
+				path: `${USER_PATH}/:id/roles`,
 				method: 'post',
 				func: this.addRoleToUserById,
-				middlewares: [
-					new AuthGuard(),
-					new RoleMiddleware(UserRole.Admin, this.configService.get('SECRET')),
-				],
+				middlewares: [authGuard, roleAdmin],
 			},
 			{
-				path: '/users/:id/roles/:roleId',
+				path: `${USER_PATH}/:id/roles/:roleId`,
 				method: 'delete',
 				func: this.deleteRoleOfUserById,
-				middlewares: [
-					new AuthGuard(),
-					new RoleMiddleware(UserRole.Admin, this.configService.get('SECRET')),
-				],
+				middlewares: [authGuard, roleAdmin],
 			},
 			{
 				path: '/login',
@@ -122,10 +99,7 @@ export class UserController extends BaseController implements IUserController {
 				path: '/info',
 				method: 'get',
 				func: this.info,
-				middlewares: [
-					new AuthGuard(),
-					new RoleMiddleware(UserRole.Admin, this.configService.get('SECRET')),
-				],
+				middlewares: [authGuard, roleAdmin],
 			},
 		]);
 	}
@@ -236,16 +210,17 @@ export class UserController extends BaseController implements IUserController {
 			sign(
 				{
 					email,
-					roles: role,
+					role: role,
 					iat: Math.floor(Date.now() / 1000),
-				} as JwtPayload,
+				},
 				secret,
 				{ algorithm: 'HS256' },
 				(err, token) => {
-					if (err) {
+					if (!token || err) {
 						reject(err);
+					} else {
+						resolve(token);
 					}
-					resolve(token as string);
 				},
 			);
 		});
@@ -257,6 +232,9 @@ export class UserController extends BaseController implements IUserController {
 		next: NextFunction,
 	): Promise<void> {
 		const userInfo = await this.userService.getUserInfo(user);
+		if (!userInfo) {
+			return next(new HTTPError(404, `Пользователь не найден в системе`));
+		}
 		this.ok(res, { email: userInfo?.email, id: userInfo?.id });
 	}
 }

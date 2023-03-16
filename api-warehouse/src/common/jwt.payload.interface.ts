@@ -2,7 +2,7 @@ import { UserRole } from '../roles/roles';
 
 export interface JwtPayload {
 	email: string;
-	roles: UserRole;
+	role: UserRole;
 	iat?: number;
 	exp?: number;
 }
