@@ -35,12 +35,12 @@ POST    http://localhost:3000/users/register
 Content-Type: application/json
 
 {
-    "email": "john10@john.com",
+    "email": "john7@john.com",
     "login": "J1",
     "name": "John",
     "lastName": "John",
     "password": "asdf",
-    "role": "user"
+    "role": "admin"
 }
 
 ###

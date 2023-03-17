@@ -1,14 +1,14 @@
 import { UserLoginDto } from './dto/user-login.dto';
 import { UserRegisterDto } from './dto/user-register.dto';
 import { IUserService as IUsersService } from './user.service.interface';
-import { User, IUser } from './user.entity';
+import { UserEntity, IUserEntity } from './user.entity';
 import { inject, injectable } from 'inversify';
 import 'reflect-metadata';
 import { IConfigService } from '../config/config.service.interface';
 import { TYPES } from '../types';
 import { IUsersRepository } from './users.repository.interface';
-import { UserModel } from '@prisma/client';
-import { UserRole } from '../roles/roles';
+import { User as UserModel } from '@prisma/client';
+
 @injectable()
 export class UsersService implements IUsersService {
 	constructor(
@@ -20,13 +20,13 @@ export class UsersService implements IUsersService {
 
 	async createUser(dto: UserRegisterDto): Promise<UserModel | null> {
 		const { email, password, name, login = '', role = 'user' } = dto;
-		const user: IUser = {
+		const user: IUserEntity = {
 			_login: login,
 			_name: name,
 			_email: email,
 			_role: role,
 		};
-		const newUser = new User(user);
+		const newUser = new UserEntity(user);
 		const salt = this.configService.get('SALT');
 		await newUser.setPassword(password, Number(salt));
 		const existedUser = await this.usersRepository.findByEmail(email);
@@ -41,7 +41,7 @@ export class UsersService implements IUsersService {
 		if (!existUser) {
 			return false;
 		}
-		const newUser = new User(
+		const newUser = new UserEntity(
 			{
 				_login: existUser.login,
 				_name: existUser.firstName,

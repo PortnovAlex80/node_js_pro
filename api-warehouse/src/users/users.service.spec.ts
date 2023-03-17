@@ -2,7 +2,7 @@ import { UserModel } from '@prisma/client';
 import { Container } from 'inversify';
 import { IConfigService } from '../config/config.service.interface';
 import { TYPES } from '../types';
-import { User } from './user.entity';
+import { UserEntity } from './user.entity';
 import { UsersService } from './user.service';
 import { IUserService } from './user.service.interface';
 import { IUsersRepository } from './users.repository.interface';
@@ -44,7 +44,7 @@ describe('User Service', () => {
 	it('createUser', async () => {
 		configService.get = jest.fn().mockResolvedValueOnce('1');
 		usersRepository.create = jest.fn().mockImplementationOnce(
-			(user: User): UserModel => ({
+			(user: UserEntity): UserModel => ({
 				id: 1,
 				login: user.login,
 				password: user.password,

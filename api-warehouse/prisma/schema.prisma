@@ -10,7 +10,7 @@ datasource db {
   url      = "file:./dev.db"
 }
 
-model UserModel {
+model User {
   id        Int    @id @default(autoincrement())
   login     String
   password  String

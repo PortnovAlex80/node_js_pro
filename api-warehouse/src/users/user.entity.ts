@@ -1,20 +1,20 @@
 import { compare, hash } from 'bcryptjs';
 
-export interface IUser {
+export interface IUserEntity {
 	_login: string;
 	_name: string;
 	_email: string;
 	_role: string;
 }
 
-export class User {
+export class UserEntity {
 	private _password: string;
 	private _login: string;
 	private _name: string;
 	private _email: string;
 	private _role: string;
 
-	constructor(user: IUser, passwordHash?: string) {
+	constructor(user: IUserEntity, passwordHash?: string) {
 		this._login = user._login;
 		this._email = user._email;
 		this._name = user._name;

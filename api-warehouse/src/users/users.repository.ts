@@ -1,12 +1,11 @@
-import { UserModel } from '@prisma/client';
+import { User as UserModel } from '@prisma/client';
 import { inject, injectable } from 'inversify';
 import { PrismaService } from '../database/prisma.service';
 import { ILogger } from '../logger/logger.interface';
 import { TYPES } from '../types';
-import { User } from './user.entity';
+import { UserEntity } from './user.entity';
 import { IUsersRepository } from './users.repository.interface';
 import 'reflect-metadata';
-
 @injectable()
 export class UsersRepository implements IUsersRepository {
 	constructor(
@@ -14,9 +13,9 @@ export class UsersRepository implements IUsersRepository {
 		@inject(TYPES.PrismaService) private prismaService: PrismaService,
 	) {}
 
-	async create(data: User): Promise<UserModel> {
+	async create(data: UserEntity): Promise<UserModel> {
 		const { login, name, email, role, password } = data;
-		const result = this.prismaService.client.userModel.create({
+		const result = this.prismaService.client.user.create({
 			data: {
 				login,
 				password,
@@ -30,7 +29,7 @@ export class UsersRepository implements IUsersRepository {
 	}
 
 	async findByEmail(email: string): Promise<UserModel | null> {
-		return this.prismaService.client.userModel.findFirst({
+		return this.prismaService.client.user.findFirst({
 			where: {
 				email,
 			},
@@ -38,7 +37,7 @@ export class UsersRepository implements IUsersRepository {
 	}
 
 	findByLogin(login: string): Promise<UserModel | null> {
-		const result = this.prismaService.client.userModel.findFirst({
+		const result = this.prismaService.client.user.findFirst({
 			where: {
 				login,
 			},
