@@ -69,4 +69,11 @@ export class UsersService implements IUsersService {
 		const users = await this.usersRepository.findAllUser();
 		return users;
 	}
+	async getUsersById(id: number): Promise<UserModel | null> {
+		const user = await this.usersRepository.findUserById(id);
+		if (!user) {
+			return null;
+		}
+		return user;
+	}
 }

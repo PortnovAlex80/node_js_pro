@@ -48,4 +48,33 @@ export class UsersRepository implements IUsersRepository {
 	findAllUser(): Promise<UserModel[] | null> {
 		return this.prismaService.client.user.findMany();
 	}
+
+	findUserById(id: number): Promise<UserModel | null> {
+		return this.prismaService.client.user.findFirst({
+			where: {
+				id,
+			},
+		});
+	}
+
+	async updateUser(data: UserEntity): Promise<UserModel | null> {
+		const { login, name, email, role, password } = data;
+		// if user exist by email
+		const existUser = await this.findByEmail(email);
+		if (!existUser) {
+			return null;
+		}
+		const mail = email;
+		if (!email) {
+			return null;
+		}
+		return this.prismaService.client.user.update({
+			where: { email },
+			data: {
+				login,
+				lastName: name,
+				role,
+			},
+		});
+	}
 }

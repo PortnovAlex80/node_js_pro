@@ -5,6 +5,7 @@ import { UserRegisterDto } from './dto/user-register.dto';
 
 export interface IUserService {
 	getUsers: () => Promise<UserModel[] | null>;
+	getUsersById: (id: number) => Promise<UserModel | null>;
 	//	getUserById: (req: Request, res: Response, next: NextFunction) => void;
 	//	updateUserById: (req: Request, res: Response, next: NextFunction) => void;
 	//	deleteUserById: (req: Request, res: Response, next: NextFunction) => void;

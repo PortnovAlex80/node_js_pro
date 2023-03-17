@@ -126,7 +126,20 @@ export class UserController extends BaseController implements IUserController {
 		res: Response,
 		next: NextFunction,
 	): Promise<void> {
-		this.ok(res, '2 Информация о пользователе');
+		const id = req.params.id;
+		if (isNaN(Number(id))) {
+			return next(new HTTPError(400, `User ID is not correct`));
+		}
+
+		const user = await this.userService.getUsersById(Number(id));
+		console.log(user);
+		if (!user) {
+			return next(new HTTPError(404, `Пользователь не найден в системе`));
+		}
+
+		const { password, ...result } = user;
+
+		this.ok(res, result);
 	}
 
 	async createUser(
