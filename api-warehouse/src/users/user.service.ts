@@ -8,6 +8,7 @@ import { IConfigService } from '../config/config.service.interface';
 import { TYPES } from '../types';
 import { IUsersRepository } from './users.repository.interface';
 import { User as UserModel } from '@prisma/client';
+import { NextFunction } from 'express';
 
 @injectable()
 export class UsersService implements IUsersService {
@@ -63,5 +64,9 @@ export class UsersService implements IUsersService {
 			return null;
 		}
 		return user.role;
+	}
+	async getUsers(): Promise<UserModel[] | null> {
+		const users = await this.usersRepository.findAllUser();
+		return users;
 	}
 }

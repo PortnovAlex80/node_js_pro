@@ -1,6 +1,6 @@
 ### Send request with JWT
 GET http://localhost:3000/users/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG45QGpvaG4uY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2NzkwMDA0Njd9.77Os9XENrJ4NzK2Ar_BDzFtS2oETv3py3u4S0hO0zEg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG43QGpvaG4uY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjc5MDc4MjQxfQ.gm7nOT-lMFoQDNSKT1LvtWyZwc6Muafh3RLN-OqErXk
 
 ### Send request without JWT
 GET http://localhost:3000/users/users
@@ -13,7 +13,7 @@ POST  http://localhost:3000/users/users
 PUT  http://localhost:3000/users/users/4
 ###
 DELETE   http://localhost:3000/users/users/5
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG45QGpvaG4uY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2NzkwMDA0Njd9.77Os9XENrJ4NzK2Ar_BDzFtS2oETv3py3u4S0hO0zEg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG43QGpvaG4uY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjc5MDc4MjQxfQ.gm7nOT-lMFoQDNSKT1LvtWyZwc6Muafh3RLN-OqErXk
 
 ###
 GET   http://localhost:3000/users/users/6/roles
@@ -35,17 +35,17 @@ POST    http://localhost:3000/users/register
 Content-Type: application/json
 
 {
-    "email": "john7@john.com",
+    "email": "john10@john.com",
     "login": "J1",
     "name": "John",
-    "lastName": "John",
+    "lastName": "Jackson",
     "password": "asdf",
     "role": "admin"
 }
 
 ###
 GET http://localhost:3000/users/info
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG45QGpvaG4uY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2NzkwMDA0Njd9.77Os9XENrJ4NzK2Ar_BDzFtS2oETv3py3u4S0hO0zEg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG43QGpvaG4uY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjc5MDc4MjQxfQ.gm7nOT-lMFoQDNSKT1LvtWyZwc6Muafh3RLN-OqErXk
 
 # | **№** | **Path**                   | **Method** | **Body**  | **Response**              | **Description**                                |
 # |-------|----------------------------|------------|-----------|---------------------------|------------------------------------------------|

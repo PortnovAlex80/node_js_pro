@@ -110,7 +110,15 @@ export class UserController extends BaseController implements IUserController {
 		res: Response,
 		next: NextFunction,
 	): Promise<void> {
-		this.ok(res, '1 Список пользователей ');
+		const users = await this.userService.getUsers();
+		if (!users) {
+			return next(new HTTPError(404, `Пользователи не найдены в системе`));
+		}
+		const usersList = users?.map((user) => {
+			const { password, ...rest } = user;
+			return rest;
+		});
+		this.ok(res, usersList);
 	}
 
 	async getUserById(

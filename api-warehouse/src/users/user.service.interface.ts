@@ -1,9 +1,10 @@
-import { UserModel } from '@prisma/client';
+import { User as UserModel } from '@prisma/client';
+import { NextFunction } from 'express';
 import { UserLoginDto } from './dto/user-login.dto';
 import { UserRegisterDto } from './dto/user-register.dto';
 
 export interface IUserService {
-	//	getUsers: (req: Request, res: Response, next: NextFunction) => User | null;
+	getUsers: () => Promise<UserModel[] | null>;
 	//	getUserById: (req: Request, res: Response, next: NextFunction) => void;
 	//	updateUserById: (req: Request, res: Response, next: NextFunction) => void;
 	//	deleteUserById: (req: Request, res: Response, next: NextFunction) => void;
