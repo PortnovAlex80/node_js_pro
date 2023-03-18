@@ -1,0 +1,166 @@
+openapi: 3.0.0
+info:
+  title: Warehouse Management System API
+  description: API for managing products, inventory, orders, and users in a warehouse management system.
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+paths:
+  /api/login:
+    post:
+      summary: Logs in a user and returns an access token.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                login:
+                  type: string
+                password:
+                  type: string
+              required:
+                - login
+                - password
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+  /api/products:
+    get:
+      summary: Retrieves a list of all products.
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    description:
+                      type: string
+                    quantity:
+                      type: integer
+                    price:
+                      type: number
+                    category:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        description:
+                          type: string
+                    supplier:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        companyName:
+                          type: string
+                        address:
+                          type: string
+                        contactInformation:
+                          type: string
+    post:
+      summary: Creates a new product.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                quantity:
+                  type: integer
+                price:
+                  type: number
+                categoryId:
+                  type: integer
+                supplierId:
+                  type: integer
+              required:
+                - name
+                - quantity
+                - price
+                - categoryId
+                - supplierId
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+  /api/products/{id}:
+    put:
+      summary: Updates an existing product.
+      parameters:
+        - in: path
+          name: id
+          description: The ID of the product to update.
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                quantity:
+                  type: integer
+                price:
+                  type: number
+              required:
+                - name
+                - quantity
+                - price
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+    delete:
+      summary: Deletes an existing product.
+      parameters:
+        - in: path
+          name: id
+          description: The ID of the product to delete.
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Success
