@@ -23,17 +23,13 @@ model User {
 model Product {
   id          Int         @id @default(autoincrement())
   name        String
-  description String?
-  price       Float
-  inventories Inventory[]
+  quantity    Int
 }
 
 model Inventory {
   id         Int      @id @default(autoincrement())
   quantity   Int
   updateDate DateTime @default(now())
-  productId  Int
-  product    Product  @relation(fields: [productId], references: [id])
 }
 
 model Role {

@@ -12,11 +12,9 @@ import { ValidateMiddleware } from '../common/validate.middleware';
 import { sign } from 'jsonwebtoken';
 import { IConfigService } from '../config/config.service.interface';
 import { AuthGuard } from '../common/auth.guard';
-import { JwtPayload } from '../common/jwt.payload.interface';
 import { RoleMiddleware } from '../common/role.middleware';
 import { UserRole } from '../roles/roles';
 import 'reflect-metadata';
-import { UserEntity } from './user.entity';
 import { UserUpdateDto } from './dto/user-update.dto';
 @injectable()
 export class UserController extends BaseController implements IUserController {

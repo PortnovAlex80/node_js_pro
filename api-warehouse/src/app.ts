@@ -11,6 +11,8 @@ import { UserController } from './users/users.controller';
 import 'reflect-metadata';
 import { PrismaService } from './database/prisma.service';
 import { AuthMiddleware } from './common/auth.middleware';
+import { ProductsController } from './products/products.controller';
+import { IProductsController } from './products/products.interfaces/products.controller.interface';
 
 export const pathRouteExtension = '/users';
 @injectable()
@@ -28,6 +30,8 @@ export class App {
 		@inject(TYPES.ConfigService)
 		private configService: IConfigService,
 		@inject(TYPES.PrismaService) private prismaService: PrismaService,
+		@inject(TYPES.ProductsController)
+		private productsController: ProductsController,
 	) {
 		this.app = express();
 		this.port = Number(this.configService.get('PORT'));
@@ -42,6 +46,7 @@ export class App {
 
 	useRoutes() {
 		this.app.use(pathRouteExtension, this.userController.router);
+		this.app.use('', this.productsController.router);
 	}
 
 	useExceptionFilters() {

@@ -1,0 +1,69 @@
+### Send request with JWT
+GET http://localhost:3000/products
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG43QGpvaG4uY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjc5MDc4MjQxfQ.gm7nOT-lMFoQDNSKT1LvtWyZwc6Muafh3RLN-OqErXk
+
+### Send request without JWT
+GET http://localhost:3000/products/users
+
+###
+GET http://localhost:3000/products/name
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG43QGpvaG4uY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjc5MDc4MjQxfQ.gm7nOT-lMFoQDNSKT1LvtWyZwc6Muafh3RLN-OqErXk
+### Create new product
+POST  http://localhost:3000/products/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG43QGpvaG4uY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjc5MDc4MjQxfQ.gm7nOT-lMFoQDNSKT1LvtWyZwc6Muafh3RLN-OqErXk
+Content-Type: application/json
+
+{
+    "name": "Waterlemon",
+    "quantity": 4,
+}
+###
+PUT  http://localhost:3000/products/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG43QGpvaG4uY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjc5MDc4MjQxfQ.gm7nOT-lMFoQDNSKT1LvtWyZwc6Muafh3RLN-OqErXk
+Content-Type: application/json
+
+{
+    "name": "Water",
+   "quantity": 1
+}
+###
+DELETE   http://localhost:3000/products
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG43QGpvaG4uY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjc5MDc4MjQxfQ.gm7nOT-lMFoQDNSKT1LvtWyZwc6Muafh3RLN-OqErXk
+Content-Type: application/json
+
+{
+    "name": "Water",
+   "quantity": 1
+}
+
+###
+GET   http://localhost:3000/users/users/6/roles
+###
+POST  http://localhost:3000/users/users/7/roles
+###
+DELETE   http://localhost:3000/users/users/8/roles/8
+###
+POST    http://localhost:3000/users/login
+Content-Type: application/json
+
+{
+    "email": "john7@john.com",
+    "password": "asdf"
+}
+
+###
+POST    http://localhost:3000/users/register
+Content-Type: application/json
+
+{
+    "email": "john10@john.com",
+    "login": "J1",
+    "name": "John",
+    "lastName": "Jackson",
+    "password": "asdf",
+    "role": "user"
+}
+
+###
+GET http://localhost:3000/users/info
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG43QGpvaG4uY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjc5MDc4MjQxfQ.gm7nOT-lMFoQDNSKT1LvtWyZwc6Muafh3RLN-OqErXk
