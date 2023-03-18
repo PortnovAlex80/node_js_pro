@@ -4,10 +4,10 @@ import { HTTPError } from '../errors/http-error.class';
 import { TYPES } from '../types';
 import { ILogger } from '../logger/logger.interface';
 import { inject, injectable } from 'inversify';
-import { IUserController } from './users.controller.interface';
+import { IUserController } from './interfaces/users.controller.interface';
 import { UserLoginDto } from './dto/user-login.dto';
 import { UserRegisterDto } from './dto/user-register.dto';
-import { IUserService } from './user.service.interface';
+import { IUserService } from './interfaces/user.service.interface';
 import { ValidateMiddleware } from '../common/validate.middleware';
 import { sign } from 'jsonwebtoken';
 import { IConfigService } from '../config/config.service.interface';
@@ -16,6 +16,8 @@ import { JwtPayload } from '../common/jwt.payload.interface';
 import { RoleMiddleware } from '../common/role.middleware';
 import { UserRole } from '../roles/roles';
 import 'reflect-metadata';
+import { UserEntity } from './user.entity';
+import { UserUpdateDto } from './dto/user-update.dto';
 @injectable()
 export class UserController extends BaseController implements IUserController {
 	constructor(
@@ -57,13 +59,17 @@ export class UserController extends BaseController implements IUserController {
 			{
 				path: `${USER_PATH}/:id`,
 				method: 'put',
-				func: this.updateUserById,
-				middlewares: [authGuard, roleAdmin],
+				func: this.updateUser,
+				middlewares: [
+					new ValidateMiddleware(UserUpdateDto),
+					authGuard,
+					roleAdmin,
+				],
 			},
 			{
-				path: `${USER_PATH}/:id`,
+				path: `${USER_PATH}`,
 				method: 'delete',
-				func: this.deleteUserById,
+				func: this.deleteUserByEmail,
 				middlewares: [authGuard, roleAdmin],
 			},
 			{
@@ -150,20 +156,47 @@ export class UserController extends BaseController implements IUserController {
 		this.ok(res, '3 Новый пользователь ');
 	}
 
-	async updateUserById(
-		req: Request,
+	async updateUser(
+		{ body }: Request<{}, {}, UserUpdateDto>,
 		res: Response,
 		next: NextFunction,
 	): Promise<void> {
-		this.ok(res, '4 Обновленный пользователь ');
+		const email = body.email;
+		const IsUserExist = await this.userService.getUserInfo(email);
+		if (!IsUserExist) {
+			return next(
+				new HTTPError(404, `Пользователь с указанным email не существует`),
+			);
+		}
+		const userDto = body;
+		console.log(`[CONTROLLER] Body is exist - ${body.email}`);
+		const updatedUser = await this.userService.updateUser(userDto);
+		if (!updatedUser) {
+			return next(new HTTPError(409, `Update error`));
+		}
+		this.ok(res, { email: updatedUser.email, id: updatedUser.id });
 	}
 
-	async deleteUserById(
-		req: Request,
+	async deleteUserByEmail(
+		{ body }: Request,
 		res: Response,
 		next: NextFunction,
 	): Promise<void> {
-		this.ok(res, '5 Удалить пользователя ');
+		const email = body.email;
+		if (!email) {
+			return next(new HTTPError(400, `User ID is not correct`));
+		}
+		const IsUserExist = await this.userService.getUserInfo(email);
+		if (!IsUserExist) {
+			return next(
+				new HTTPError(404, `Пользователь с указанным email не существует`),
+			);
+		}
+		const deletedUser = await this.userService.deleteUserByEmail(email);
+		if (!deletedUser) {
+			return next(new HTTPError(409, `Error`));
+		}
+		this.ok(res, { deletedUser });
 	}
 
 	async getUserRolesById(

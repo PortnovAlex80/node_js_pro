@@ -1,14 +1,15 @@
 import { User as UserModel } from '@prisma/client';
 import { NextFunction } from 'express';
-import { UserLoginDto } from './dto/user-login.dto';
-import { UserRegisterDto } from './dto/user-register.dto';
+import { UserLoginDto } from '../dto/user-login.dto';
+import { UserRegisterDto } from '../dto/user-register.dto';
+import { UserUpdateDto } from '../dto/user-update.dto';
+import { UserEntity } from '../user.entity';
 
 export interface IUserService {
 	getUsers: () => Promise<UserModel[] | null>;
 	getUsersById: (id: number) => Promise<UserModel | null>;
-	//	getUserById: (req: Request, res: Response, next: NextFunction) => void;
-	//	updateUserById: (req: Request, res: Response, next: NextFunction) => void;
-	//	deleteUserById: (req: Request, res: Response, next: NextFunction) => void;
+	updateUser: (user: UserUpdateDto) => Promise<UserModel | null>;
+	deleteUserByEmail: (email: string) => Promise<boolean>;
 	//	getUserRolesById: (req: Request, res: Response, next: NextFunction) => void;
 	//	addRoleToUserById: (req: Request, res: Response, next: NextFunction) => void;
 	//	deleteRoleOfUserById: (req: Request, res: Response, next: NextFunction) => void;

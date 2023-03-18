@@ -1,15 +1,14 @@
 import { UserLoginDto } from './dto/user-login.dto';
 import { UserRegisterDto } from './dto/user-register.dto';
-import { IUserService as IUsersService } from './user.service.interface';
+import { IUserService as IUsersService } from './interfaces/user.service.interface';
 import { UserEntity, IUserEntity } from './user.entity';
 import { inject, injectable } from 'inversify';
 import 'reflect-metadata';
 import { IConfigService } from '../config/config.service.interface';
 import { TYPES } from '../types';
-import { IUsersRepository } from './users.repository.interface';
+import { IUsersRepository } from './interfaces/users.repository.interface';
 import { User as UserModel } from '@prisma/client';
-import { NextFunction } from 'express';
-
+import { UserUpdateDto } from './dto/user-update.dto';
 @injectable()
 export class UsersService implements IUsersService {
 	constructor(
@@ -75,5 +74,28 @@ export class UsersService implements IUsersService {
 			return null;
 		}
 		return user;
+	}
+
+	async updateUser(user: UserUpdateDto): Promise<UserModel | null> {
+		const { email } = user;
+		console.log(`[SERVICE] User is exist - ${email}`);
+		const result = await this.usersRepository.updateUser(user);
+		console.log(`User is exist - ${result?.email}`);
+		if (!result) {
+			return null;
+		}
+		return result;
+	}
+
+	async deleteUserByEmail(email: string): Promise<boolean> {
+		const existUser = await this.usersRepository.findByEmail(email);
+		if (!existUser) {
+			return false;
+		}
+		const result = await this.usersRepository.deleteUserByEmail(email);
+		if (!result) {
+			return false;
+		}
+		return true;
 	}
 }

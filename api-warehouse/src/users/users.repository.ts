@@ -4,8 +4,9 @@ import { PrismaService } from '../database/prisma.service';
 import { ILogger } from '../logger/logger.interface';
 import { TYPES } from '../types';
 import { UserEntity } from './user.entity';
-import { IUsersRepository } from './users.repository.interface';
+import { IUsersRepository } from './interfaces/users.repository.interface';
 import 'reflect-metadata';
+import { UserUpdateDto } from './dto/user-update.dto';
 @injectable()
 export class UsersRepository implements IUsersRepository {
 	constructor(
@@ -57,18 +58,38 @@ export class UsersRepository implements IUsersRepository {
 		});
 	}
 
-	async updateUser(data: UserEntity): Promise<UserModel | null> {
-		const { login, name, email, role, password } = data;
+	async updateUser(data: UserUpdateDto): Promise<UserModel | null> {
+		const { login, name, email, role } = data;
 		const existUser = await this.findByEmail(email);
 		if (!existUser) {
 			return null;
 		}
-		const updatedUser = await this.prismaService.client.user.update({
+		console.log(`Repo Service - ${email}`);
+		if (!data.email) {
+			return null;
+		}
+		return await this.prismaService.client.user.update({
+			where: {
+				email: data.email,
+			},
+			data: {
+				firstName: name,
+				login,
+				role,
+			},
+		});
+	}
+
+	async deleteUserByEmail(email: string): Promise<UserModel | null> {
+		const existUser = await this.findByEmail(email);
+		if (!existUser) {
+			return null;
+		}
+		const deleteUser = this.prismaService.client.user.delete({
 			where: {
 				email,
 			},
-			data: { lastName: 'kkds' },
 		});
-		return updatedUser;
+		return deleteUser;
 	}
 }

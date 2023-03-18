@@ -3,8 +3,8 @@ export interface IUserController {
 	getUsers: (req: Request, res: Response, next: NextFunction) => void;
 	getUserById: (req: Request, res: Response, next: NextFunction) => void;
 	createUser: (req: Request, res: Response, next: NextFunction) => void;
-	updateUserById: (req: Request, res: Response, next: NextFunction) => void;
-	deleteUserById: (req: Request, res: Response, next: NextFunction) => void;
+	updateUser: (req: Request, res: Response, next: NextFunction) => void;
+	deleteUserByEmail: (req: Request, res: Response, next: NextFunction) => void;
 	getUserRolesById: (req: Request, res: Response, next: NextFunction) => void;
 	addRoleToUserById: (req: Request, res: Response, next: NextFunction) => void;
 	deleteRoleOfUserById: (

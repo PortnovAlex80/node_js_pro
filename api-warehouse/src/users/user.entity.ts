@@ -33,7 +33,7 @@ export class UserEntity {
 		return this._name;
 	}
 
-	get email(): string {
+	public get email(): string {
 		return this._email;
 	}
 

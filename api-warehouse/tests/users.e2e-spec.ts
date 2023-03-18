@@ -12,6 +12,14 @@ const SUCCESS_USER = {
 	password: 'asdf',
 };
 
+const UPDATE_USER = {
+	email: 'john10@john.com',
+	login: 'J2',
+	name: 'John',
+	lastName: 'Jackson',
+	role: 'admin',
+};
+
 beforeAll(async () => {
 	const { app } = await boot;
 	application = app;
@@ -85,8 +93,13 @@ describe('CRUD Users e2e tests', () => {
 		const login = await request(application.app)
 			.post('/users/login')
 			.send(SUCCESS_USER);
+		const info = await request(application.app)
+			.get('/users/info')
+			.set('Authorization', `Bearer ${login.body.jwt}`);
+		console.log(`USER ID ${info.body.id}`);
+		const id = info.body.id;
 		const res = await request(application.app)
-			.get('/users/users/5')
+			.get(`/users/users/${id}`)
 			.set('Authorization', `Bearer ${login.body.jwt}`);
 		expect(res.statusCode).toBe(200);
 	});
@@ -100,9 +113,16 @@ describe('CRUD Users e2e tests', () => {
 		const login = await request(application.app)
 			.post('/users/login')
 			.send(SUCCESS_USER);
-		const res = await request(application.app)
-			.get('/users/users/5')
+		const info = await request(application.app)
+			.get('/users/info')
 			.set('Authorization', `Bearer ${login.body.jwt}`);
+		console.log(`USER ID ${info.body.id}`);
+		const id = info.body.id;
+		const res = await request(application.app)
+			.put(`/users/users/${id}`)
+			.set('Authorization', `Bearer ${login.body.jwt}`)
+			.set('Content-Type', 'application/json')
+			.send(UPDATE_USER);
 		expect(res.statusCode).toBe(200);
 	});
 

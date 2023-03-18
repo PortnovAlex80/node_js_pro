@@ -5,7 +5,7 @@ import { TYPES } from '../types';
 import { UserEntity } from './user.entity';
 import { UsersService } from './user.service';
 import { IUserService } from './user.service.interface';
-import { IUsersRepository } from './users.repository.interface';
+import { IUsersRepository } from './interfaces/users.repository.interface';
 import 'reflect-metadata';
 
 const ConfigServiceMock: IConfigService = {
