@@ -19,6 +19,7 @@ import { ProductsController } from './products/products.controller';
 import { IProductsService } from './products/products.interfaces/products.service.interface';
 import { ProductsService } from './products/products.service';
 import { IProductsRepository } from './products/products.interfaces/products.repository.interface';
+import { ProductsRepository } from './products/products.repository';
 
 export const appBindings = new ContainerModule((bind: interfaces.Bind) => {
 	bind<ILogger>(TYPES.ILogger).to(LoggerService).inSingletonScope();
@@ -41,6 +42,9 @@ export const appBindings = new ContainerModule((bind: interfaces.Bind) => {
 		.inSingletonScope();
 	bind<IProductsService>(TYPES.ProductsService)
 		.to(ProductsService)
+		.inSingletonScope();
+	bind<IProductsRepository>(TYPES.ProductsRepository)
+		.to(ProductsRepository)
 		.inSingletonScope();
 
 	bind<App>(TYPES.Application).to(App).inSingletonScope();

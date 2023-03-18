@@ -1,13 +1,14 @@
 import { Product } from '../product.entity';
-
+import { Product as ProductModel } from '@prisma/client';
+import { ProductDto } from '../dto/product.dto';
 export interface IProductsRepository {
-	getProducts: () => Promise<Product[] | null>;
-	getProductByName: (name: string) => Promise<Product | null>;
-	createProduct: (rproduct: Product) => Promise<boolean>;
-	updateProduct: (rproduct: Product) => Promise<boolean>;
-	deleteProductByName: (name: string) => Promise<boolean>;
-	increaseAmount: (amount: number) => Promise<boolean>;
-	decreaseAmount: (amount: number) => Promise<boolean>;
-	inStockByName: (name: string) => Promise<number>;
-	info: (name: string) => Promise<Product | null>;
+	getProducts: () => Promise<ProductModel[] | null>;
+	getProduct: (nproduct: ProductDto) => Promise<ProductModel | null>;
+	createProduct: (product: Product) => Promise<ProductModel | null>;
+	updateProduct: (product: ProductDto) => Promise<ProductModel | null>;
+	deleteProduct: (product: ProductDto) => Promise<ProductModel | null>;
+	increaseAmount: (product: ProductDto) => Promise<ProductModel | null>;
+	decreaseAmount: (product: ProductDto) => Promise<ProductModel | null>;
+	inStock: (product: ProductDto) => Promise<number>;
+	info: (product: ProductDto) => Promise<ProductModel | null>;
 }

@@ -15,7 +15,7 @@ Content-Type: application/json
 
 {
     "name": "Waterlemon",
-    "quantity": 4,
+    "quantity": 3
 }
 ###
 PUT  http://localhost:3000/products/

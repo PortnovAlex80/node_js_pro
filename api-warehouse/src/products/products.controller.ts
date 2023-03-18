@@ -42,7 +42,7 @@ export class ProductsController
 			{
 				path: `${PRODUCTS_PATH}/:name`,
 				method: 'get',
-				func: this.getProductByName,
+				func: this.getProduct,
 				middlewares: [authGuard, roleAdmin],
 			},
 			{
@@ -60,7 +60,7 @@ export class ProductsController
 			{
 				path: `${PRODUCTS_PATH}`,
 				method: 'delete',
-				func: this.deleteProductByName,
+				func: this.deleteProduct,
 				middlewares: [new ValidateMiddleware(ProductDto), authGuard, roleAdmin],
 			},
 			{
@@ -84,7 +84,7 @@ export class ProductsController
 			{
 				path: '${PRODUCTS_PATH}/instock',
 				method: 'post',
-				func: this.inStockByName,
+				func: this.inStock,
 				middlewares: [authGuard, roleAdmin],
 			},
 		]);
@@ -102,7 +102,7 @@ export class ProductsController
 		this.ok(res, products);
 	}
 
-	getProductByName(
+	getProduct(
 		req: Request<{}, {}, ProductDto>,
 		res: Response,
 		next: NextFunction,
@@ -123,7 +123,7 @@ export class ProductsController
 	updateProduct(req: Request, res: Response, next: NextFunction): void {
 		this.ok(res, '1 updateProduct ');
 	}
-	deleteProductByName(req: Request, res: Response, next: NextFunction): void {
+	deleteProduct(req: Request, res: Response, next: NextFunction): void {
 		this.ok(res, '1 deleteProductByName ');
 	}
 	increaseAmount(req: Request, res: Response, next: NextFunction): void {
@@ -132,7 +132,7 @@ export class ProductsController
 	decreaseAmount(req: Request, res: Response, next: NextFunction): void {
 		this.ok(res, '1 decreaseAmount ');
 	}
-	inStockByName(req: Request, res: Response, next: NextFunction): void {
+	inStock(req: Request, res: Response, next: NextFunction): void {
 		this.ok(res, '1 inStockByName ');
 	}
 	info(req: Request, res: Response, next: NextFunction): void {
