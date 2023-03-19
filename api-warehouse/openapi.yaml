@@ -1,19 +1,21 @@
 openapi: 3.0.0
 info:
-  title: Express API
+  title: Warehouse API
   version: 1.0.0
   description: An Express API
 servers:
   - url: http://localhost:3000
+    description: Dev server
 paths:
   /users:
     get:
       summary: Retrieve a list of users
       tags:
         - Users
+      operationId: getAllUsers
       responses:
         '200':
-          description: A list of users
+          description: Success get a list of users
           content:
             application/json:
               schema:
@@ -21,18 +23,16 @@ paths:
                 items:
                   $ref: '#/components/schemas/User'
 
-  /users/{id}:
-    get:
-      summary: Retrieve a user by ID
+    post:
+      summary: Retrieve a user by user DTO
       tags:
         - Users
-      parameters:
-        - in: path
-          name: id
-          schema:
-            type: integer
-          required: true
-          description: Numeric ID of the user to get
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'          
       responses:
         '200':
           description: A user
@@ -40,6 +40,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
+        'default':
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Users'
+            
 
 components:
   schemas:
@@ -49,7 +56,11 @@ components:
         id:
           type: integer
           readOnly: true
+          example: 0
         email:
           type: string
           format: email
-      # Добавьте другие свойства при необходимости
+    Users:
+      type: array
+      items:
+        $ref: '#/components/schemas/User'
