@@ -8,7 +8,7 @@ const FAKE_USER = {
 	password: 'sdf',
 };
 const SUCCESS_USER = {
-	email: 'john77@john.com',
+	email: 'user@john.com',
 	password: 'asdf',
 };
 
@@ -200,10 +200,9 @@ describe('Delete test user e2e tests', () => {
 	});
 });
 
-afterAll(() => {
-	application.close();
+afterAll(async () => {
+	await application.close();
 });
-
 /*
 # | **№** | **Path**                   | **Method** | **Body**  | **Response**              | **Description**                                |
 # |-------|----------------------------|------------|-----------|---------------------------|------------------------------------------------|

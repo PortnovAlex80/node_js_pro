@@ -5,11 +5,11 @@ import request from 'supertest';
 let application: App;
 
 const FAKE_USER = {
-	email: 'john77@john.com',
+	email: 'john775@john.com',
 	password: 'sdf',
 };
 const SUCCESS_USER = {
-	email: 'john77@john.com',
+	email: 'product@john.com',
 	password: 'asdf',
 };
 
@@ -32,8 +32,11 @@ describe('Registration e2e tests', () => {
 			email: SUCCESS_USER.email,
 			login: 'J1',
 			name: 'John',
+			lastName: 'Macferon',
 			password: SUCCESS_USER.password,
+			role: 'admin',
 		});
+
 		expect(res.statusCode).toBe(200);
 	});
 
@@ -60,4 +63,23 @@ describe('Registration e2e tests', () => {
 			.send(FAKE_USER);
 		expect(res.statusCode).toBe(401);
 	});
+});
+
+describe('Delete test user e2e tests', () => {
+	it('Delete - ok', async () => {
+		const login = await request(application.app)
+			.post('/users/login')
+			.send(SUCCESS_USER);
+		const res = await request(application.app)
+			.delete('/users/users')
+			.set('Authorization', `Bearer ${login.body.jwt}`)
+			.send({
+				email: SUCCESS_USER.email,
+			});
+		expect(res.statusCode).toBe(200);
+	});
+});
+
+afterAll(async () => {
+	await application.close();
 });
