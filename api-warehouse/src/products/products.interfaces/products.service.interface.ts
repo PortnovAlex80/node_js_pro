@@ -10,6 +10,6 @@ export interface IProductsService {
 	deleteProduct: (product: ProductDto) => Promise<ProductModel | null>;
 	increaseAmount: (product: ProductDto) => Promise<ProductModel | null>;
 	decreaseAmount: (product: ProductDto) => Promise<ProductModel | null>;
-	inStockByName: (product: ProductDto) => Promise<number>;
-	validate: (product: ProductDto) => Promise<Product | null>;
+	inStock: (product: ProductDto) => Promise<number | null>;
+	info: (product: ProductDto) => Promise<ProductModel | null>;
 }

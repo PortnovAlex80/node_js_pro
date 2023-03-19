@@ -28,7 +28,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG43Q
 Content-Type: application/json
 
 {
-    "email": "john10@john.com"
+    "email": "john77@john.com"
 }
 
 ###
@@ -51,7 +51,7 @@ POST    http://localhost:3000/users/register
 Content-Type: application/json
 
 {
-    "email": "john10@john.com",
+    "email": "john777@john.com",
     "login": "J1",
     "name": "John",
     "lastName": "Jackson",

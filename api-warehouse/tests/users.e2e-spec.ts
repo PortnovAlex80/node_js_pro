@@ -4,18 +4,18 @@ import request from 'supertest';
 
 let application: App;
 const FAKE_USER = {
-	email: 'john7@john.com',
+	email: 'john77@john.com',
 	password: 'sdf',
 };
 const SUCCESS_USER = {
-	email: 'john7@john.com',
+	email: 'john77@john.com',
 	password: 'asdf',
 };
 
 const UPDATE_USER = {
-	email: 'john10@john.com',
+	email: 'john777@john.com',
 	login: 'J2',
-	name: 'John',
+	name: 'Stallone',
 	lastName: 'Jackson',
 	role: 'admin',
 };
@@ -26,6 +26,27 @@ beforeAll(async () => {
 });
 
 describe('Authorizations e2e tests', () => {
+	it('Register - ok', async () => {
+		const res = await request(application.app).post('/users/register').send({
+			email: SUCCESS_USER.email,
+			login: 'J1',
+			name: 'John',
+			lastName: 'Macferon',
+			password: SUCCESS_USER.password,
+			role: 'admin',
+		});
+
+		expect(res.statusCode).toBe(200);
+	});
+	it('Register - error', async () => {
+		const res = await request(application.app).post('/users/register').send({
+			email: SUCCESS_USER.email,
+			login: 'J1',
+			name: 'John',
+			password: SUCCESS_USER.password,
+		});
+		expect(res.statusCode).toBe(409);
+	});
 	it('Login - success', async () => {
 		const res = await request(application.app)
 			.post('/users/login')
@@ -59,16 +80,6 @@ describe('Authorizations e2e tests', () => {
 });
 
 describe('CRUD Users e2e tests', () => {
-	it('Register - error', async () => {
-		const res = await request(application.app).post('/users/register').send({
-			email: SUCCESS_USER.email,
-			login: 'J1',
-			name: 'John',
-			password: SUCCESS_USER.password,
-		});
-		expect(res.statusCode).toBe(409);
-	});
-
 	it('GET users without token - error', async () => {
 		const res = await request(application.app).get('/users/users');
 		expect(res.statusCode).toBe(401);
@@ -170,6 +181,21 @@ describe('CRUD Users e2e tests', () => {
 		const res = await request(application.app)
 			.delete('/users/users/5/roles/admin')
 			.set('Authorization', `Bearer ${login.body.jwt}`);
+		expect(res.statusCode).toBe(200);
+	});
+});
+
+describe('Delete test user e2e tests', () => {
+	it('Delete - ok', async () => {
+		const login = await request(application.app)
+			.post('/users/login')
+			.send(SUCCESS_USER);
+		const res = await request(application.app)
+			.delete('/users/users')
+			.set('Authorization', `Bearer ${login.body.jwt}`)
+			.send({
+				email: SUCCESS_USER.email,
+			});
 		expect(res.statusCode).toBe(200);
 	});
 });

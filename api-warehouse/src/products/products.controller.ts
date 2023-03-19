@@ -30,6 +30,7 @@ export class ProductsController
 		const roleAdmin = new RoleMiddleware(UserRole.Admin, secret);
 		const roleUser = new RoleMiddleware(UserRole.User, secret);
 		const authGuard = new AuthGuard();
+		const validateProductDTO = new ValidateMiddleware(ProductDto);
 		const PRODUCTS_PATH = '/products';
 
 		this.bindRoutes([
@@ -40,52 +41,52 @@ export class ProductsController
 				middlewares: [authGuard, roleAdmin],
 			},
 			{
-				path: `${PRODUCTS_PATH}/:name`,
-				method: 'get',
+				path: `${PRODUCTS_PATH}/product`,
+				method: 'post',
 				func: this.getProduct,
-				middlewares: [authGuard, roleAdmin],
+				middlewares: [validateProductDTO, authGuard, roleAdmin],
 			},
 			{
 				path: `${PRODUCTS_PATH}`,
 				method: 'post',
 				func: this.createProduct,
-				middlewares: [new ValidateMiddleware(ProductDto), authGuard, roleAdmin],
+				middlewares: [validateProductDTO, authGuard, roleAdmin],
 			},
 			{
 				path: `${PRODUCTS_PATH}`,
 				method: 'put',
 				func: this.updateProduct,
-				middlewares: [new ValidateMiddleware(ProductDto), authGuard, roleAdmin],
+				middlewares: [validateProductDTO, authGuard, roleAdmin],
 			},
 			{
 				path: `${PRODUCTS_PATH}`,
 				method: 'delete',
 				func: this.deleteProduct,
-				middlewares: [new ValidateMiddleware(ProductDto), authGuard, roleAdmin],
+				middlewares: [validateProductDTO, authGuard, roleAdmin],
 			},
 			{
 				path: `${PRODUCTS_PATH}/increase/:amount`,
 				method: 'post',
 				func: this.increaseAmount,
-				middlewares: [authGuard, roleAdmin],
+				middlewares: [validateProductDTO, authGuard, roleAdmin],
 			},
 			{
 				path: `${PRODUCTS_PATH}/decrease/:amount`,
 				method: 'post',
 				func: this.decreaseAmount,
-				middlewares: [authGuard, roleAdmin],
+				middlewares: [validateProductDTO, authGuard, roleAdmin],
 			},
 			{
-				path: '${PRODUCTS_PATH}/info',
-				method: 'get',
+				path: `${PRODUCTS_PATH}/info`,
+				method: 'post',
 				func: this.info,
-				middlewares: [authGuard, roleAdmin],
+				middlewares: [validateProductDTO, authGuard, roleAdmin],
 			},
 			{
-				path: '${PRODUCTS_PATH}/instock',
+				path: `${PRODUCTS_PATH}/instock`,
 				method: 'post',
 				func: this.inStock,
-				middlewares: [authGuard, roleAdmin],
+				middlewares: [validateProductDTO, authGuard, roleAdmin],
 			},
 		]);
 	}
@@ -102,12 +103,16 @@ export class ProductsController
 		this.ok(res, products);
 	}
 
-	getProduct(
-		req: Request<{}, {}, ProductDto>,
+	async getProduct(
+		{ body }: Request<{}, {}, ProductDto>,
 		res: Response,
 		next: NextFunction,
-	): void {
-		this.ok(res, '1 getProductByName ');
+	): Promise<void> {
+		const product = await this.productsService.getProduct(body);
+		if (!product) {
+			return next(new HTTPError(404, `Product не найден в системе`));
+		}
+		this.ok(res, product);
 	}
 	async createProduct(
 		{ body }: Request,
@@ -120,22 +125,58 @@ export class ProductsController
 		}
 		this.ok(res, result);
 	}
-	updateProduct(req: Request, res: Response, next: NextFunction): void {
-		this.ok(res, '1 updateProduct ');
+	async updateProduct(
+		{ body }: Request,
+		res: Response,
+		next: NextFunction,
+	): Promise<void> {
+		const result = await this.productsService.updateProduct(body);
+		if (!result) {
+			return next(new HTTPError(409, 'Product already exist'));
+		}
+		this.ok(res, result);
 	}
-	deleteProduct(req: Request, res: Response, next: NextFunction): void {
-		this.ok(res, '1 deleteProductByName ');
+	async deleteProduct(
+		{ body }: Request,
+		res: Response,
+		next: NextFunction,
+	): Promise<void> {
+		const result = await this.productsService.deleteProduct(body);
+		if (!result) {
+			return next(new HTTPError(409, 'Product already exist'));
+		}
+		this.ok(res, result);
 	}
-	increaseAmount(req: Request, res: Response, next: NextFunction): void {
+	async increaseAmount(
+		req: Request,
+		res: Response,
+		next: NextFunction,
+	): Promise<void> {
 		this.ok(res, '1 increaseAmount ');
 	}
-	decreaseAmount(req: Request, res: Response, next: NextFunction): void {
+	async decreaseAmount(
+		req: Request,
+		res: Response,
+		next: NextFunction,
+	): Promise<void> {
 		this.ok(res, '1 decreaseAmount ');
 	}
-	inStock(req: Request, res: Response, next: NextFunction): void {
+	async inStock(
+		req: Request,
+		res: Response,
+		next: NextFunction,
+	): Promise<void> {
 		this.ok(res, '1 inStockByName ');
 	}
-	info(req: Request, res: Response, next: NextFunction): void {
-		this.ok(res, '1 info ');
+	async info(
+		{ body }: Request,
+		res: Response,
+		next: NextFunction,
+	): Promise<void> {
+		const result = await this.productsService.info(body);
+		if (!result) {
+			return next(new HTTPError(404, 'Product not found'));
+		}
+		this.ok(res, result);
 	}
 }
