@@ -38,13 +38,13 @@ export class ProductsController
 				path: PRODUCTS_PATH,
 				method: 'get',
 				func: this.getProducts,
-				middlewares: [authGuard, roleAdmin],
+				middlewares: [authGuard],
 			},
 			{
 				path: `${PRODUCTS_PATH}/product`,
 				method: 'post',
 				func: this.getProduct,
-				middlewares: [validateProductDTO, authGuard, roleAdmin],
+				middlewares: [validateProductDTO, authGuard],
 			},
 			{
 				path: `${PRODUCTS_PATH}`,
@@ -68,25 +68,25 @@ export class ProductsController
 				path: `${PRODUCTS_PATH}/increase/:amount`,
 				method: 'post',
 				func: this.increaseAmount,
-				middlewares: [validateProductDTO, authGuard, roleAdmin],
+				middlewares: [validateProductDTO, authGuard],
 			},
 			{
 				path: `${PRODUCTS_PATH}/decrease/:amount`,
 				method: 'post',
 				func: this.decreaseAmount,
-				middlewares: [validateProductDTO, authGuard, roleAdmin],
+				middlewares: [validateProductDTO, authGuard],
 			},
 			{
 				path: `${PRODUCTS_PATH}/info`,
 				method: 'post',
 				func: this.info,
-				middlewares: [validateProductDTO, authGuard, roleAdmin],
+				middlewares: [validateProductDTO, authGuard],
 			},
 			{
 				path: `${PRODUCTS_PATH}/instock`,
 				method: 'post',
 				func: this.inStock,
-				middlewares: [validateProductDTO, authGuard, roleAdmin],
+				middlewares: [validateProductDTO, authGuard],
 			},
 		]);
 	}
