@@ -108,7 +108,23 @@ export class UserController extends BaseController implements IUserController {
 			},
 		]);
 	}
-
+	/**
+	 * @swagger
+	 * path:
+	 *  /users:
+	 *   get:
+	 *    summary: Retrieve a list of users
+	 *    tags: [Users]
+	 *    responses:
+	 *     "200":
+	 *      description: A list of users
+	 *      content:
+	 *       application/json:
+	 *        schema:
+	 *         type: array
+	 *         items:
+	 *          $ref: '#/components/schemas/User'
+	 */
 	async getUsers(
 		req: Request,
 		res: Response,

@@ -3,7 +3,6 @@ import express, { Express } from 'express';
 import { Server } from 'http';
 import { inject, injectable } from 'inversify';
 import { IConfigService } from './config/config.service.interface';
-
 import { IExceptionFilter } from './errors/exception.filter.interface';
 import { ILogger } from './logger/logger.interface';
 import { TYPES } from './types';
@@ -12,7 +11,9 @@ import 'reflect-metadata';
 import { PrismaService } from './database/prisma.service';
 import { AuthMiddleware } from './common/auth.middleware';
 import { ProductsController } from './products/products.controller';
-import { IProductsController } from './products/products.interfaces/products.controller.interface';
+import swaggerJsdoc from 'swagger-jsdoc';
+import swaggerUi from 'swagger-ui-express';
+import { swaggerOptionsConfig } from '../swagger.config';
 
 export const pathRouteExtension = '/users';
 @injectable()
@@ -42,6 +43,8 @@ export class App {
 		const secret = this.configService.get('SECRET');
 		const authMiddleware = new AuthMiddleware(secret);
 		this.app.use(authMiddleware.execute.bind(authMiddleware));
+		const swaggerSpec = swaggerJsdoc(swaggerOptionsConfig);
+		this.app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 	}
 
 	useRoutes() {
