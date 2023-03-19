@@ -1,44 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1679243014713" clover="3.2.0">
-  <project timestamp="1679243014713" name="All files">
-    <metrics statements="518" coveredstatements="436" conditionals="113" coveredconditionals="50" methods="108" coveredmethods="93" elements="739" coveredelements="579" complexity="0" loc="518" ncloc="518" packages="11" files="26" classes="26"/>
-    <package name="src">
-      <metrics statements="65" coveredstatements="65" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="8"/>
+<coverage generated="1679253426329" clover="3.2.0">
+  <project timestamp="1679253426329" name="All files">
+    <metrics statements="526" coveredstatements="444" conditionals="113" coveredconditionals="50" methods="108" coveredmethods="93" elements="747" coveredelements="587" complexity="0" loc="526" ncloc="526" packages="12" files="27" classes="27"/>
+    <package name="api-warehouse">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="swagger.config.ts" path="/home/lisboasun/Documents/node_js_pro-1/api-warehouse/swagger.config.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="api-warehouse.src">
+      <metrics statements="70" coveredstatements="70" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="8"/>
       <file name="app.ts" path="/home/lisboasun/Documents/node_js_pro-1/api-warehouse/src/app.ts">
-        <metrics statements="33" coveredstatements="33" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
+        <metrics statements="38" coveredstatements="38" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
         <line num="1" count="2" type="stmt"/>
         <line num="2" count="2" type="stmt"/>
         <line num="4" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
         <line num="9" count="2" type="stmt"/>
         <line num="10" count="2" type="stmt"/>
         <line num="11" count="2" type="stmt"/>
         <line num="12" count="2" type="stmt"/>
         <line num="13" count="2" type="stmt"/>
         <line num="14" count="2" type="stmt"/>
-        <line num="17" count="2" type="stmt"/>
-        <line num="19" count="2" type="stmt"/>
-        <line num="25" count="2" type="stmt"/>
-        <line num="27" count="2" type="stmt"/>
-        <line num="29" count="2" type="stmt"/>
-        <line num="31" count="2" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="28" count="2" type="stmt"/>
+        <line num="30" count="2" type="stmt"/>
         <line num="32" count="2" type="stmt"/>
-        <line num="34" count="2" type="stmt"/>
-        <line num="36" count="2" type="stmt"/>
+        <line num="33" count="2" type="stmt"/>
+        <line num="35" count="2" type="stmt"/>
         <line num="37" count="2" type="stmt"/>
-        <line num="41" count="2" type="stmt"/>
+        <line num="38" count="2" type="stmt"/>
         <line num="42" count="2" type="stmt"/>
         <line num="43" count="2" type="stmt"/>
         <line num="44" count="2" type="stmt"/>
-        <line num="48" count="2" type="stmt"/>
-        <line num="49" count="2" type="stmt"/>
-        <line num="53" count="2" type="stmt"/>
-        <line num="57" count="2" type="stmt"/>
-        <line num="58" count="2" type="stmt"/>
-        <line num="59" count="2" type="stmt"/>
+        <line num="45" count="2" type="stmt"/>
+        <line num="46" count="2" type="stmt"/>
+        <line num="47" count="2" type="stmt"/>
+        <line num="51" count="2" type="stmt"/>
+        <line num="52" count="2" type="stmt"/>
+        <line num="56" count="2" type="stmt"/>
         <line num="60" count="2" type="stmt"/>
         <line num="61" count="2" type="stmt"/>
         <line num="62" count="2" type="stmt"/>
-        <line num="66" count="2" type="stmt"/>
+        <line num="63" count="2" type="stmt"/>
+        <line num="64" count="2" type="stmt"/>
+        <line num="65" count="2" type="stmt"/>
+        <line num="69" count="2" type="stmt"/>
       </file>
       <file name="main.ts" path="/home/lisboasun/Documents/node_js_pro-1/api-warehouse/src/main.ts">
         <metrics statements="31" coveredstatements="31" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
@@ -79,7 +93,7 @@
         <line num="1" count="2" type="stmt"/>
       </file>
     </package>
-    <package name="src.common">
+    <package name="api-warehouse.src.common">
       <metrics statements="62" coveredstatements="58" conditionals="27" coveredconditionals="22" methods="16" coveredmethods="15"/>
       <file name="auth.guard.ts" path="/home/lisboasun/Documents/node_js_pro-1/api-warehouse/src/common/auth.guard.ts">
         <metrics statements="4" coveredstatements="4" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
@@ -159,7 +173,7 @@
         <line num="14" count="31" type="stmt"/>
       </file>
     </package>
-    <package name="src.config">
+    <package name="api-warehouse.src.config">
       <metrics statements="12" coveredstatements="11" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
       <file name="config.service.ts" path="/home/lisboasun/Documents/node_js_pro-1/api-warehouse/src/config/config.service.ts">
         <metrics statements="12" coveredstatements="11" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
@@ -177,7 +191,7 @@
         <line num="22" count="29" type="stmt"/>
       </file>
     </package>
-    <package name="src.database">
+    <package name="api-warehouse.src.database">
       <metrics statements="13" coveredstatements="10" conditionals="1" coveredconditionals="0" methods="3" coveredmethods="2"/>
       <file name="prisma.service.ts" path="/home/lisboasun/Documents/node_js_pro-1/api-warehouse/src/database/prisma.service.ts">
         <metrics statements="13" coveredstatements="10" conditionals="1" coveredconditionals="0" methods="3" coveredmethods="2"/>
@@ -196,7 +210,7 @@
         <line num="24" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="src.errors">
+    <package name="api-warehouse.src.errors">
       <metrics statements="16" coveredstatements="14" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="3"/>
       <file name="exception.filter.ts" path="/home/lisboasun/Documents/node_js_pro-1/api-warehouse/src/errors/exception.filter.ts">
         <metrics statements="11" coveredstatements="9" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
@@ -221,7 +235,7 @@
         <line num="9" count="2" type="stmt"/>
       </file>
     </package>
-    <package name="src.logger">
+    <package name="api-warehouse.src.logger">
       <metrics statements="8" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="3"/>
       <file name="logger.ts" path="/home/lisboasun/Documents/node_js_pro-1/api-warehouse/src/logger/logger.ts">
         <metrics statements="8" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="3"/>
@@ -235,7 +249,7 @@
         <line num="27" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="src.products">
+    <package name="api-warehouse.src.products">
       <metrics statements="144" coveredstatements="96" conditionals="32" coveredconditionals="4" methods="30" coveredmethods="20"/>
       <file name="product.entity.ts" path="/home/lisboasun/Documents/node_js_pro-1/api-warehouse/src/products/product.entity.ts">
         <metrics statements="12" coveredstatements="4" conditionals="5" coveredconditionals="1" methods="4" coveredmethods="1"/>
@@ -394,7 +408,7 @@
         <line num="92" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="src.products.dto">
+    <package name="api-warehouse.src.products.dto">
       <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="product.dto.ts" path="/home/lisboasun/Documents/node_js_pro-1/api-warehouse/src/products/dto/product.dto.ts">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -404,7 +418,7 @@
         <line num="7" count="2" type="stmt"/>
       </file>
     </package>
-    <package name="src.roles">
+    <package name="api-warehouse.src.roles">
       <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
       <file name="roles.ts" path="/home/lisboasun/Documents/node_js_pro-1/api-warehouse/src/roles/roles.ts">
         <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
@@ -414,7 +428,7 @@
         <line num="4" count="2" type="stmt"/>
       </file>
     </package>
-    <package name="src.users">
+    <package name="api-warehouse.src.users">
       <metrics statements="171" coveredstatements="148" conditionals="47" coveredconditionals="20" methods="41" coveredmethods="39"/>
       <file name="user.entity.ts" path="/home/lisboasun/Documents/node_js_pro-1/api-warehouse/src/users/user.entity.ts">
         <metrics statements="15" coveredstatements="15" conditionals="1" coveredconditionals="1" methods="8" coveredmethods="8"/>
@@ -509,65 +523,65 @@
         <line num="30" count="2" type="stmt"/>
         <line num="31" count="2" type="stmt"/>
         <line num="32" count="2" type="stmt"/>
-        <line num="117" count="1" type="stmt"/>
-        <line num="118" count="1" type="cond" truecount="0" falsecount="1"/>
-        <line num="119" count="0" type="stmt"/>
-        <line num="121" count="1" type="cond" truecount="3" falsecount="1"/>
-        <line num="122" count="6" type="stmt"/>
-        <line num="123" count="6" type="stmt"/>
-        <line num="125" count="1" type="stmt"/>
         <line num="133" count="1" type="stmt"/>
         <line num="134" count="1" type="cond" truecount="0" falsecount="1"/>
         <line num="135" count="0" type="stmt"/>
-        <line num="138" count="1" type="stmt"/>
-        <line num="139" count="1" type="stmt"/>
-        <line num="140" count="1" type="cond" truecount="0" falsecount="1"/>
-        <line num="141" count="0" type="stmt"/>
-        <line num="144" count="1" type="stmt"/>
-        <line num="146" count="1" type="stmt"/>
-        <line num="154" count="0" type="stmt"/>
+        <line num="137" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="138" count="6" type="stmt"/>
+        <line num="139" count="6" type="stmt"/>
+        <line num="141" count="1" type="stmt"/>
+        <line num="149" count="1" type="stmt"/>
+        <line num="150" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="151" count="0" type="stmt"/>
+        <line num="154" count="1" type="stmt"/>
+        <line num="155" count="1" type="stmt"/>
+        <line num="156" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="157" count="0" type="stmt"/>
+        <line num="160" count="1" type="stmt"/>
         <line num="162" count="1" type="stmt"/>
-        <line num="163" count="1" type="stmt"/>
-        <line num="164" count="1" type="cond" truecount="0" falsecount="1"/>
-        <line num="165" count="0" type="stmt"/>
-        <line num="169" count="1" type="stmt"/>
-        <line num="170" count="1" type="stmt"/>
-        <line num="171" count="1" type="stmt"/>
-        <line num="172" count="1" type="cond" truecount="0" falsecount="1"/>
-        <line num="173" count="0" type="stmt"/>
-        <line num="175" count="1" type="stmt"/>
-        <line num="183" count="2" type="stmt"/>
-        <line num="184" count="2" type="cond" truecount="0" falsecount="1"/>
-        <line num="185" count="0" type="stmt"/>
-        <line num="187" count="2" type="stmt"/>
-        <line num="188" count="2" type="cond" truecount="0" falsecount="1"/>
+        <line num="170" count="0" type="stmt"/>
+        <line num="178" count="1" type="stmt"/>
+        <line num="179" count="1" type="stmt"/>
+        <line num="180" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="181" count="0" type="stmt"/>
+        <line num="185" count="1" type="stmt"/>
+        <line num="186" count="1" type="stmt"/>
+        <line num="187" count="1" type="stmt"/>
+        <line num="188" count="1" type="cond" truecount="0" falsecount="1"/>
         <line num="189" count="0" type="stmt"/>
-        <line num="193" count="2" type="stmt"/>
-        <line num="194" count="2" type="cond" truecount="0" falsecount="1"/>
-        <line num="195" count="0" type="stmt"/>
-        <line num="197" count="2" type="stmt"/>
-        <line num="205" count="1" type="stmt"/>
-        <line num="213" count="1" type="stmt"/>
+        <line num="191" count="1" type="stmt"/>
+        <line num="199" count="2" type="stmt"/>
+        <line num="200" count="2" type="cond" truecount="0" falsecount="1"/>
+        <line num="201" count="0" type="stmt"/>
+        <line num="203" count="2" type="stmt"/>
+        <line num="204" count="2" type="cond" truecount="0" falsecount="1"/>
+        <line num="205" count="0" type="stmt"/>
+        <line num="209" count="2" type="stmt"/>
+        <line num="210" count="2" type="cond" truecount="0" falsecount="1"/>
+        <line num="211" count="0" type="stmt"/>
+        <line num="213" count="2" type="stmt"/>
         <line num="221" count="1" type="stmt"/>
-        <line num="229" count="21" type="stmt"/>
-        <line num="230" count="21" type="cond" truecount="2" falsecount="0"/>
-        <line num="231" count="2" type="stmt"/>
-        <line num="233" count="19" type="cond" truecount="1" falsecount="1"/>
-        <line num="234" count="19" type="stmt"/>
-        <line num="239" count="19" type="stmt"/>
-        <line num="248" count="2" type="stmt"/>
-        <line num="249" count="2" type="cond" truecount="0" falsecount="1"/>
-        <line num="250" count="0" type="stmt"/>
-        <line num="254" count="2" type="stmt"/>
-        <line num="262" count="19" type="stmt"/>
-        <line num="263" count="19" type="stmt"/>
-        <line num="272" count="19" type="cond" truecount="3" falsecount="1"/>
-        <line num="273" count="0" type="stmt"/>
-        <line num="275" count="19" type="stmt"/>
-        <line num="287" count="3" type="stmt"/>
-        <line num="288" count="3" type="cond" truecount="0" falsecount="1"/>
+        <line num="229" count="1" type="stmt"/>
+        <line num="237" count="1" type="stmt"/>
+        <line num="245" count="21" type="stmt"/>
+        <line num="246" count="21" type="cond" truecount="2" falsecount="0"/>
+        <line num="247" count="2" type="stmt"/>
+        <line num="249" count="19" type="cond" truecount="1" falsecount="1"/>
+        <line num="250" count="19" type="stmt"/>
+        <line num="255" count="19" type="stmt"/>
+        <line num="264" count="2" type="stmt"/>
+        <line num="265" count="2" type="cond" truecount="0" falsecount="1"/>
+        <line num="266" count="0" type="stmt"/>
+        <line num="270" count="2" type="stmt"/>
+        <line num="278" count="19" type="stmt"/>
+        <line num="279" count="19" type="stmt"/>
+        <line num="288" count="19" type="cond" truecount="3" falsecount="1"/>
         <line num="289" count="0" type="stmt"/>
-        <line num="291" count="3" type="cond" truecount="6" falsecount="2"/>
+        <line num="291" count="19" type="stmt"/>
+        <line num="303" count="3" type="stmt"/>
+        <line num="304" count="3" type="cond" truecount="0" falsecount="1"/>
+        <line num="305" count="0" type="stmt"/>
+        <line num="307" count="3" type="cond" truecount="6" falsecount="2"/>
       </file>
       <file name="users.repository.ts" path="/home/lisboasun/Documents/node_js_pro-1/api-warehouse/src/users/users.repository.ts">
         <metrics statements="27" coveredstatements="22" conditionals="3" coveredconditionals="0" methods="8" coveredmethods="7"/>
@@ -600,7 +614,7 @@
         <line num="92" count="2" type="stmt"/>
       </file>
     </package>
-    <package name="src.users.dto">
+    <package name="api-warehouse.src.users.dto">
       <metrics statements="19" coveredstatements="19" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="user-login.dto.ts" path="/home/lisboasun/Documents/node_js_pro-1/api-warehouse/src/users/dto/user-login.dto.ts">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>

@@ -14,6 +14,8 @@ import { ProductsController } from './products/products.controller';
 import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 import { swaggerOptionsConfig } from '../swagger.config';
+import YAML from 'yamljs';
+import path from 'path';
 
 export const pathRouteExtension = '/users';
 @injectable()
@@ -43,8 +45,14 @@ export class App {
 		const secret = this.configService.get('SECRET');
 		const authMiddleware = new AuthMiddleware(secret);
 		this.app.use(authMiddleware.execute.bind(authMiddleware));
-		const swaggerSpec = swaggerJsdoc(swaggerOptionsConfig);
-		this.app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+		const swaggerDocument = YAML.load(path.join(__dirname, '../openapi.yaml'));
+		this.app.use(
+			'/api-docs',
+			swaggerUi.serve,
+			swaggerUi.setup(swaggerDocument),
+		);
+		// const swaggerSpec = swaggerJsdoc(swaggerOptionsConfig);
+		// this.app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 	}
 
 	useRoutes() {
