@@ -31,7 +31,7 @@ SECRET='set the secret as string'
 
 
 **⚠️ ПРИМЕЧАНИЕ**
-
+ПРОЕКТ В РАБОТЕ ДО МАЯ! МОГУТ БЫТЬ ИЗМЕНЕНИЯ В ОПИСАНИИ!
 _Это учебный проект курса https://www.udemy.com/course/nodejs-start/ (https://learn.purpleschool.ru/public/products) в рамках которого необходимо отработать навык реализации слоеной архитектуры (middlewares, exceptions filters,  controller, error handler, services, repository, orm prisma) для выполнения CRUD операций с ресурсом (товары на складе) и JWT авторизация с ролевой моделью. Просьба не брать описание проекта за основу. Документацию на API привести в формате openAPI. Предоставить swagger.
 CRUD для управления новыми пользователями в рамках данного релиза не требуется._
 
