@@ -11,7 +11,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG43Q
 Content-Type: application/json
 
 {
-    "name": "Milk",
+    "name": "Milky way",
     "quantity": 7
 }
 ### Get product

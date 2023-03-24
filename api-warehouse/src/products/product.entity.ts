@@ -3,32 +3,25 @@ export interface IProduct {
 	name: string;
 	quantity: number;
 }
-
+const MAX_PRODUCTS_AMOUNT = 99;
 export class Product implements IProduct {
 	id: number;
 	name: string;
 	quantity: number;
-	constructor(name: string, quantity?: number) {
-		if (!quantity) {
-			this.quantity = 1;
-		} else {
-			this.quantity = quantity;
-		}
+	constructor(name: string, quantity = 1) {
+		this.quantity = quantity;
 		this.name = name;
 	}
-	increase(amount = 1): void {
-		for (let i = 1; i <= amount; i++) {
-			++this.quantity;
-		}
-	}
-	decrease(amount = 1): void {
+	changeAmount(amount = 1): void {
 		if (this.quantity - amount < 0) {
 			return;
 		}
-		for (let i = 1; i <= amount; i++) {
-			++this.quantity;
+		if (this.quantity + amount < MAX_PRODUCTS_AMOUNT) {
+			return;
 		}
+		this.quantity += amount;
 	}
+
 	inStock(): number {
 		return this.quantity;
 	}

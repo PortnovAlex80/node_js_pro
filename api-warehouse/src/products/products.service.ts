@@ -21,8 +21,8 @@ export class ProductsService implements IProductsService {
 		return products;
 	}
 
-	async getProduct(product: ProductDto): Promise<ProductModel | null> {
-		const result = await this.productsRepository.getProduct(product);
+	async getProduct(name: string): Promise<ProductModel | null> {
+		const result = await this.productsRepository.getProduct(name);
 		if (!result) {
 			return null;
 		}
@@ -30,29 +30,16 @@ export class ProductsService implements IProductsService {
 	}
 
 	async createProduct(product: ProductDto): Promise<ProductModel | null> {
-		let quantity = Number(product.quantity);
-		if (!quantity || quantity <= 0) {
-			quantity = 1;
-		}
-		const newProduct = quantity
-			? new Product(product.name, quantity)
-			: new Product(product.name, 1);
-
-		const isExist = await this.productsRepository.info(product);
-		if (isExist) {
-			return null;
-		}
-		const result = await this.productsRepository.createProduct(newProduct);
+		const quantity = product.quantity;
+		const result = await this.productsRepository.createProduct(
+			new Product(product.name, product.quantity),
+		);
 		if (!result) {
 			return null;
 		}
 		return result;
 	}
 	async updateProduct(product: ProductDto): Promise<ProductModel | null> {
-		const isExist = await this.productsRepository.info(product);
-		if (!isExist) {
-			return null;
-		}
 		const result = await this.productsRepository.updateProduct(product);
 		if (!result) {
 			return null;
@@ -60,32 +47,23 @@ export class ProductsService implements IProductsService {
 		return result;
 	}
 
-	async deleteProduct(product: ProductDto): Promise<ProductModel | null> {
-		const isExist = await this.productsRepository.info(product);
-		if (!isExist) {
-			return null;
-		}
-		const result = await this.productsRepository.deleteProduct(product);
+	async deleteProduct(name: string): Promise<ProductModel | null> {
+		const result = await this.productsRepository.deleteProduct(name);
 		if (!result) {
 			return null;
 		}
 		return result;
 	}
-	increaseAmount: (product: ProductDto) => Promise<ProductModel>;
-	decreaseAmount: (product: ProductDto) => Promise<ProductModel>;
-	async inStock(product: ProductDto): Promise<number | null> {
-		const isExist = await this.productsRepository.info(product);
-		if (isExist) {
-			return null;
-		}
-		const result = await this.productsRepository.inStock(product);
+
+	async inStock(name: string): Promise<number | null> {
+		const result = await this.productsRepository.inStock(name);
 		if (!result) {
 			return null;
 		}
 		return result;
 	}
-	async info(product: ProductDto): Promise<ProductModel | null> {
-		const info = await this.productsRepository.info(product);
+	async info(name: string): Promise<ProductModel | null> {
+		const info = await this.productsRepository.getProduct(name);
 		if (!info) {
 			return null;
 		}

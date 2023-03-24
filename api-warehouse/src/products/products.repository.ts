@@ -15,10 +15,19 @@ export class ProductsRepository implements IProductsRepository {
 	) {}
 
 	getProducts(): Promise<ProductModel[] | null> {
-		return this.prismaService.client.product.findMany();
+		const skip = 0;
+		const take = 5;
+		return this.prismaService.client.product.findMany({
+			skip,
+			take,
+		});
 	}
-	async getProduct(product: ProductDto): Promise<ProductModel | null> {
-		const productInfo = await this.info(product);
+	async getProduct(name: string): Promise<ProductModel | null> {
+		const productInfo = await this.prismaService.client.product.findFirst({
+			where: {
+				name,
+			},
+		});
 		if (!productInfo) {
 			return null;
 		}
@@ -26,70 +35,57 @@ export class ProductsRepository implements IProductsRepository {
 	}
 	async createProduct(product: Product): Promise<ProductModel | null> {
 		const { name, quantity } = product;
+		const checkIsProductExist = await this.getProduct(name);
+		if (checkIsProductExist) {
+			return null;
+		}
 		const result = this.prismaService.client.product.create({
 			data: {
 				name,
 				quantity,
 			},
 		});
-		if (!result) {
-			return null;
-		}
 		return result;
 	}
 	async updateProduct(product: ProductDto): Promise<ProductModel | null> {
 		const { name, quantity } = product;
-		const isExist = await this.info(product);
-		if (!isExist) {
+		const checkIsProductExist = await this.getProduct(name);
+		if (!checkIsProductExist) {
 			return null;
 		}
 		if (!quantity) {
 			return null;
 		}
-		const amount = Number(quantity);
-
 		return await this.prismaService.client.product.update({
 			where: {
 				name,
 			},
 			data: {
-				quantity: amount,
+				quantity,
 			},
 		});
 	}
-	async deleteProduct(product: ProductDto): Promise<ProductModel | null> {
-		const isExist = await this.info(product);
-		if (!isExist) {
+	async deleteProduct(name: string): Promise<ProductModel | null> {
+		const checkIsProductExist = await this.getProduct(name);
+		if (!checkIsProductExist) {
 			return null;
 		}
 		const deletedProduct = this.prismaService.client.product.delete({
 			where: {
-				name: product.name,
+				name,
 			},
 		});
 		return deletedProduct;
 	}
-	increaseAmount: (product: ProductDto) => Promise<ProductModel | null>;
-	decreaseAmount: (product: ProductDto) => Promise<ProductModel | null>;
-
-	async inStock(product: ProductDto): Promise<number> {
+	async inStock(name: string): Promise<number> {
 		const result = await this.prismaService.client.product.findFirst({
 			where: {
-				name: product.name,
+				name,
 			},
 		});
 		if (!result) {
 			return 0;
 		}
 		return result.quantity;
-	}
-
-	async info({ name }: ProductDto): Promise<ProductModel | null> {
-		const result = await this.prismaService.client.product.findFirst({
-			where: {
-				name,
-			},
-		});
-		return result;
 	}
 }

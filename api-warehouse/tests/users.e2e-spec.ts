@@ -21,6 +21,7 @@ const UPDATE_USER = {
 };
 
 beforeAll(async () => {
+	await setTimeout(() => console.log('test pause'), 1000);
 	const { app } = await boot;
 	application = app;
 });
@@ -200,7 +201,7 @@ describe('Delete test user e2e tests', () => {
 	});
 });
 
-afterAll(async () => {
+afterEach(async () => {
 	await application.close();
 });
 /*

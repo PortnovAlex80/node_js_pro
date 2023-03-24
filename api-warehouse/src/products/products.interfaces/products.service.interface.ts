@@ -4,12 +4,9 @@ import { Product as ProductModel } from '@prisma/client';
 
 export interface IProductsService {
 	getProducts: () => Promise<ProductModel[] | null>;
-	getProduct: (product: ProductDto) => Promise<ProductModel | null | null>;
+	getProduct: (name: string) => Promise<ProductModel | null | null>;
 	createProduct: (product: ProductDto) => Promise<ProductModel | null>;
 	updateProduct: (product: ProductDto) => Promise<ProductModel | null>;
-	deleteProduct: (product: ProductDto) => Promise<ProductModel | null>;
-	increaseAmount: (product: ProductDto) => Promise<ProductModel | null>;
-	decreaseAmount: (product: ProductDto) => Promise<ProductModel | null>;
-	inStock: (product: ProductDto) => Promise<number | null>;
-	info: (product: ProductDto) => Promise<ProductModel | null>;
+	deleteProduct: (name: string) => Promise<ProductModel | null>;
+	inStock: (name: string) => Promise<number | null>;
 }

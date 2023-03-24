@@ -6,5 +6,5 @@ export class ProductDto {
 
 	@IsOptional()
 	@IsInt()
-	quantity?: string;
+	quantity?: number;
 }

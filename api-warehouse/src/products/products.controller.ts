@@ -65,24 +65,6 @@ export class ProductsController
 				middlewares: [validateProductDTO, authGuard, roleAdmin],
 			},
 			{
-				path: `${PRODUCTS_PATH}/increase/:amount`,
-				method: 'post',
-				func: this.increaseAmount,
-				middlewares: [validateProductDTO, authGuard],
-			},
-			{
-				path: `${PRODUCTS_PATH}/decrease/:amount`,
-				method: 'post',
-				func: this.decreaseAmount,
-				middlewares: [validateProductDTO, authGuard],
-			},
-			{
-				path: `${PRODUCTS_PATH}/info`,
-				method: 'post',
-				func: this.info,
-				middlewares: [validateProductDTO, authGuard],
-			},
-			{
 				path: `${PRODUCTS_PATH}/instock`,
 				method: 'post',
 				func: this.inStock,
@@ -108,7 +90,7 @@ export class ProductsController
 		res: Response,
 		next: NextFunction,
 	): Promise<void> {
-		const product = await this.productsService.getProduct(body);
+		const product = await this.productsService.getProduct(body.name);
 		if (!product) {
 			return next(new HTTPError(404, `Product не найден в системе`));
 		}
@@ -141,42 +123,18 @@ export class ProductsController
 		res: Response,
 		next: NextFunction,
 	): Promise<void> {
-		const result = await this.productsService.deleteProduct(body);
+		const result = await this.productsService.deleteProduct(body.name);
 		if (!result) {
 			return next(new HTTPError(409, 'Product already exist'));
 		}
 		this.ok(res, result);
 	}
-	async increaseAmount(
-		req: Request,
-		res: Response,
-		next: NextFunction,
-	): Promise<void> {
-		this.ok(res, '1 increaseAmount ');
-	}
-	async decreaseAmount(
-		req: Request,
-		res: Response,
-		next: NextFunction,
-	): Promise<void> {
-		this.ok(res, '1 decreaseAmount ');
-	}
+
 	async inStock(
 		req: Request,
 		res: Response,
 		next: NextFunction,
 	): Promise<void> {
 		this.ok(res, '1 inStockByName ');
-	}
-	async info(
-		{ body }: Request,
-		res: Response,
-		next: NextFunction,
-	): Promise<void> {
-		const result = await this.productsService.info(body);
-		if (!result) {
-			return next(new HTTPError(404, 'Product not found'));
-		}
-		this.ok(res, result);
 	}
 }
