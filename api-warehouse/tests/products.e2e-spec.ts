@@ -32,7 +32,7 @@ const GOODS_2 = {
 };
 
 beforeAll(async () => {
-	await setTimeout(() => console.log('test pause'), 1000);
+	await setTimeout(() => console.log('test pause'), 1500);
 	const { app } = await boot;
 	application = app;
 });
