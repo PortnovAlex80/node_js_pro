@@ -5,6 +5,8 @@ import { ILogger } from '../logger/logger.interface';
 import { TYPES } from '../types';
 import 'reflect-metadata';
 import axios from 'axios';
+import { CMD_TEXT } from './bot.const.commands';
+import { backMenu, start } from './bot.command';
 
 @injectable()
 export class TelegramBotApp {
@@ -27,8 +29,11 @@ export class TelegramBotApp {
 
 		// Инициализируем объект Telegraf и добавляем методы для обработки команд
 		this.bot = new Telegraf(this.token);
-		this.handleStartCommand();
-		this.handleListProductsCommand();
+
+		// this.handleStartCommand();
+		// this.handleListProductsCommand();
+		this.bot.start(start);
+		this.bot.hears(CMD_TEXT.menu, backMenu);
 
 		// Запускаем бота
 		this.bot.launch();
