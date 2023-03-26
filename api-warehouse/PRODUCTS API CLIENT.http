@@ -1,0 +1,68 @@
+### Send request with JWT
+GET http://localhost:3000/products
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG43QGpvaG4uY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2Nzk4MTc5Nzh9.vJ44HPgGnVGFmk-o9xDeaDLN2QbBkBfdqU2r8-lj7-c
+
+### Send request without JWT
+GET http://localhost:3000/products
+
+### Create new product
+POST  http://localhost:3000/products/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG43QGpvaG4uY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2Nzk4MTc5Nzh9.vJ44HPgGnVGFmk-o9xDeaDLN2QbBkBfdqU2r8-lj7-c
+Content-Type: application/json
+
+{
+    "name": "Books",
+    "quantity": 100
+}
+### Get product
+POST  http://localhost:3000/products/product
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG43QGpvaG4uY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2Nzk4MTc5Nzh9.vJ44HPgGnVGFmk-o9xDeaDLN2QbBkBfdqU2r8-lj7-c
+Content-Type: application/json
+
+{
+    "name": "Milk"
+}
+
+### Update product
+PUT  http://localhost:3000/products/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG43QGpvaG4uY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2Nzk4MTc5Nzh9.vJ44HPgGnVGFmk-o9xDeaDLN2QbBkBfdqU2r8-lj7-c
+Content-Type: application/json
+
+{
+    "name": "Bread",
+   "quantity": 10
+}
+### Delete product
+DELETE   http://localhost:3000/products
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG43QGpvaG4uY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2Nzk4MTc5Nzh9.vJ44HPgGnVGFmk-o9xDeaDLN2QbBkBfdqU2r8-lj7-c
+Content-Type: application/json
+
+{
+    "name": "Bread"
+}
+
+###
+POST    http://localhost:3000/users/login
+Content-Type: application/json
+
+{
+    "email": "john7@john.com",
+    "password": "asdf"
+}
+
+###
+POST    http://localhost:3000/users/register
+Content-Type: application/json
+
+{
+    "email": "john7@john.com",
+    "login": "J1",
+    "name": "John",
+    "lastName": "Jackson",
+    "password": "asdf",
+    "role": "user"
+}
+
+###
+GET http://localhost:3000/users/info
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG43QGpvaG4uY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2Nzk4MTc5Nzh9.vJ44HPgGnVGFmk-o9xDeaDLN2QbBkBfdqU2r8-lj7-c

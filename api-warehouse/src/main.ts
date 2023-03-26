@@ -14,6 +14,13 @@ import { ConfigService } from './config/config.service';
 import { PrismaService } from './database/prisma.service';
 import { IUsersRepository } from './users/interfaces/users.repository.interface';
 import { UsersRepository } from './users/users.repository';
+import { IProductsController } from './products/products.interfaces/products.controller.interface';
+import { ProductsController } from './products/products.controller';
+import { IProductsService } from './products/products.interfaces/products.service.interface';
+import { ProductsService } from './products/products.service';
+import { IProductsRepository } from './products/products.interfaces/products.repository.interface';
+import { ProductsRepository } from './products/products.repository';
+import { TelegramBotApp } from './bot/bot.connector';
 
 export const appBindings = new ContainerModule((bind: interfaces.Bind) => {
 	bind<ILogger>(TYPES.ILogger).to(LoggerService).inSingletonScope();
@@ -31,6 +38,19 @@ export const appBindings = new ContainerModule((bind: interfaces.Bind) => {
 	bind<IUsersRepository>(TYPES.UsersRepository)
 		.to(UsersRepository)
 		.inSingletonScope();
+	bind<IProductsController>(TYPES.ProductsController)
+		.to(ProductsController)
+		.inSingletonScope();
+	bind<IProductsService>(TYPES.ProductsService)
+		.to(ProductsService)
+		.inSingletonScope();
+	bind<IProductsRepository>(TYPES.ProductsRepository)
+		.to(ProductsRepository)
+		.inSingletonScope();
+	bind<TelegramBotApp>(TYPES.TelegramBotApp)
+		.to(TelegramBotApp)
+		.inSingletonScope();
+
 	bind<App>(TYPES.Application).to(App).inSingletonScope();
 });
 

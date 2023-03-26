@@ -64,7 +64,6 @@ export class UsersRepository implements IUsersRepository {
 		if (!existUser) {
 			return null;
 		}
-		console.log(`Repo Service - ${email}`);
 		if (!data.email) {
 			return null;
 		}

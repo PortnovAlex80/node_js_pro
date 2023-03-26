@@ -1,0 +1,66 @@
+openapi: 3.0.0
+info:
+  title: Warehouse API
+  version: 1.0.0
+  description: An Express API
+servers:
+  - url: http://localhost:3000
+    description: Dev server
+paths:
+  /users:
+    get:
+      summary: Retrieve a list of users
+      tags:
+        - Users
+      operationId: getAllUsers
+      responses:
+        '200':
+          description: Success get a list of users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+
+    post:
+      summary: Retrieve a user by user DTO
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'          
+      responses:
+        '200':
+          description: A user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        'default':
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Users'
+            
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+          example: 0
+        email:
+          type: string
+          format: email
+    Users:
+      type: array
+      items:
+        $ref: '#/components/schemas/User'

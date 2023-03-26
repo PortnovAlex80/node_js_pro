@@ -12,11 +12,9 @@ import { ValidateMiddleware } from '../common/validate.middleware';
 import { sign } from 'jsonwebtoken';
 import { IConfigService } from '../config/config.service.interface';
 import { AuthGuard } from '../common/auth.guard';
-import { JwtPayload } from '../common/jwt.payload.interface';
 import { RoleMiddleware } from '../common/role.middleware';
 import { UserRole } from '../roles/roles';
 import 'reflect-metadata';
-import { UserEntity } from './user.entity';
 import { UserUpdateDto } from './dto/user-update.dto';
 @injectable()
 export class UserController extends BaseController implements IUserController {
@@ -27,8 +25,8 @@ export class UserController extends BaseController implements IUserController {
 	) {
 		super(loggerService);
 		const secret = this.configService.get('SECRET');
-		const roleAdmin = new RoleMiddleware(UserRole.Admin, secret);
-		const roleUser = new RoleMiddleware(UserRole.User, secret);
+		const roleAdmin = new RoleMiddleware([UserRole.Admin], secret);
+		const roleUser = new RoleMiddleware([UserRole.User], secret);
 		const authGuard = new AuthGuard();
 		const USER_PATH = '/users';
 		this.bindRoutes([
@@ -110,7 +108,23 @@ export class UserController extends BaseController implements IUserController {
 			},
 		]);
 	}
-
+	/**
+	 * @swagger
+	 * path:
+	 *  /users:
+	 *   get:
+	 *    summary: Retrieve a list of users
+	 *    tags: [Users]
+	 *    responses:
+	 *     "200":
+	 *      description: A list of users
+	 *      content:
+	 *       application/json:
+	 *        schema:
+	 *         type: array
+	 *         items:
+	 *          $ref: '#/components/schemas/User'
+	 */
 	async getUsers(
 		req: Request,
 		res: Response,
