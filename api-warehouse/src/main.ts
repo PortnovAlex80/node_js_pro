@@ -20,6 +20,7 @@ import { IProductsService } from './products/products.interfaces/products.servic
 import { ProductsService } from './products/products.service';
 import { IProductsRepository } from './products/products.interfaces/products.repository.interface';
 import { ProductsRepository } from './products/products.repository';
+import { TelegramBotApp } from './bot/bot.connector';
 
 export const appBindings = new ContainerModule((bind: interfaces.Bind) => {
 	bind<ILogger>(TYPES.ILogger).to(LoggerService).inSingletonScope();
@@ -45,6 +46,9 @@ export const appBindings = new ContainerModule((bind: interfaces.Bind) => {
 		.inSingletonScope();
 	bind<IProductsRepository>(TYPES.ProductsRepository)
 		.to(ProductsRepository)
+		.inSingletonScope();
+	bind<TelegramBotApp>(TYPES.TelegramBotApp)
+		.to(TelegramBotApp)
 		.inSingletonScope();
 
 	bind<App>(TYPES.Application).to(App).inSingletonScope();

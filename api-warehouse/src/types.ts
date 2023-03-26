@@ -10,4 +10,5 @@ export const TYPES = {
 	ProductsRepository: Symbol.for('ProductsRepository'),
 	ProductsService: Symbol.for('ProductsService'),
 	ProductsController: Symbol.for('ProductsController'),
+	TelegramBotApp: Symbol.for('TelegramBotApp'),
 };

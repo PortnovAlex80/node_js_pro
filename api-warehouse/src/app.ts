@@ -15,6 +15,7 @@ import swaggerUi from 'swagger-ui-express';
 import YAML from 'yamljs';
 import path from 'path';
 import { TelegramBotApp } from './bot/bot.connector';
+import cors from 'cors';
 
 export const pathRouteExtension = '/users';
 @injectable()
@@ -62,6 +63,7 @@ export class App {
 	}
 
 	public async init() {
+		this.app.use(cors());
 		this.useMiddleware();
 		this.useRoutes();
 		this.useExceptionFilters();

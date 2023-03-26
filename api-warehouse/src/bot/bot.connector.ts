@@ -13,11 +13,11 @@ export class TelegramBotApp {
 	bot: Telegraf;
 	headers = {
 		Authorization:
-			'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG43QGpvaG4uY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjc5MDc4MjQxfQ.gm7nOT-lMFoQDNSKT1LvtWyZwc6Muafh3RLN-OqErXk',
+			'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG43QGpvaG4uY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2Nzk4MTc5Nzh9.vJ44HPgGnVGFmk-o9xDeaDLN2QbBkBfdqU2r8-lj7-c',
 	};
 
 	constructor(
-		@inject(TYPES.ILogger) private loggerService: ILogger,
+		@inject(TYPES.ILogger) private logger: ILogger,
 		@inject(TYPES.ConfigService) private configService: IConfigService,
 	) {
 		this.token = this.configService.get('TOKEN');
@@ -32,6 +32,7 @@ export class TelegramBotApp {
 
 		// Запускаем бота
 		this.bot.launch();
+		this.logger.log(`[BOT] Telegramm bot launched`);
 	}
 
 	private handleStartCommand() {
@@ -45,13 +46,12 @@ export class TelegramBotApp {
 	private handleListProductsCommand() {
 		this.bot.hears('Список товаров', async (ctx) => {
 			try {
-				const response = await axios.post(
-					this.apiUrl,
-					{},
-					{ headers: this.headers },
-				);
+				const response = await axios.get(this.apiUrl, {
+					headers: this.headers,
+				});
 				const products = response.data;
-				ctx.reply(`Список доступных товаров:\n${products.join('\n')}`);
+				this.logger.log(`${JSON.stringify(products)}`);
+				ctx.reply(`Список доступных товаров:\n${JSON.stringify(products)}`);
 			} catch (error) {
 				console.log(error);
 				ctx.reply(
