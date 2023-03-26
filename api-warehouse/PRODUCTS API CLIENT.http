@@ -11,8 +11,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG43Q
 Content-Type: application/json
 
 {
-    "name": "Milky way",
-    "quantity": 7
+    "name": "Books",
+    "quantity": 100
 }
 ### Get product
 POST  http://localhost:3000/products/product
