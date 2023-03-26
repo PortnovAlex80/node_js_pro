@@ -4,3 +4,4 @@ api-warehouse/prisma/dev.db
 api-warehouse/prisma/dev.dd-journal
 api-warehouse/.env
 api-warehouse/coverage
+/coverage

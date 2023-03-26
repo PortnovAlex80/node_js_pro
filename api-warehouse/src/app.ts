@@ -11,11 +11,10 @@ import 'reflect-metadata';
 import { PrismaService } from './database/prisma.service';
 import { AuthMiddleware } from './common/auth.middleware';
 import { ProductsController } from './products/products.controller';
-import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
-import { swaggerOptionsConfig } from '../swagger.config';
 import YAML from 'yamljs';
 import path from 'path';
+import { TelegramBotApp } from './bot/bot.connector';
 
 export const pathRouteExtension = '/users';
 @injectable()
@@ -51,8 +50,6 @@ export class App {
 			swaggerUi.serve,
 			swaggerUi.setup(swaggerDocument),
 		);
-		// const swaggerSpec = swaggerJsdoc(swaggerOptionsConfig);
-		// this.app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 	}
 
 	useRoutes() {
@@ -71,6 +68,7 @@ export class App {
 		await this.prismaService.connect();
 		this.server = this.app.listen(this.port);
 		this.logger.log(`[APP] Server is online on port ${this.port}`);
+		await new TelegramBotApp(this.logger, this.configService);
 	}
 
 	public close(): void {
