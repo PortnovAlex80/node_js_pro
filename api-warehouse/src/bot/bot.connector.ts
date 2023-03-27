@@ -1,4 +1,4 @@
-import { Telegraf } from 'telegraf';
+import { Scenes, session, Telegraf, Types } from 'telegraf';
 import { IConfigService } from '../config/config.service.interface';
 import { inject, injectable } from 'inversify';
 import { ILogger } from '../logger/logger.interface';
@@ -7,6 +7,9 @@ import 'reflect-metadata';
 import axios from 'axios';
 import { CMD_TEXT } from './bot.const.commands';
 import { backMenu, start } from './bot.command';
+import { ProductListScene } from './scenes/scene.products.list';
+import { MyContext } from './mycontext';
+import { ProductsService } from '../products/products.service';
 
 @injectable()
 export class TelegramBotApp {
@@ -21,23 +24,27 @@ export class TelegramBotApp {
 	constructor(
 		@inject(TYPES.ILogger) private logger: ILogger,
 		@inject(TYPES.ConfigService) private configService: IConfigService,
+		@inject(TYPES.ProductsService) private productsService: ProductsService,
 	) {
 		this.token = this.configService.get('TOKEN');
 		if (!this.token) {
 			throw new Error('Token is not found');
 		}
-
 		// Инициализируем объект Telegraf и добавляем методы для обработки команд
+		const productListScene = new ProductListScene(productsService);
+		const stage = new Scenes.Stage<MyContext>([productListScene]);
+		//this.bot.use(session());
+		// this.bot.use(stage.middleware());
 		this.bot = new Telegraf(this.token);
-
-		// this.handleStartCommand();
-		// this.handleListProductsCommand();
 		this.bot.start(start);
 		this.bot.hears(CMD_TEXT.menu, backMenu);
 
 		// Запускаем бота
 		this.bot.launch();
 		this.logger.log(`[BOT] Telegramm bot launched`);
+
+		process.once('SIGINT', () => this.bot.stop('SIGINT'));
+		process.once('SIGTERM', () => this.bot.stop('SIGTERM'));
 	}
 
 	private handleStartCommand() {
