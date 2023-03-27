@@ -10,6 +10,7 @@ import { backMenu, start } from './bot.command';
 import { ProductListScene } from './scenes/scene.products.list';
 import { MyContext } from './mycontext';
 import { ProductsService } from '../products/products.service';
+import LocalSession from 'telegraf-session-local';
 
 @injectable()
 export class TelegramBotApp {
@@ -31,11 +32,21 @@ export class TelegramBotApp {
 			throw new Error('Token is not found');
 		}
 		// Инициализируем объект Telegraf и добавляем методы для обработки команд
-		const productListScene = new ProductListScene(productsService);
-		const stage = new Scenes.Stage<MyContext>([productListScene]);
+		//const productListScene = new ProductListScene(productsService);
+		//const stage = new Scenes.Stage<MyContext>([productListScene]);
 		//this.bot.use(session());
 		// this.bot.use(stage.middleware());
-		this.bot = new Telegraf(this.token);
+		this.bot = new Telegraf<MyContext>(this.token);
+		// this.bot(
+		// 	new LocalSession({
+		// 		database: 'session.json',
+		// 	}).middleware(),
+		// );
+		// this.bot.use((ctx, next) => {
+		// 	ctx.session.myProp;
+		// 	ctx.scene.session.myProps;
+		// });
+
 		this.bot.start(start);
 		this.bot.hears(CMD_TEXT.menu, backMenu);
 
