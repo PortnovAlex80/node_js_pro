@@ -6,7 +6,7 @@ import { BaseScene } from 'telegraf/typings/scenes/base';
 //import BaseScene from 'telegraf/typings/scenes/base';
 // import { BaseScene } from 'telegraf/typings/scenes';
 
-export class ProductListScene extends BaseScene<MyContext> {
+export class ProductListScene extends BaseScene {
 	constructor(private productsService: ProductsService) {
 		super('productListScene');
 		this.enter(this.onEnter);
@@ -28,6 +28,7 @@ export class ProductListScene extends BaseScene<MyContext> {
 			)
 			.join('\n');
 
+		ctx.reply(message);
 		await ctx.reply(
 			`Список товаров:\n${message}`,
 			Markup.inlineKeyboard([

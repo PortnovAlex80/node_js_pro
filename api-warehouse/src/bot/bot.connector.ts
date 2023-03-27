@@ -32,7 +32,7 @@ export class TelegramBotApp {
 			throw new Error('Token is not found');
 		}
 		// Инициализируем объект Telegraf и добавляем методы для обработки команд
-		//const productListScene = new ProductListScene(productsService);
+		const productListScene = new ProductListScene(productsService);
 		//const stage = new Scenes.Stage<MyContext>([productListScene]);
 		//this.bot.use(session());
 		// this.bot.use(stage.middleware());
@@ -46,6 +46,11 @@ export class TelegramBotApp {
 		// 	ctx.session.myProp;
 		// 	ctx.scene.session.myProps;
 		// });
+		const start = async (ctx: MyContext) => {
+			ctx.reply(
+				'Добро пожаловать! Для просмотра списка товаров введите "Список товаров".',
+			);
+		};
 
 		this.bot.start(start);
 		this.bot.hears(CMD_TEXT.menu, backMenu);
