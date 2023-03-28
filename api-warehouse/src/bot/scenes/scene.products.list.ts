@@ -1,12 +1,10 @@
 import { Scenes, Markup, Context, session } from 'telegraf';
 import { ProductsService } from '../../products/products.service';
-import { MyContext } from '../mycontext';
+import { MyContext } from '../context.interface';
 import 'reflect-metadata';
 import { BaseScene } from 'telegraf/typings/scenes/base';
-//import BaseScene from 'telegraf/typings/scenes/base';
-// import { BaseScene } from 'telegraf/typings/scenes';
 
-export class ProductListScene extends BaseScene {
+export class ProductListScene extends BaseScene<MyContext> {
 	constructor(private productsService: ProductsService) {
 		super('productListScene');
 		this.enter(this.onEnter);

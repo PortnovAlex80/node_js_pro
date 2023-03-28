@@ -1,35 +1,40 @@
-// test script
 import { Scenes, session, Telegraf, Types } from 'telegraf';
-import { inject, injectable } from 'inversify';
+import 'reflect-metadata';
+import axios from 'axios';
+import { CMD_TEXT } from './bot.const.commands';
+import { backMenu, start } from './bot.command';
+import { MyContext } from './mycontext';
 import { ProductsService } from '../products/products.service';
+
 
 @injectable()
 export class TelegramBotApp {
 	token: string;
 	bot: Telegraf;
-	constructor(
-		@inject(TYPES.ProductsService) private productsService: ProductsService,
-	) {
+
+	constructor(	) {
 		this.token = this.configService.get('TOKEN');
+		const testScene = new Scenes.BaseScene<MyContext>('test');
+		testScene.enter((ctx) => ctx.reply('HELLOO!'));
+		const stage = new Scenes.Stage<MyContext>([testScene]);
+		this.bot = new Telegraf<MyContext>(this.token);
+		this.bot.use(session());
 
-		const stage = new Scenes.Stage<MyContext>([new ProductListScene(productsService)]);
-		this.bot = new Telegraf(this.token);
+		const start = async (ctx: MyContext) => {
+			ctx.reply(
+				'Добро пожаловать! Для просмотра списка товаров введите "Список товаров".',
+			);
+		};
+
 		this.bot.start(start);
+		this.bot.hears(CMD_TEXT.menu, backMenu);
+
+		// Запускаем бота
 		this.bot.launch();
-	}
-}
+		this.logger.log(`[BOT] Telegramm bot launched`);
 
-@injectable()
-export class ProductListScene extends BaseScene {
-	constructor() {
-		super('productListScene');
-		this.enter(this.onEnter);
+		process.once('SIGINT', () => this.bot.stop('SIGINT'));
+		process.once('SIGTERM', () => this.bot.stop('SIGTERM'));
 	}
 
-	private async onEnter(ctx: Context) {
-		const products = await this.productsService.getProducts();
-		if (!products) {
-			return null;
-		}
-		const message = 'products'
 }

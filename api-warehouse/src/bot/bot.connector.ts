@@ -8,7 +8,7 @@ import axios from 'axios';
 import { CMD_TEXT } from './bot.const.commands';
 import { backMenu, start } from './bot.command';
 import { ProductListScene } from './scenes/scene.products.list';
-import { MyContext } from './mycontext';
+import { MyContext } from './context.interface';
 import { ProductsService } from '../products/products.service';
 import LocalSession from 'telegraf-session-local';
 
@@ -16,7 +16,7 @@ import LocalSession from 'telegraf-session-local';
 export class TelegramBotApp {
 	apiUrl = 'http://localhost:3000/products';
 	token: string;
-	bot: Telegraf;
+	bot: Telegraf<MyContext>;
 	headers = {
 		Authorization:
 			'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG43QGpvaG4uY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2Nzk4MTc5Nzh9.vJ44HPgGnVGFmk-o9xDeaDLN2QbBkBfdqU2r8-lj7-c',
@@ -31,31 +31,37 @@ export class TelegramBotApp {
 		if (!this.token) {
 			throw new Error('Token is not found');
 		}
-		// Инициализируем объект Telegraf и добавляем методы для обработки команд
-		const productListScene = new ProductListScene(productsService);
-		//const stage = new Scenes.Stage<MyContext>([productListScene]);
-		//this.bot.use(session());
-		// this.bot.use(stage.middleware());
+
+		const testScene = new Scenes.BaseScene<MyContext>('test');
+		testScene.enter((ctx) => ctx.reply('HELLOO!'));
+		const stage = new Scenes.Stage<MyContext>([testScene]);
+
 		this.bot = new Telegraf<MyContext>(this.token);
-		// this.bot(
-		// 	new LocalSession({
-		// 		database: 'session.json',
-		// 	}).middleware(),
-		// );
+		this.bot.use(session());
+
+		this.bot.use(new LocalSession({ database: 'session.json' }).middleware());
+		// this.bot.use(stage.middleware());
 		// this.bot.use((ctx, next) => {
-		// 	ctx.session.myProp;
-		// 	ctx.scene.session.myProps;
+		// 	console.log(ctx.session.myProp);
+		// 	console.log(ctx.scene?.session.myProps);
+		// 	next();
 		// });
+
 		const start = async (ctx: MyContext) => {
 			ctx.reply(
 				'Добро пожаловать! Для просмотра списка товаров введите "Список товаров".',
 			);
 		};
 
+		this.bot.on('message', (ctx) => {
+			console.log(ctx.message);
+			const chatId = ctx.chat.id;
+		});
+
 		this.bot.start(start);
 		this.bot.hears(CMD_TEXT.menu, backMenu);
 
-		// Запускаем бота
+		this.bot.command('test', (ctx) => ctx.scene.enter('test'));
 		this.bot.launch();
 		this.logger.log(`[BOT] Telegramm bot launched`);
 
