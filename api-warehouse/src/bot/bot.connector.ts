@@ -1,26 +1,23 @@
-import { Scenes, session, Telegraf, Types } from 'telegraf';
+import { Scenes, Telegraf, Types } from 'telegraf';
 import { IConfigService } from '../config/config.service.interface';
 import { inject, injectable } from 'inversify';
 import { ILogger } from '../logger/logger.interface';
 import { TYPES } from '../types';
 import 'reflect-metadata';
-import axios from 'axios';
 import { CMD_TEXT } from './bot.const.commands';
 import { backMenu, start } from './bot.command';
 import { ProductListScene } from './scenes/scene.products.list';
-import { MyContext } from './context.interface';
+import { IBotContext } from './context/context.interface';
 import { ProductsService } from '../products/products.service';
 import LocalSession from 'telegraf-session-local';
+import { Command } from './commands/command.class';
+import { StartCommand } from './commands/start.command';
 
 @injectable()
 export class TelegramBotApp {
-	apiUrl = 'http://localhost:3000/products';
 	token: string;
-	bot: Telegraf<MyContext>;
-	headers = {
-		Authorization:
-			'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG43QGpvaG4uY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE2Nzk4MTc5Nzh9.vJ44HPgGnVGFmk-o9xDeaDLN2QbBkBfdqU2r8-lj7-c',
-	};
+	bot: Telegraf<IBotContext>;
+	commands: Command[] = [];
 
 	constructor(
 		@inject(TYPES.ILogger) private logger: ILogger,
@@ -32,36 +29,41 @@ export class TelegramBotApp {
 			throw new Error('Token is not found');
 		}
 
-		const testScene = new Scenes.BaseScene<MyContext>('test');
+		const testScene = new Scenes.BaseScene<IBotContext>('test');
 		testScene.enter((ctx) => ctx.reply('HELLOO!'));
-		const stage = new Scenes.Stage<MyContext>([testScene]);
+		//const stage = new Scenes.Stage<IBotContext>([testScene]);
 
-		this.bot = new Telegraf<MyContext>(this.token);
-		this.bot.use(session());
-
+		this.bot = new Telegraf<IBotContext>(this.token);
 		this.bot.use(new LocalSession({ database: 'session.json' }).middleware());
+
+		this.commands = [new StartCommand(this.bot)];
+		for (const command of this.commands) {
+			command.handle();
+		}
+
 		// this.bot.use(stage.middleware());
-		// this.bot.use((ctx, next) => {
-		// 	console.log(ctx.session.myProp);
-		// 	console.log(ctx.scene?.session.myProps);
-		// 	next();
-		// });
-
-		const start = async (ctx: MyContext) => {
-			ctx.reply(
-				'Добро пожаловать! Для просмотра списка товаров введите "Список товаров".',
-			);
-		};
-
-		this.bot.on('message', (ctx) => {
-			console.log(ctx.message);
-			const chatId = ctx.chat.id;
+		this.bot.use(async (ctx, next) => {
+			ctx.props = ctx.message?.chat.type ? ctx.message?.chat.type : 'empty';
+			console.log(ctx.props);
+			console.log('MIDDLEWARE OK');
+			next();
 		});
 
-		this.bot.start(start);
-		this.bot.hears(CMD_TEXT.menu, backMenu);
+		// const start = async (ctx: MyContext) => {
+		// 	ctx.reply(
+		// 		'Добро пожаловать! Для просмотра списка товаров введите "Список товаров".',
+		// 	);
+		// };
 
-		this.bot.command('test', (ctx) => ctx.scene.enter('test'));
+		// this.bot.on('message', (ctx) => {
+		// 	console.log(ctx.message);
+		// 	const chatId = ctx.chat.id;
+		// });
+
+		// this.bot.start(start);
+		// this.bot.hears(CMD_TEXT.menu, backMenu);
+
+		// this.bot.command('test', (ctx) => ctx.scene.enter('test'));
 		this.bot.launch();
 		this.logger.log(`[BOT] Telegramm bot launched`);
 
@@ -80,10 +82,7 @@ export class TelegramBotApp {
 	private handleListProductsCommand() {
 		this.bot.hears('Список товаров', async (ctx) => {
 			try {
-				const response = await axios.get(this.apiUrl, {
-					headers: this.headers,
-				});
-				const products = response.data;
+				const products = this.productsService.getProducts();
 				this.logger.log(`${JSON.stringify(products)}`);
 				ctx.reply(`Список доступных товаров:\n${JSON.stringify(products)}`);
 			} catch (error) {
