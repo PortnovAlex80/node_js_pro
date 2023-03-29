@@ -4,7 +4,11 @@
       "id": "539512226:539512226",
       "data": {
         "sessionData": "Yes",
-        "botSession": "Yes"
+        "botSession": "Yes",
+        "__scenes": {
+          "current": "test",
+          "state": {}
+        }
       }
     }
   ]

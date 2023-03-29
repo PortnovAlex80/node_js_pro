@@ -1,10 +1,10 @@
-import { Scenes, Markup, Context, session } from 'telegraf';
+import { Scenes, Markup, Context, session, Telegraf } from 'telegraf';
 import { ProductsService } from '../../products/products.service';
 import { IBotContext } from '../context/context.interface';
 import 'reflect-metadata';
 import { BaseScene } from 'telegraf/typings/scenes/base';
 
-export class ProductListScene extends BaseScene<IBotContext> {
+export class ProductListScene extends Scenes.BaseScene<IBotContext> {
 	constructor(private productsService: ProductsService) {
 		super('productListScene');
 		this.enter(this.onEnter);
@@ -12,6 +12,12 @@ export class ProductListScene extends BaseScene<IBotContext> {
 		this.action('nextPage', this.nextPage);
 		this.action('callbackQuery', this.callbackQuery);
 	}
+
+	// const start = async (ctx: MyContext) => {
+	// 	ctx.reply(
+	// 		'Добро пожаловать! Для просмотра списка товаров введите "Список товаров".',
+	// 	);
+	// };
 
 	private async onEnter(ctx: Context) {
 		const products = await this.productsService.getProducts(); // получаем первые 10 товаров
@@ -27,6 +33,7 @@ export class ProductListScene extends BaseScene<IBotContext> {
 			.join('\n');
 
 		ctx.reply(message);
+
 		await ctx.reply(
 			`Список товаров:\n${message}`,
 			Markup.inlineKeyboard([
@@ -54,6 +61,29 @@ export class ProductListScene extends BaseScene<IBotContext> {
 		// и отправьте обновленный список товаров
 		await ctx.answerCbQuery();
 	}
+
+	// private async handleStartCommand() {
+	// 	this.bot.command('start', (ctx) => {
+	// 		ctx.reply(
+	// 			'Добро пожаловать! Для просмотра списка товаров введите "Список товаров".',
+	// 		);
+	// 	});
+	// }
+
+	// private async  handleListProductsCommand() {
+	// 	this.bot.hears('Список товаров', async (ctx) => {
+	// 		try {
+	// 			const products = this.productsService.getProducts();
+	// 			this.logger.log(`${JSON.stringify(products)}`);
+	// 			ctx.reply(`Список доступных товаров:\n${JSON.stringify(products)}`);
+	// 		} catch (error) {
+	// 			console.log(error);
+	// 			ctx.reply(
+	// 				'Произошла ошибка при получении списка товаров. Попробуйте еще раз позже.',
+	// 			);
+	// 		}
+	// 	});
+	// }
 }
 
 // const appContainer = new Container();
