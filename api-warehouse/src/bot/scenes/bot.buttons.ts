@@ -1,5 +1,5 @@
 import { Markup } from 'telegraf';
-import { CMD_TEXT } from './bot.const.commands';
+import { CMD_TEXT } from '../commands/bot.const.commands';
 
 export const mainMenu = Markup.keyboard([
 	[CMD_TEXT.start],

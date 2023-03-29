@@ -1,4 +1,4 @@
-import { mainMenu } from './bot.buttons';
+import { mainMenu } from '../scenes/bot.buttons';
 import { Context } from 'telegraf';
 
 export const start = (ctx: Context) =>
