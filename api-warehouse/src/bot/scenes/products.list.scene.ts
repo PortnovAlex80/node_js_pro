@@ -2,37 +2,33 @@ import { Scenes, Markup, Context, session, Telegraf } from 'telegraf';
 import { ProductsService } from '../../products/products.service';
 import { IBotContext } from '../context/context.interface';
 import 'reflect-metadata';
-import { BaseScene } from 'telegraf/typings/scenes/base';
-import { inject, injectable } from 'inversify';
-import { TYPES } from '../../types';
 
-@injectable()
 export class ProductListScene extends Scenes.BaseScene<IBotContext> {
 	constructor(private productsService: ProductsService) {
 		super('productListScene');
-		this.enter(this.onEnter.bind(this));
+		const { leave } = Scenes.Stage;
+		this.enter((ctx) => this.onEnter(ctx));
 		this.action('prevPage', this.prevPage);
 		this.action('nextPage', this.nextPage);
-		this.action('callbackQuery', this.callbackQuery);
-		this.command('off', this.leave());
+		this.command('off', leave<IBotContext>());
+		this.command('back', leave<IBotContext>());
+		this.leave((ctx) => ctx.reply('BUY OFF!'));
 	}
 	private async onEnter(ctx: IBotContext) {
 		ctx.reply(
 			'Добро пожаловать! Для просмотра списка товаров введите "Список товаров".',
 		);
-		const products = await this.productsService.getProducts(); // получаем первые 10 товаров
+		const products = await this.productsService.getProducts();
 		if (!products) {
 			return null;
 		}
 
-		const message = products
+		const message = await products
 			.map(
 				(product, index) =>
 					`${index + 1}. ${product.name} - ${product.quantity}`,
 			)
 			.join('\n');
-
-		ctx.reply(message);
 
 		await ctx.reply(
 			`Список товаров:\n${message}`,
@@ -46,11 +42,13 @@ export class ProductListScene extends Scenes.BaseScene<IBotContext> {
 	}
 
 	private async prevPage(ctx: Context) {
+		await ctx.reply('off');
 		// Реализуйте логику для навигации на предыдущую страницу товаров
 		// и отправьте обновленный список товаров
 		await ctx.answerCbQuery();
 	}
 	private async nextPage(ctx: Context) {
+		await ctx.reply('off');
 		// Реализуйте логику для навигации на следующую страницу товаров
 		// и отправьте обновленный список товаров
 		await ctx.answerCbQuery();
@@ -61,37 +59,4 @@ export class ProductListScene extends Scenes.BaseScene<IBotContext> {
 		// и отправьте обновленный список товаров
 		await ctx.answerCbQuery();
 	}
-
-	// private async handleStartCommand() {
-	// 	this.bot.command('start', (ctx) => {
-	// 		ctx.reply(
-	// 			'Добро пожаловать! Для просмотра списка товаров введите "Список товаров".',
-	// 		);
-	// 	});
-	// }
-
-	// private async  handleListProductsCommand() {
-	// 	this.bot.hears('Список товаров', async (ctx) => {
-	// 		try {
-	// 			const products = this.productsService.getProducts();
-	// 			this.logger.log(`${JSON.stringify(products)}`);
-	// 			ctx.reply(`Список доступных товаров:\n${JSON.stringify(products)}`);
-	// 		} catch (error) {
-	// 			console.log(error);
-	// 			ctx.reply(
-	// 				'Произошла ошибка при получении списка товаров. Попробуйте еще раз позже.',
-	// 			);
-	// 		}
-	// 	});
-	// }
 }
-
-// const appContainer = new Container();
-// appContainer.load(appBindings);
-// const productServiceInstance = appContainer.get<ProductsService>(
-// 	TYPES.ProductsService,
-// );
-
-// const productListScene = new ProductListScene(productServiceInstance);
-
-// export { productListScene };

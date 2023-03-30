@@ -55,6 +55,3 @@ export class TelegramBotApp {
 		process.once('SIGTERM', () => this.bot.stop('SIGTERM'));
 	}
 }
-
-// GET http://localhost:3000/products
-// Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG43QGpvaG4uY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjc5MDc4MjQxfQ.gm7nOT-lMFoQDNSKT1LvtWyZwc6Muafh3RLN-OqErXk

@@ -20,12 +20,12 @@ export class StartCommand extends Command {
 		});
 
 		this.bot.action('course_like', (ctx) => {
-			ctx.session.botSession = 'Yes';
+			//ctx.session.botSession = 'Yes';
 			ctx.editMessageText('Cool');
 		});
 
 		this.bot.action('course_dislike', (ctx) => {
-			ctx.session.botSession = 'No';
+			//ctx.session.botSession = 'No';
 			ctx.editMessageText('Sorry');
 		});
 	}

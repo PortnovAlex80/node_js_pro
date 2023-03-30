@@ -52,10 +52,6 @@ export const appBindings = new ContainerModule((bind: interfaces.Bind) => {
 		.to(TelegramBotApp)
 		.inSingletonScope();
 
-	bind<ProductListScene>(TYPES.ProductListScene)
-		.to(ProductListScene)
-		.inSingletonScope();
-
 	bind<App>(TYPES.Application).to(App).inSingletonScope();
 });
 
