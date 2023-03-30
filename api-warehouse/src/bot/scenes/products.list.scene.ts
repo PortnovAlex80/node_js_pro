@@ -12,7 +12,7 @@ export class ProductListScene extends Scenes.BaseScene<IBotContext> {
 		this.action('nextPage', this.nextPage);
 		this.command('off', leave<IBotContext>());
 		this.command('back', leave<IBotContext>());
-		this.leave((ctx) => ctx.reply('BUY OFF!'));
+		//this.leave((ctx) => ctx.reply('BUY OFF!'));
 	}
 	private async onEnter(ctx: IBotContext) {
 		ctx.reply(
