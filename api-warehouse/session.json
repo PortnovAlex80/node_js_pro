@@ -6,7 +6,7 @@
         "sessionData": "Yes",
         "botSession": "Yes",
         "__scenes": {
-          "current": "test",
+          "current": "productListScene",
           "state": {}
         }
       }

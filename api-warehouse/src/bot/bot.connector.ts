@@ -29,10 +29,8 @@ export class TelegramBotApp {
 			throw new Error('Token is not found');
 		}
 
-		const stage = new Scenes.Stage<IBotContext>([
-			testScene,
-			new ProductListScene(this.productsService),
-		]);
+		const productListScene = new ProductListScene(this.productsService);
+		const stage = new Scenes.Stage<IBotContext>([testScene, productListScene]);
 
 		this.bot = new Telegraf<IBotContext>(this.token);
 		this.bot.use(new LocalSession({ database: 'session.json' }).middleware());
@@ -48,6 +46,7 @@ export class TelegramBotApp {
 		}
 
 		this.bot.command('test', (ctx) => ctx.scene.enter('test'));
+		this.bot.command('list', (ctx) => ctx.scene.enter('productListScene'));
 
 		this.bot.launch();
 		this.logger.log(`[BOT] Telegramm bot launched`);

@@ -3,23 +3,23 @@ import { ProductsService } from '../../products/products.service';
 import { IBotContext } from '../context/context.interface';
 import 'reflect-metadata';
 import { BaseScene } from 'telegraf/typings/scenes/base';
+import { inject, injectable } from 'inversify';
+import { TYPES } from '../../types';
 
+@injectable()
 export class ProductListScene extends Scenes.BaseScene<IBotContext> {
 	constructor(private productsService: ProductsService) {
 		super('productListScene');
-		this.enter(this.onEnter);
+		this.enter(this.onEnter.bind(this));
 		this.action('prevPage', this.prevPage);
 		this.action('nextPage', this.nextPage);
 		this.action('callbackQuery', this.callbackQuery);
+		this.command('off', this.leave());
 	}
-
-	// const start = async (ctx: MyContext) => {
-	// 	ctx.reply(
-	// 		'Добро пожаловать! Для просмотра списка товаров введите "Список товаров".',
-	// 	);
-	// };
-
-	private async onEnter(ctx: Context) {
+	private async onEnter(ctx: IBotContext) {
+		ctx.reply(
+			'Добро пожаловать! Для просмотра списка товаров введите "Список товаров".',
+		);
 		const products = await this.productsService.getProducts(); // получаем первые 10 товаров
 		if (!products) {
 			return null;
