@@ -8,16 +8,9 @@ export class ProductListScene extends Scenes.BaseScene<IBotContext> {
 		super('productListScene');
 		const { leave } = Scenes.Stage;
 		this.enter((ctx) => this.onEnter(ctx));
-		this.action('prevPage', this.prevPage);
-		this.action('nextPage', this.nextPage);
-		this.command('off', leave<IBotContext>());
-		this.command('back', leave<IBotContext>());
-		//this.leave((ctx) => ctx.reply('BUY OFF!'));
 	}
 	private async onEnter(ctx: IBotContext) {
-		ctx.reply(
-			'Добро пожаловать! Для просмотра списка товаров введите "Список товаров".',
-		);
+		ctx.reply('Добро пожаловать!\n Our Warehouse\n "Список товаров".');
 		const products = await this.productsService.getProducts();
 		if (!products) {
 			return null;
@@ -32,31 +25,9 @@ export class ProductListScene extends Scenes.BaseScene<IBotContext> {
 
 		await ctx.reply(
 			`Список товаров:\n${message}`,
-			Markup.inlineKeyboard([
-				[
-					Markup.button.callback('⬅️ Назад', 'prevPage'),
-					Markup.button.callback('Вперед ➡️', 'nextPage'),
-				],
-			]),
+			// Markup.inlineKeyboard([[Markup.button.callback('Add', 'addItem')]]),
 		);
-	}
 
-	private async prevPage(ctx: Context) {
-		await ctx.reply('off');
-		// Реализуйте логику для навигации на предыдущую страницу товаров
-		// и отправьте обновленный список товаров
-		await ctx.answerCbQuery();
-	}
-	private async nextPage(ctx: Context) {
-		await ctx.reply('off');
-		// Реализуйте логику для навигации на следующую страницу товаров
-		// и отправьте обновленный список товаров
-		await ctx.answerCbQuery();
-	}
-
-	private async callbackQuery(ctx: Context) {
-		// Реализуйте логику для навигации на следующую страницу товаров
-		// и отправьте обновленный список товаров
-		await ctx.answerCbQuery();
+		ctx.scene.leave();
 	}
 }

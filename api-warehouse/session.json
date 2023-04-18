@@ -3,12 +3,7 @@
     {
       "id": "539512226:539512226",
       "data": {
-        "sessionData": "Yes",
-        "botSession": "Yes",
-        "__scenes": {
-          "current": "productListScene",
-          "state": {}
-        }
+        "__scenes": {}
       }
     }
   ]

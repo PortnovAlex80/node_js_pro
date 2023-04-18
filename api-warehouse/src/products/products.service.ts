@@ -30,6 +30,9 @@ export class ProductsService implements IProductsService {
 	}
 
 	async createProduct(product: ProductDto): Promise<ProductModel | null> {
+		console.log(product.name);
+		console.log(product.quantity);
+
 		const result = await this.productsRepository.createProduct(
 			new Product(product.name, product.quantity),
 		);

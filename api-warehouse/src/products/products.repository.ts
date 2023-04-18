@@ -16,7 +16,7 @@ export class ProductsRepository implements IProductsRepository {
 
 	getProducts(): Promise<ProductModel[] | null> {
 		const skip = 0;
-		const take = 5;
+		const take = 50;
 		return this.prismaService.client.product.findMany({
 			skip,
 			take,
@@ -36,6 +36,7 @@ export class ProductsRepository implements IProductsRepository {
 	async createProduct(product: Product): Promise<ProductModel | null> {
 		const { name, quantity } = product;
 		const checkIsProductExist = await this.getProduct(name);
+		console.log(`Repo layer ${name} is check ${checkIsProductExist}`);
 		if (checkIsProductExist) {
 			return null;
 		}
