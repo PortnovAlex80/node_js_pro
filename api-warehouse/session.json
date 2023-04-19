@@ -3,7 +3,18 @@
     {
       "id": "539512226:539512226",
       "data": {
-        "__scenes": {}
+        "__scenes": {
+          "current": "productListScene",
+          "state": {}
+        },
+        "item": {
+          "name": "Hummer",
+          "quantity": 1
+        },
+        "itemSesseion": {
+          "name": "Warehouse",
+          "quantity": 5
+        }
       }
     }
   ]

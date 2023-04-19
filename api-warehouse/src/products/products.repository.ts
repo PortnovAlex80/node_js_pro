@@ -36,7 +36,6 @@ export class ProductsRepository implements IProductsRepository {
 	async createProduct(product: Product): Promise<ProductModel | null> {
 		const { name, quantity } = product;
 		const checkIsProductExist = await this.getProduct(name);
-		console.log(`Repo layer ${name} is check ${checkIsProductExist}`);
 		if (checkIsProductExist) {
 			return null;
 		}
