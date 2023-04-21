@@ -47,7 +47,7 @@ export class TelegramBotApp {
 
 		this.bot.start(async (ctx) => {
 			await ctx.reply(
-				'Hello! Lets go purchase!',
+				'Hello! Lets go admin your Warehouse!',
 				Markup.keyboard([['Warehouse', 'Add item']])
 					.oneTime()
 					.resize(),

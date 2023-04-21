@@ -1,19 +1,42 @@
 {
   "sessions": [
     {
+      "id": "-1001922800242:539512226",
+      "data": {
+        "__scenes": {},
+        "itemSesseion": {
+          "name": "Жопа",
+          "quantity": 5
+        }
+      }
+    },
+    {
       "id": "539512226:539512226",
       "data": {
-        "__scenes": {
-          "current": "productListScene",
-          "state": {}
-        },
-        "item": {
-          "name": "Hummer",
-          "quantity": 1
-        },
+        "__scenes": {},
         "itemSesseion": {
-          "name": "Warehouse",
-          "quantity": 5
+          "name": "Локомотив",
+          "quantity": 10
+        }
+      }
+    },
+    {
+      "id": "-1001922800242:689099518",
+      "data": {
+        "__scenes": {},
+        "itemSesseion": {
+          "name": "Во пля.. заработало",
+          "quantity": 1
+        }
+      }
+    },
+    {
+      "id": "-1001922800242:1555523498",
+      "data": {
+        "__scenes": {},
+        "itemSesseion": {
+          "name": "Me",
+          "quantity": 10
         }
       }
     }
