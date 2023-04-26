@@ -1,5 +1,5 @@
 import { Markup, Scenes } from 'telegraf';
-import { IBotContext } from '../context/context.interface';
+import { IBotContext } from '../context.interface';
 const { leave } = Scenes.Stage;
 
 export const testScene = new Scenes.BaseScene<IBotContext>('test');

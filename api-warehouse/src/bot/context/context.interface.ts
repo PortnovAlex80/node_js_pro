@@ -1,6 +1,4 @@
 import { Context, Scenes } from 'telegraf';
-import type { Update } from 'telegraf/typings/core/types/typegram';
-import SceneContextScene from 'telegraf/typings/scenes/base';
 import { ProductDto } from '../../products/dto/product.dto';
 
 interface IBotSceneSession extends Scenes.SceneSessionData {

@@ -17,7 +17,9 @@ export class ProductsService implements IProductsService {
 	) {}
 
 	async getProducts(): Promise<ProductModel[] | null> {
-		const products = await this.productsRepository.getProducts();
+		const skip = 0;
+		const take = 50;
+		const products = await this.productsRepository.getProducts(skip, take);
 		return products;
 	}
 
@@ -42,6 +44,9 @@ export class ProductsService implements IProductsService {
 		return result;
 	}
 	async updateProduct(product: ProductDto): Promise<ProductModel | null> {
+		if (product.quantity === 0) {
+			return null;
+		}
 		const result = await this.productsRepository.updateProduct(product);
 		if (!result) {
 			return null;

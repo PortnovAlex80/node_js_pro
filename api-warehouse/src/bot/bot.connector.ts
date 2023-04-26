@@ -7,17 +7,14 @@ import 'reflect-metadata';
 import { IBotContext } from './context/context.interface';
 import { ProductsService } from '../products/products.service';
 import LocalSession from 'telegraf-session-local';
-import { Command } from './commands/command.class';
-import { testScene } from './scenes/test.scene';
-import { ProductListScene } from './scenes/products.list.scene';
-import { ProductAddNameItemScene } from './scenes/products.addNameItem.scene';
-import { ProductAddItemQuantityScene } from './scenes/products.addItemsQuantity.scene';
+import { ProductListScene } from './context/scenes/products.list.scene';
+import { ProductAddNameItemScene } from './context/scenes/products.addNameItem.scene';
+import { ProductAddItemQuantityScene } from './context/scenes/products.addItemsQuantity.scene';
 
 @injectable()
 export class TelegramBotApp {
 	token: string;
 	bot: Telegraf<IBotContext>;
-	commands: Command[] = [];
 
 	constructor(
 		@inject(TYPES.ILogger) private logger: ILogger,
@@ -35,7 +32,6 @@ export class TelegramBotApp {
 			this.productsService,
 		);
 		const stage = new Scenes.Stage<IBotContext>([
-			testScene,
 			productListScene,
 			productAddNameItemScene,
 			productAddItemQuantityScene,
@@ -55,7 +51,7 @@ export class TelegramBotApp {
 		this.bot.use(new LocalSession({ database: 'session.json' }).middleware());
 		this.bot.use(stage.middleware());
 
-		this.bot.hears('Warehouse', (ctx) => ctx.scene.enter('productListScene'));
+		this.bot.hears('Warehouse', (ctx) => ctx.scene.enter('ProductListScene'));
 		this.bot.hears('Add item', (ctx) =>
 			ctx.scene.enter('ProductAddNameItemScene'),
 		);

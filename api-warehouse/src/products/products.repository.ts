@@ -23,15 +23,11 @@ export class ProductsRepository implements IProductsRepository {
 		});
 	}
 	async getProduct(name: string): Promise<ProductModel | null> {
-		const productInfo = await this.prismaService.client.product.findFirst({
+		return await this.prismaService.client.product.findFirst({
 			where: {
 				name,
 			},
 		});
-		if (!productInfo) {
-			return null;
-		}
-		return productInfo;
 	}
 	async createProduct(product: Product): Promise<ProductModel | null> {
 		const { name, quantity } = product;
@@ -51,9 +47,6 @@ export class ProductsRepository implements IProductsRepository {
 		const { name, quantity } = product;
 		const checkIsProductExist = await this.getProduct(name);
 		if (!checkIsProductExist) {
-			return null;
-		}
-		if (!quantity) {
 			return null;
 		}
 		return await this.prismaService.client.product.update({

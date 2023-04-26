@@ -1,6 +1,6 @@
 import { Scenes } from 'telegraf';
-import { ProductsService } from '../../products/products.service';
-import { IBotContext } from '../context/context.interface';
+import { ProductsService } from '../../../products/products.service';
+import { IBotContext } from '../context.interface';
 import 'reflect-metadata';
 export class ProductAddItemQuantityScene extends Scenes.BaseScene<IBotContext> {
 	constructor(private productsService: ProductsService) {

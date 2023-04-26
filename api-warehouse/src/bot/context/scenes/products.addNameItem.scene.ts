@@ -1,6 +1,5 @@
 import { Scenes } from 'telegraf';
-import { IBotContext } from '../context/context.interface';
-import 'reflect-metadata';
+import { IBotContext } from '../context.interface';
 
 export class ProductAddNameItemScene extends Scenes.BaseScene<IBotContext> {
 	constructor() {
