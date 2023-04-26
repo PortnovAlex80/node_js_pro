@@ -10,22 +10,25 @@ export class ProductAddItemQuantityScene extends Scenes.BaseScene<IBotContext> {
 		const { leave } = Scenes.Stage;
 		this.enter((ctx) => ctx.reply('Enter Quantity'));
 		this.on('text', async (ctx) => {
-			const userInput = ctx.message.text;
-			const isNumber = isNaN(Number(userInput));
-			if (!isNumber) {
-				await this.enterItemQuantity(ctx);
+			const quantity = Number(ctx.message.text);
+			const name = ctx.session.itemSesseion.name;
+			if (quantity) {
+				await this.enterItemQuantity(name, quantity);
+				ctx.session.itemSesseion = {
+					name: name,
+					quantity: Number(quantity),
+				};
+				ctx.reply(`${name} quantity ${quantity} added`);
+				ctx.scene.leave();
 			} else {
 				ctx.reply('Enter number value');
 			}
 		});
 	}
-	private async enterItemQuantity(ctx: any) {
-		const itemQuantity = ctx.message.text;
-		const itemName = ctx.session.itemSesseion.name;
-		ctx.reply(`${itemName} quantity ${itemQuantity} added`);
-		const item: ProductDto = { name: itemName, quantity: Number(itemQuantity) };
-		ctx.session.itemSesseion = item;
-		const addItemResult = await this.productsService.createProduct(item);
-		ctx.scene.leave();
+	private async enterItemQuantity(name: string, quantity: number) {
+		const addItemResult = await this.productsService.createProduct({
+			name: name,
+			quantity: Number(quantity),
+		});
 	}
 }
