@@ -1,9 +1,7 @@
-import { Scenes, Markup, Context, session, Telegraf } from 'telegraf';
+import { Scenes } from 'telegraf';
 import { ProductsService } from '../../products/products.service';
 import { IBotContext } from '../context/context.interface';
 import 'reflect-metadata';
-import { ProductDto } from '../../products/dto/product.dto';
-
 export class ProductAddItemQuantityScene extends Scenes.BaseScene<IBotContext> {
 	constructor(private productsService: ProductsService) {
 		super('ProductAddItemQuantityScene');
@@ -26,7 +24,7 @@ export class ProductAddItemQuantityScene extends Scenes.BaseScene<IBotContext> {
 		});
 	}
 	private async enterItemQuantity(name: string, quantity: number) {
-		const addItemResult = await this.productsService.createProduct({
+		return await this.productsService.createProduct({
 			name: name,
 			quantity: Number(quantity),
 		});
