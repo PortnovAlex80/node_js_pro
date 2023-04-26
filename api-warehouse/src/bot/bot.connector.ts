@@ -8,7 +8,6 @@ import { IBotContext } from './context/context.interface';
 import { ProductsService } from '../products/products.service';
 import LocalSession from 'telegraf-session-local';
 import { Command } from './commands/command.class';
-import { StartCommand } from './commands/start.command';
 import { testScene } from './scenes/test.scene';
 import { ProductListScene } from './scenes/products.list.scene';
 import { ProductAddNameItemScene } from './scenes/products.addNameItem.scene';
@@ -54,7 +53,6 @@ export class TelegramBotApp {
 		});
 
 		this.bot.use(new LocalSession({ database: 'session.json' }).middleware());
-
 		this.bot.use(stage.middleware());
 
 		this.bot.hears('Warehouse', (ctx) => ctx.scene.enter('productListScene'));
