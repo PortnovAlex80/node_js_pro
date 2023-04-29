@@ -13,8 +13,6 @@ import { IProductsController } from './products.interfaces/products.controller.i
 import { IProductsService } from './products.interfaces/products.service.interface';
 import { ProductDto } from './dto/product.dto';
 import 'reflect-metadata';
-import { Product } from './product.entity';
-
 @injectable()
 export class ProductsController
 	extends BaseController
@@ -31,7 +29,6 @@ export class ProductsController
 			[UserRole.Admin, UserRole.User],
 			secret,
 		);
-		const roleUser = new RoleMiddleware([UserRole.User], secret);
 		const authGuard = new AuthGuard();
 		const validateProductDTO = new ValidateMiddleware(ProductDto);
 		const PRODUCTS_PATH = '/products';

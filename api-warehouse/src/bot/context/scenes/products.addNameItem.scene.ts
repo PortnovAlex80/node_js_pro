@@ -6,9 +6,8 @@ export class ProductAddNameItemScene extends Scenes.BaseScene<IBotContext> {
 		super('ProductAddNameItemScene');
 		this.enter((ctx) => ctx.reply('Enter items name'));
 		this.on('text', async (ctx) => {
-			const itemName = ctx.message.text;
+			ctx.session.itemSesseion = { name: ctx.message.text, quantity: 0 };
 			await ctx.scene.enter('ProductAddItemQuantityScene');
-			ctx.session.itemSesseion = { name: itemName, quantity: 0 };
 		});
 	}
 }

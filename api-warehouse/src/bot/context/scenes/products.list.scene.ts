@@ -15,7 +15,7 @@ export class ProductListScene extends Scenes.BaseScene<IBotContext> {
 			return null;
 		}
 
-		const message = await products
+		const message = products
 			.map(
 				(product, index) =>
 					`${index + 1}. ${product.name} - ${product.quantity}`,

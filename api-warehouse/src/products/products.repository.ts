@@ -1,4 +1,4 @@
-import { PrismaClient, Product as ProductModel } from '@prisma/client';
+import { Product as ProductModel } from '@prisma/client';
 import { inject, injectable } from 'inversify';
 import { PrismaService } from '../database/prisma.service';
 import { ILogger } from '../logger/logger.interface';
@@ -14,9 +14,7 @@ export class ProductsRepository implements IProductsRepository {
 		@inject(TYPES.PrismaService) private prismaService: PrismaService,
 	) {}
 
-	getProducts(): Promise<ProductModel[] | null> {
-		const skip = 0;
-		const take = 50;
+	getProducts(skip: number, take: number): Promise<ProductModel[] | null> {
 		return this.prismaService.client.product.findMany({
 			skip,
 			take,
