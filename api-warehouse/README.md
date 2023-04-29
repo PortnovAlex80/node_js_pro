@@ -30,20 +30,21 @@ SECRET='set the secret as string'
 3 e2e test: npm test:e2e
 
 
-**⚠️ ПРИМЕЧАНИЕ**
-Привести в порядок архитектурное описание: https://www.simbirsoft.com/blog/kak-prorabotat-arkhitekturnuyu-kontseptsiyu-it-proekta-s-pomoshchyu-attribute-driven-design/  
+**⚠️ ПРИМЕЧАНИЕ**  
 
 ПРОЕКТ В РАБОТЕ ДО ИЮНЯ. 
+заметка:
+Привести в порядок архитектурное описание: https://www.simbirsoft.com/blog/kak-prorabotat-arkhitekturnuyu-kontseptsiyu-it-proekta-s-pomoshchyu-attribute-driven-design/  
 МОГУТ БЫТЬ ИЗМЕНЕНИЯ В ОПИСАНИИ!
-Просьба не брать описание проекта за основу.
+Просьба не брать описание проекта за основу, так как описание создано на моем личное устротрение.
 
-_Это учебный проект курса https://www.udemy.com/course/nodejs-start/ (https://learn.purpleschool.ru/public/products) в рамках которого необходимо отработать навыки реализации бекенд приложения:  
+_Это учебный проект курса https://www.udemy.com/course/nodejs-start/ (https://learn.purpleschool.ru/public/products) в рамках которого необходимо отработать навыки реализации бекенд приложения:_  
 - с ипспользованием слоеной архитектуры (middlewares, exceptions filters,  controller, error handler, services, repository, orm prisma);
 - реализовать CRUD операции с ресурсом (товары на складе);  
 - JWT авторизация с ролевой моделью;  
 - Документацию на API привести в формате openAPI. Предоставить swagger.
 
-CRUD для управления новыми пользователями в рамках данного релиза не требуется._
+CRUD для управления новыми пользователями в рамках данного релиза не требуется.
 
 &#128736;  Инструменты для редактирования README.md
 - https://github.com/GnuriaN/format-README/blob/master/README.md
