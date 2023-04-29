@@ -1,4 +1,8 @@
-# Система управления складом версия 0.0.1
+# Система управления складом версия 0.0.1 - серверная часть (backend NodeJS/TS)
+
+My roles:
+1 Junior JS/NodeJS/TS backend developer
+2 Middle System Analyst 
 
 ## Оглавление
 
@@ -24,12 +28,13 @@
 PORT=set the port as number  
 SALT=set the salt as number  
 SECRET='set the secret as string' 
+SKIP = 0
+TAKE = 20
 
 2 npm ci && npm start 
-
 3 e2e test: npm test:e2e
 
-
+------------
 **⚠️ ПРИМЕЧАНИЕ**  
 
 ПРОЕКТ В РАБОТЕ ДО ИЮНЯ. 
@@ -55,9 +60,6 @@ CRUD для управления новыми пользователями в р
 - https://emojio.ru/objects/d83ddee0-1f6e0-molot-i-gaechnyy-klyuch.html
 - https://www.udemy.com/course/microservices-with-node-js-and-react/learn/lecture/19099026#overview пример проектирования метода by Stephen Grider
 ------------
-
-
-## Тип проекта: серверная часть (бекенд NodeJS) системы управления складом  
 
 ## Бизнес требования
 
