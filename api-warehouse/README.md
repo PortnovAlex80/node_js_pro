@@ -1,9 +1,5 @@
 # Система управления складом версия 0.0.1  (WHS) - серверная часть (backend NodeJS/TS)
 
-My roles:
-- Junior Backend Developer for JS/NodeJS/TS (implementing backend)
-- Middle System Analyst (describing business and system requirements)
-
 ## Оглавление
 
 1. [Тип проекта](#тип-проекта-серверная-часть-бекенд-nodejs-системы-управления-складом)
@@ -36,15 +32,21 @@ TAKE = 20
 
 ------------
 **⚠️ ПРИМЕЧАНИЕ**  
-  
-Это учебный проект курса https://www.udemy.com/course/nodejs-start/ (https://learn.purpleschool.ru/public/products) в рамках которого необходимо отработать навыки реализации бекенд приложения:  
-- с ипспользованием слоеной архитектуры (middlewares, exceptions filters,  controller, error handler, services, repository, orm prisma);
-- реализовать CRUD операции с ресурсом (товары на складе);  
-- JWT авторизация с ролевой моделью;  
-- Документацию на API привести в формате openAPI. Предоставить swagger.
-CRUD для управления новыми пользователями в рамках данного релиза не требуется.
+
+
+Это учебный проект курса https://www.udemy.com/course/nodejs-start/ (https://learn.purpleschool.ru/public/products) в рамках которого я выступаю в ролях:
+
+- Junior Backend Developer for JS/NodeJS/TS (implementing backend)
+- Middle System Analyst (describing business and system requirements)
+
+В роли Junior Backend Developer:
+- реализация приложения;  
+- проектирование слоеной архитектуры (middlewares, exceptions filters,  controller, error handler, services, repository, orm prisma);
+- реализация CRUD операции с ресурсом (товары на складе);  
+- реализация JWT авторизация с ролевой моделью;  
+- реализация документации REST API (swagger).
     
-Репозиторий был расширен для отработки навыков Системного аналитика в части:
+В роли Middle System Analyst:
 - выделение видов требования;
 - разработка и описание бизнес-требований и их артифактов;
 - разработка и описание пользовательских требований (Use cases, User stories);
