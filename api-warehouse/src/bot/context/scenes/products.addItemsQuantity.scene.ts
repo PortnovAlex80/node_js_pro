@@ -24,7 +24,7 @@ export class ProductAddItemQuantityScene extends Scenes.BaseScene<IBotContext> {
 	private async enterItemQuantity(name: string, quantity: number) {
 		return await this.productsService.createProduct({
 			name: name,
-			quantity: Number(quantity),
+			quantity: quantity,
 		});
 	}
 }
