@@ -1,8 +1,8 @@
 # Система управления складом версия 0.0.1 - серверная часть (backend NodeJS/TS)
 
 My roles:
-1 Junior JS/NodeJS/TS backend developer
-2 Middle System Analyst 
+- Junior Backend Developer for JS/NodeJS/TS (implementing backend)
+- Middle System Analyst (describing business and system requirements)
 
 ## Оглавление
 
