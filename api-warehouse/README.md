@@ -40,7 +40,7 @@ TAKE = 20
 - Middle System Analyst (describing business and system requirements)
 
 В роли Junior Backend Developer:
-- реализация приложения;  
+- непосредственно сама реализация приложения;  
 - проектирование слоеной архитектуры (middlewares, exceptions filters,  controller, error handler, services, repository, orm prisma);
 - реализация CRUD операции с ресурсом (товары на складе);  
 - реализация JWT авторизация с ролевой моделью;  
