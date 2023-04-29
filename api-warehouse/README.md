@@ -61,6 +61,8 @@ TAKE = 20
 - проектирование Модели предметной области и баз данных;
 - проектирование REST API;
 - формулирование измеримых требований к качеству интерфейсов согласно подхода стандартов семейства HCI (Human-Computer Interaction)
+- базовые угрозы информационной безопасности
+- проверка требований на INCOSE Requirements Writing Guide
   
 &#128736;  Инструменты для редактирования README.md
 - https://github.com/GnuriaN/format-README/blob/master/README.md
