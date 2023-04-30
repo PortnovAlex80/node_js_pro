@@ -1,0 +1,58 @@
+### Send request with JWT
+GET http://localhost:3000/users/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG43QGpvaG4uY29tIiwicm9sZXMiOiJhZG1pbiIsImlhdCI6MTY3ODY1MjQ4OX0.WodBAuBs_p8mcSA58BoNOyOyM-EAniIc5ZXi0XESO8U
+
+### Send request without JWT
+GET http://localhost:3000/users/users
+
+###
+GET http://localhost:3000/users/users/2
+###
+POST  http://localhost:3000/users/users
+###
+PUT  http://localhost:3000/users/users/4
+###
+DELETE   http://localhost:3000/users/users/5
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG43QGpvaG4uY29tIiwicm9sZXMiOiJhZG1pbiIsImlhdCI6MTY3ODY1MjQ4OX0.WodBAuBs_p8mcSA58BoNOyOyM-EAniIc5ZXi0XESO8U
+
+###
+GET   http://localhost:3000/users/users/6/roles
+###
+POST  http://localhost:3000/users/users/7/roles
+###
+DELETE   http://localhost:3000/users/users/8/roles/8
+###
+POST    http://localhost:3000/users/login
+Content-Type: application/json
+
+{
+    "email": "john9@john.com",
+    "password": "asdf"
+}
+
+###
+POST    http://localhost:3000/users/register
+Content-Type: application/json
+
+{
+    "email": "john9@john.com",
+    "login": "J1",
+    "name": "John",
+    "password": "asdf",
+    "role": "user"
+}
+
+###
+GET http://localhost:3000/users/info
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG45QGpvaG4uY29tIiwicm9sZXMiOiJ1c2VyIiwiaWF0IjoxNjc4NzM3NTg1fQ.2swW3Awx9M2NRP7dAqlV-r_FWhsIi0BN4Acx5m8tYys
+# | **№** | **Path**                   | **Method** | **Body**  | **Response**              | **Description**                                |
+# |-------|----------------------------|------------|-----------|---------------------------|------------------------------------------------|
+# | 1     | /users                     | GET        | -         | Список пользователей      | Получить список всех пользователей             |
+# | 2     | /users/{id}                | GET        | -         | Информация о пользователе | Получить информацию о конкретном пользователе  |
+# | 3     | /users                     | POST       | User data | Новый пользователь        | Создать нового пользователя                    |
+# | 4     | /users/{id}                | PUT        | User data | Обновленный пользователь  | Обновить информацию о пользователе             |
+# | 5     | /users/{id}                | DELETE     | -         | -                         | Удалить пользователя                           |
+# | 6     | /users/{id}/roles          | GET        | -         | Список ролей пользователя | Получить список ролей пользователя             |
+# | 7     | /users/{id}/roles          | POST       | Role data | -                         | Добавить роль пользователю                     |
+# | 8     | /users/{id}/roles/{roleId} | DELETE     | -         | -                         | Удалить роль у пользователя                    |
+# | 9     | /login                     | POST       | User creds | Jwt token                | Аутентификация пользователя                    |

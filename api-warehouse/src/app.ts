@@ -16,6 +16,7 @@ import YAML from 'yamljs';
 import path from 'path';
 import { TelegramBotApp } from './bot/bot.connector';
 import cors from 'cors';
+import { ProductsService } from './products/products.service';
 
 export const pathRouteExtension = '/users';
 @injectable()
@@ -35,6 +36,8 @@ export class App {
 		@inject(TYPES.PrismaService) private prismaService: PrismaService,
 		@inject(TYPES.ProductsController)
 		private productsController: ProductsController,
+		@inject(TYPES.ProductsService)
+		private productsService: ProductsService,
 	) {
 		this.app = express();
 		this.port = Number(this.configService.get('PORT'));
@@ -70,7 +73,11 @@ export class App {
 		await this.prismaService.connect();
 		this.server = this.app.listen(this.port);
 		this.logger.log(`[APP] Server is online on port ${this.port}`);
-		await new TelegramBotApp(this.logger, this.configService);
+		await new TelegramBotApp(
+			this.logger,
+			this.configService,
+			this.productsService,
+		);
 	}
 
 	public close(): void {

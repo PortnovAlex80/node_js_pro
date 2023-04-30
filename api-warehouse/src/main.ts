@@ -21,6 +21,7 @@ import { ProductsService } from './products/products.service';
 import { IProductsRepository } from './products/products.interfaces/products.repository.interface';
 import { ProductsRepository } from './products/products.repository';
 import { TelegramBotApp } from './bot/bot.connector';
+import { ProductListScene } from './bot/context/scenes/products.list.scene';
 
 export const appBindings = new ContainerModule((bind: interfaces.Bind) => {
 	bind<ILogger>(TYPES.ILogger).to(LoggerService).inSingletonScope();

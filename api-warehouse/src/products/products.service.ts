@@ -17,41 +17,34 @@ export class ProductsService implements IProductsService {
 	) {}
 
 	async getProducts(): Promise<ProductModel[] | null> {
-		const products = await this.productsRepository.getProducts();
-		return products;
+		const skip = Number(this.configService.get('SKIP'));
+		const take = Number(this.configService.get('TAKE'));
+
+		if (!skip) {
+			throw new Error('Skip pagination is not found or not number');
+		}
+		if (!take) {
+			throw new Error('Take pagination is not found or not number');
+		}
+
+		return await this.productsRepository.getProducts(skip, take);
 	}
 
 	async getProduct(name: string): Promise<ProductModel | null> {
-		const result = await this.productsRepository.getProduct(name);
-		if (!result) {
-			return null;
-		}
-		return result;
+		return await this.productsRepository.getProduct(name);
 	}
 
 	async createProduct(product: ProductDto): Promise<ProductModel | null> {
-		const result = await this.productsRepository.createProduct(
+		return await this.productsRepository.createProduct(
 			new Product(product.name, product.quantity),
 		);
-		if (!result) {
-			return null;
-		}
-		return result;
 	}
 	async updateProduct(product: ProductDto): Promise<ProductModel | null> {
-		const result = await this.productsRepository.updateProduct(product);
-		if (!result) {
-			return null;
-		}
-		return result;
+		return await this.productsRepository.updateProduct(product);
 	}
 
 	async deleteProduct(name: string): Promise<ProductModel | null> {
-		const result = await this.productsRepository.deleteProduct(name);
-		if (!result) {
-			return null;
-		}
-		return result;
+		return await this.productsRepository.deleteProduct(name);
 	}
 
 	async inStock(name: string): Promise<number | null> {
@@ -62,10 +55,6 @@ export class ProductsService implements IProductsService {
 		return result;
 	}
 	async info(name: string): Promise<ProductModel | null> {
-		const info = await this.productsRepository.getProduct(name);
-		if (!info) {
-			return null;
-		}
-		return info;
+		return await this.productsRepository.getProduct(name);
 	}
 }

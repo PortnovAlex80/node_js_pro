@@ -38,7 +38,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG43Q
 Content-Type: application/json
 
 {
-    "name": "Bread"
+    "name": "oil"
 }
 
 ###
