@@ -37,6 +37,8 @@ TAKE = 20
 
 ⚠️ Это учебный проект курса https://www.udemy.com/course/nodejs-start/ (https://learn.purpleschool.ru/public/products) в рамках которого я выступаю в ролях:
 
+ПРОЕКТ В РАБОТЕ ДО СЕРЕДИНЫ ИЮНЯ(!)
+
 - Junior Backend Developer for JS/NodeJS/TS (implementing backend)
 - Middle System Analyst (describing business and system requirements)
 
