@@ -290,7 +290,7 @@ https://purpleschool.ru/course/nodejs
 
 ```mermaid
 %%{init: {"flowchart": {"htmlLabels": false}} }%%
-graph RL
+graph 
 	subgraph WMSystem["Warehouse managment system"]
 		WMS(("Склад"))
 		MGR["Менеджер склада"]
@@ -301,9 +301,7 @@ graph RL
 	        INTERNET_SHOP["Интернет-магазин"]
 	    end
 	end
-	 
-
-    
+  
 	MGR--> |Каталог товаров|WMS
 	WMS -->|"Каталог товаров,
 Информация об остатках,  
