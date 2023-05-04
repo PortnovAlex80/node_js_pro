@@ -149,3 +149,52 @@
 |   |1 Управление доступом пользователей  |
 |   |2 Настройка параметров системы WMS(future release)|
 |   |3 Обновление и поддержка WMS(future release)|
+
+
+
+
+
+------------
+## Техническое введение
+
+⚠️ Это учебный проект курса https://www.udemy.com/course/nodejs-start/ 
+https://purpleschool.ru/course/nodejs
+(https://learn.purpleschool.ru/public/products) в рамках которого я выступаю в ролях:
+
+- Junior Backend Developer for JS/NodeJS/TS (implementing backend)
+- Middle System Analyst (describing business and system requirements)
+
+В роли **Junior Backend Developer**:
+- непосредственно сама реализация приложения;  
+- проектирование слоеной архитектуры (middlewares, exceptions filters,  controller, error handler, services, repository, orm prisma);
+- реализация CRUD операции с ресурсом (товары на складе);  
+- реализация JWT авторизация с ролевой моделью;  
+- реализация документации REST API (swagger);
+- использование при разработке тестирования (unit, e2e);
+- использование DI, логгирования ошибок, работа Git и тп.
+- разработка Telegram-bot с использованием функционала слоя бизнес-логики (DI)
+    
+В роли **Middle System Analyst**:
+- выделение видов требования;
+- проектирование архитектуры приложения;
+- разработка и описание бизнес-требований и их артифактов;
+- Event storming(==доработать==)
+- выделение агрегатов доменных областей и bounded contexts(==доработать==)
+- разработка и описание пользовательских требований (Use cases, User stories, Job stories, User stories mapping ==доработать==);
+- разработка и описание функциональных требований;
+- проработка нефункциональных требований (==доработать==);
+- проработка качества требований и критериев приемки(==доработать==);
+- проектирование Модели предметной области и баз данных;
+- проектирование REST API;
+- формулирование измеримых требований к качеству интерфейсов согласно подхода стандартов семейства HCI (Human-Computer Interaction)(==доработать==)
+- базовые угрозы информационной безопасности(==доработать==)
+- проверка требований на INCOSE Requirements Writing Guide(==доработать==)
+  
+&#128736;  Инструменты для редактирования README.md
+- https://github.com/GnuriaN/format-README/blob/master/README.md
+- https://structurizr.com/
+- https://tableconvert.com/markdown-generator
+- https://pandao.github.io/editor.md/en.html
+- https://editor.swagger.io/
+- https://emojio.ru/objects/d83ddee0-1f6e0-molot-i-gaechnyy-klyuch.html
+- https://www.udemy.com/course/microservices-with-node-js-and-react/learn/lecture/19099026#overview пример проектирования метода by Stephen Grider
