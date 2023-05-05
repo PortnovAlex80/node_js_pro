@@ -99,7 +99,6 @@ graph LR
 		        ADMIN["Администратор"]
 		    end
 		end
-  style WMS stroke:#333,stroke-width:2px
    
    subgraph Systems["Смежные системы"]
 		        DELIVERY["Служба доставки"]
