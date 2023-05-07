@@ -2,7 +2,7 @@
 
 
 ![Alt text](https://github.com/PortnovAlex80/node_js_pro/blob/developer/api-warehouse/Use%20cases%20dia-Use%20case%20%D0%98%D1%82%D0%B0%D0%BB%D1%8C%D1%8F%D0%BD%D1%81%D0%BA%D0%B8%D0%B5%20%D0%B4%D0%B8%D0%B2%D0%B0%D0%BD%D1%8B.drawio.svg)
-<img src="https://github.com/PortnovAlex80/node_js_pro/blob/developer/api-warehouse/Use%20cases%20dia-Use%20case%20%D0%98%D1%82%D0%B0%D0%BB%D1%8C%D1%8F%D0%BD%D1%81%D0%BA%D0%B8%D0%B5%20%D0%B4%D0%B8%D0%B2%D0%B0%D0%BD%D1%8B.drawio.svg">
+
 
 
 https://github.com/PortnovAlex80/node_js_pro/blob/developer/api-warehouse/Use%20cases%20dia-Use%20case%20%D0%98%D1%82%D0%B0%D0%BB%D1%8C%D1%8F%D0%BD%D1%81%D0%BA%D0%B8%D0%B5%20%D0%B4%D0%B8%D0%B2%D0%B0%D0%BD%D1%8B.drawio.svg
