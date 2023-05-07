@@ -93,6 +93,13 @@ https://purpleschool.ru/course/nodejs
 > складского учета очень сложная, поэтому в проекте используется очень
 > упрощенная модель, задача которой демонстрация навыков, перечисленных
 > в  [Техническом введении](#техническое-введение).
+> 
+
+> **Технология:** Проектирование системы производится по следующему алгоритму: Бизнес-контекст (black box): Контекстная диаграмма (данные)
+> + диаграмма бизнес Use cases (функции)   Переходный уровень (grey box): Диаграмма концептуальных классов (данные) + реестр системных Use
+> cases (функции)   Системный уровень (white box): Диаграмма классов или
+> словарь данных (данные) + детальные Use case (функции и
+> взаимодействие)
 
 Задача раздела помочь команде разработки ознакомится с бизнес-контекстом задачи. 
 
@@ -219,7 +226,7 @@ https://purpleschool.ru/course/nodejs
 |                               | **Для работников склада**: упростить процессы приемки и выдачи товаров [BRULE-01], инвентаризации склада, минимизировать время сборки заказов[BRULE-02], сократить "пробег" на перемещения товаров при сборке заказов[BRULE-02], сократить кол-во ручных операции[BRULE-01] ;                                                                                                                           |
 |                               | **Для менеджеров склада**: добавление/удаление нового товара в каталог, мониторинг остатков товаров,  формирование графика сборки заказов и графиков погрузки транспортных средств  логистических служб, работа с отчетами о работе склада ;                                                                                                                           |
 |  **Концепция решения**  | 
-|  Количество видов пользователей | 1 Складские работники |
+|  Количество видов пользователей | 1 Работники склада |
 |   | 2 Менеджеры склада|
 |   | 3 Администраторы WMS |
 |  **Ключевые свойства и возможности** (features) |  |
@@ -227,7 +234,7 @@ https://purpleschool.ru/course/nodejs
 |   | Приемка/отгрузка товаров |
 |   | Мониторинг остатков товаров |
 ||Управление пользователями и правами|
-| **Для складских работников**  | |
+| **Для работников склада**  | |
 | |1 Складские операции (Приемка/отгрузка товара) (Update quantity)  |
 |   | 2 Инвентаризация (future release) |
 |   |3 Сборка заказа (future release) |
@@ -245,23 +252,23 @@ https://purpleschool.ru/course/nodejs
 
 ## Граница проекта. Контекстная диаграмма
 
-Порядок разработки контекстной диаграммы:  
-
- - [ ] Из числа заинтересованных лиц собирается рабочая группа (обычно
-       от 3 до 5 человек)
- - [ ] Рабочая группа фиксирует в центре диаграммы  **название** 
-       конкретной системы
- - [ ] Рабочая группа выдвигает и отображает  **группы**  пользователей,
-       которые должны взаимодействовать с системой, обсуждает их
-       перечень, дополняет его (группа первого контакта с системой)
- - [ ] Рабочая группа выдвигает и отображает  **смежные системы**,
-       которые должны взаимодействовать с системой, обсуждает их
-       перечень, дополняет его
- - [ ] Рабочая группа последовательно проходит по каждому элементу
-       окружения и описывает  **потоки данных**, связывающие его с
-       системой
- - [ ] Рабочая группа проводит  **тестирование**  контекстной диаграммы,
-       дополняя диаграмму по ходу тестирования
+> **Технология:** порядок разработки контекстной диаграммы:  
+> 
+>  - [ ] Из числа заинтересованных лиц собирается рабочая группа (обычно
+>        от 3 до 5 человек)
+>  - [ ] Рабочая группа фиксирует в центре диаграммы  **название** 
+>        конкретной системы
+>  - [ ] Рабочая группа выдвигает и отображает  **группы**  пользователей,
+>        которые должны взаимодействовать с системой, обсуждает их
+>        перечень, дополняет его (группа первого контакта с системой)
+>  - [ ] Рабочая группа выдвигает и отображает  **смежные системы**,
+>        которые должны взаимодействовать с системой, обсуждает их
+>        перечень, дополняет его
+>  - [ ] Рабочая группа последовательно проходит по каждому элементу
+>        окружения и описывает  **потоки данных**, связывающие его с
+>        системой
+>  - [ ] Рабочая группа проводит  **тестирование**  контекстной диаграммы,
+>        дополняя диаграмму по ходу тестирования
 
 Таблица Групп пользователей и смежных систем
 |Наименование  |Описание  |
@@ -292,20 +299,23 @@ https://purpleschool.ru/course/nodejs
 ```mermaid
 %%{init: {"flowchart": {"htmlLabels": false}} }%%
 graph LR
-	subgraph WMSystem["Warehouse managment system"]
-		WMS(("Склад"))
-            subgraph Users["Смежные системы"]
-				MGR["Менеджер склада"]
-		        ADMIN["Администратор"]
-		        EMPLOYEE["Работник склада"]
-		    end
-		    
-            subgraph Systems["Смежные системы"]
-		        DELIVERY["Служба доставки"]
-		        INTERNET_SHOP["Интернет-магазин"]
-		    end
-	end
-  
+
+subgraph Systems["Контекстная диаграмма"]
+subgraph WMSystem["Warehouse managment system"]
+WMS(("Склад"))
+  subgraph Users["Пользователи"]
+  MGR["Менеджер склада"]
+  EMPLOYEE["Работник склада"]
+  ADMIN["Администратор"]
+  end
+ end
+
+subgraph Context["Смежные системы"]
+ DELIVERY["Служба доставки"]
+ INTERNET_SHOP["Интернет-магазин"]
+ end
+end
+	              
 	MGR--> |Каталог товаров|WMS
 	WMS -->|"Каталог товаров,
 Информация об остатках,  
@@ -317,17 +327,100 @@ graph LR
 	ADMIN--> |"Данные:
 Пользователи,
 Группы доступа"|WMS
-	WMS --> |"Каталог товаров,
-Информация об остатках"|ADMIN
+	WMS --> |"Отчет о пользователях"|ADMIN
 		
-	WMS --> |Информация о наличии товаров|INTERNET_SHOP
+	WMS --> |Информация о наличии товара|INTERNET_SHOP
 	INTERNET_SHOP -.-> |Заказы Клиентов|DELIVERY 
-	style INTERNET_SHOP fill:#f9f,stroke:#333,stroke-width:2px
 	DELIVERY--> |Заявка на сборку заказа|WMS 
-	WMS --> |"График погрузки ТС и 
-	номер ворот склада"|DELIVERY
+	WMS --> |"График и место погрузки"|DELIVERY
+```
+## Use cases
+
+### Общие положения
+
+Use cases используются для проектирования и выявления требований, выявления связанности действий пользователя и системы, определения границ системы.
+
+Таблица акторов
+|Наименование  |Описание  |
+|--|--|
+|Система  |Описание  |
+|Группа пользователей  |Работник склада  |
+|  |Менеджер склада |
+|  |Администратор  |
+|Смежные системы  |Интернет-магазин  |
+|  |Служба доставки  |
+
+### Диаграмма бизнес Use cases 
+
+![Business Use case diagramm](https://github.com/PortnovAlex80/node_js_pro/blob/developer/api-warehouse/Use%20cases%20dia-Use%20case%20%D0%98%D1%82%D0%B0%D0%BB%D1%8C%D1%8F%D0%BD%D1%81%D0%BA%D0%B8%D0%B5%20%D0%B4%D0%B8%D0%B2%D0%B0%D0%BD%D1%8B.drawio.svg)
+
+```mermaid
+graph LR 
+	F[Системы] --> J[Интернет-магазин]
+	F --> G[Служба доставки]
+	J --> CB
+	G --> BB
+subgraph Context["Акторы"]
+    A[Пользователь WMS] --> B[Работник склада]
+    A --> C[Менеджер склада]
+    A --> E[Администратор системы]
+    
+    B --> BA[Управление складскими операциями]
+    B --> BB[Обработка заявок на сборку заказа]
+    
+    C --> CA[Управление каталогом товаров]
+    C --> CB[Мониторинг остатков товаров]
+    C --> CD[Планирование сборки заказов]
+    C --> CC[Отчетность о работе склада]
+
+    E --> EA[Управление пользователями и группами доступа]
+ end
 ```
 
+ - [ ] Сопоставить функциональность в Use cases с Контекстной диаграммой
+       (сопоставление функционала с данным)
+
+### Реестр системных Use cases 
+| Участник |Код UC  | Описание | Приоритет|
+|--|--|--|--|
+|Работник склада  |UC-1|Управление складскими операциями  | |
+|  | UC-1.1 |Принять товар на склад  | |
+|  | UC-1.2 |Отгрузить товар со склада | |
+|  | UC-1.3 |Провести инвентаризацию на складе  | |
+|  |UC-1.4  |Собрать заказ| |
+|Менеджер склада |UC-2|Управление каталогом товаров  | |
+|  | UC-2.1 |Создать каталог  | |
+|  | UC-2.2 |Удалить каталог | |
+|  | UC-2.3 |Изменить имя каталога  | |
+|  |UC-2.4  |Создать подраздел каталога| |
+|  |UC-2.5  |Удалить подраздел каталога| |
+|  |UC-2.6  |Изменить подраздел каталога| |
+|  |UC-2.7  |Добавить товар в каталог| |
+|  |UC-2.8  |Удалить товар из каталога| |
+|  |UC-2.9  |Изменить товар в каталога| |
+|  |UC-2.10  |Посмотреть список товаров в каталоге| |
+|  |UC-2.11 |Найти товар в каталоге по наименованию| |
+|  |UC-2.12 |Найти товар в каталоге по артикулу| |
+|  |UC-2.13 |Получить статистику товаров в каталоге| |
+|Менеджер склада |UC-3|Планирование сборки заказов  | |
+|  | UC-3.1 |Посмотреть список заявок на сборку  | |
+|  | UC-3.2 |Найти заявку на сборку по номеру заказа | |
+|  | UC-3.3 |Назначить сборщика на сборку заказа  | |
+|  | UC-3.4 |Назначить время сборки заказа| |
+|  | UC-3.5 |Назначить время и место погрузки заказа| |
+|  | UC-3.6 |Просмотреть отчет о сборке заказов| |
+|Менеджер склада |UC-4|Мониторинг остатков товаров  | |
+|  | UC-4.1 |Назначить товару минимальный остаток   | |
+|  | UC-4.2 |Просмотреть динамику изменения остатков товара| |
+|  | UC-4.3 |Назначить график инвентаризации  | |
+|  | UC-4.4 |Просмотреть отчет о запасах| |
+|  | UC-4.5 |Подписаться на уведомление о снижении остатков | |
+|Администратор |UC-5|Управление пользователями и группами доступа  | |
+|  | UC-4.1 |Создать нового пользователя   | |
+|  | UC-4.2 |Удалить пользователя| |
+|  | UC-4.3 |Изменить нового пользователя  | |
+|  | UC-4.4 |Создать группу доступа| |
+|  | UC-4.5 |Назначить пользователя в группу доступа | |
 
 ДАЛЕЕ НЕ ГОТОВО!! DRAFT!!! только эскиз структуры
 
@@ -756,6 +849,129 @@ Stock data = {
   - Логирование ошибок для последующего анализа
  - Авторизация и ролевая модель:
   - используется JWT token.
+
+The default directory structure of a generated Ruby on Rails application:
+https://github.com/specialorange/FDXCM/blob/master/README.rdoc
+|-- app
+|   |-- assets
+|       |-- images
+|       |-- javascripts
+|       `-- stylesheets
+|   |-- controllers
+|   |-- helpers
+|   |-- mailers
+|   |-- models
+|   `-- views
+|       `-- layouts
+|-- config
+|   |-- environments
+|   |-- initializers
+|   `-- locales
+|-- db
+|-- doc
+|-- lib
+|   `-- tasks
+|-- log
+|-- public
+|-- script
+|-- test
+|   |-- fixtures
+|   |-- functional
+|   |-- integration
+|   |-- performance
+|   `-- unit
+|-- tmp
+|   |-- cache
+|   |-- pids
+|   |-- sessions
+|   `-- sockets
+`-- vendor
+    |-- assets
+        `-- stylesheets
+    `-- plugins
+
+app
+
+Holds all the code that's specific to this particular application.
+
+app/assets
+
+Contains subdirectories for images, stylesheets, and JavaScript files.
+
+app/controllers
+
+Holds controllers that should be named like weblogs_controller.rb for
+automated URL mapping. All controllers should descend from
+ApplicationController which itself descends from ActionController::Base.
+
+app/models
+
+Holds models that should be named like post.rb. Models descend from
+ActiveRecord::Base by default.
+
+app/views
+
+Holds the template files for the view that should be named like
+weblogs/index.html.erb for the WeblogsController#index action. All views use
+eRuby syntax by default.
+
+app/views/layouts
+
+Holds the template files for layouts to be used with views. This models the
+common header/footer method of wrapping views. In your views, define a layout
+using the <tt>layout :default</tt> and create a file named default.html.erb.
+Inside default.html.erb, call <% yield %> to render the view using this
+layout.
+
+app/helpers
+
+Holds view helpers that should be named like weblogs_helper.rb. These are
+generated for you automatically when using generators for controllers.
+Helpers can be used to wrap functionality for your views into methods.
+
+config
+
+Configuration files for the Rails environment, the routing map, the database,
+and other dependencies.
+
+db
+
+Contains the database schema in schema.rb. db/migrate contains all the
+sequence of Migrations for your schema.
+
+doc
+
+This directory is where your application documentation will be stored when
+generated using <tt>rake doc:app</tt>
+
+lib
+
+Application specific libraries. Basically, any kind of custom code that
+doesn't belong under controllers, models, or helpers. This directory is in
+the load path.
+
+public
+
+The directory available for the web server. Also contains the dispatchers and the
+default HTML files. This should be set as the DOCUMENT_ROOT of your web
+server.
+
+script
+
+Helper scripts for automation and generation.
+
+test
+
+Unit and functional tests along with fixtures. When using the rails generate
+command, template test files will be generated for you and placed in this
+directory.
+
+vendor
+
+External libraries that the application depends on. Also includes the plugins
+subdirectory. If the app has frozen rails, those gems also go here, under
+vendor/rails/. This directory is in the load path.
+
 
 ## Проектирование модели предметной области
 ### Сущности Entities
