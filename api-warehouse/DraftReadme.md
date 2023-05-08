@@ -2,7 +2,7 @@
 
 ```mermaid
 erDiagram
-    UserList ||--o{ User : has
+
     User }o--|| Role : has
         
     User {
@@ -36,7 +36,7 @@ erDiagram
         uuid ID
         string Name
         string Description
-        int Quantity
+        int inStock
         float Price
     }
     
@@ -46,5 +46,4 @@ erDiagram
         uuid ProductID
         int Quantity
     }
-
 ```
