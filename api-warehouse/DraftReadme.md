@@ -1,4 +1,3 @@
-
 ### Entity Relationship Diagram (ERD)
 
 ```mermaid
@@ -48,19 +47,9 @@ erDiagram
         uuid ProductID
         int Quantity
     }
-	
-    
-	    
+	  
 	Product }o--|| ProductList: grouped_by
 
-    
-    Catalog {
-        int ID
-        string Name
-        string Description
-    }
-    
     StockOperation }o--|| StockOperationList : has
     StockOperation ||--|{ OperationComposition : has
-
 ```
