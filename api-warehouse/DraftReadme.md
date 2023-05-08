@@ -4,9 +4,7 @@
 erDiagram
     UserList ||--o{ User : has
     User }o--|| Role : has
-    
-    Role }o--|| RoleList : has
-    
+        
     User {
         int ID
         string FirstName
@@ -23,7 +21,8 @@ erDiagram
         string Permission
     }
     
-    User ||--o{ StockOperation : operation
+    User ||--o{ StockOperation : operation	  
+    StockOperation ||--|{ OperationComposition : has
     Product ||--o{ OperationComposition : composed_of
     
     StockOperation {
@@ -47,9 +46,5 @@ erDiagram
         uuid ProductID
         int Quantity
     }
-	  
-	Product }o--|| ProductList: grouped_by
 
-    StockOperation }o--|| StockOperationList : has
-    StockOperation ||--|{ OperationComposition : has
 ```
