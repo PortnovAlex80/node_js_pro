@@ -1,4 +1,5 @@
-'''mermaid
+```mermaid
+
 classDiagram
     class User{
         +uuid ID
@@ -43,5 +44,5 @@ classDiagram
     StockOperation "1" -- "0..*" OperationComposition : has
     Product "1" -- "0..*" OperationComposition : composed_of
     
-'''
+```
     
