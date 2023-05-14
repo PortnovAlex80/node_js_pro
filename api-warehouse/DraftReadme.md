@@ -1,12 +1,47 @@
-| Класс (атрибут) |  | Атрибут/требование к типу | Ограничения | Обязательность | Примечание |
-|--|--|--|--|--|--|
-| Пользователь | =  +  +  +  +  +  + | userID  FirstName  LastName  Login  Password  Email  RoleID |  |  | Предназначен для учета пользователей системы |
-| userID | = | uuid | 32 байт | Да | Уникальный номер Пользователя в системе |
-| FirstName | = | string | 64 знака | Да | Имя Пользователя в системе |
-| LastName | = | string | 64 знака | Да | Фамилия Пользователя в системе |
-| Role | = + + | ID  RoleName  Permission |  |  | Предназначен для учета ролей пользователей в системе |
-| ID (Role) | = | uuid | 32 байт | Да | Уникальный номер Роли в системе |
-| RoleName | = | string | 64 знака | Да | Название Роли в системе |
-| Permission | = | string | Нет ограничений | Нет | Привилегии или разрешения, связанные с Ролью |
-| StockOperation | = + + + | ID  UserID  Date  OperationType |  |  | Предназначен для учета операций со складом |
-| ID (StockOperation) | = | uuid | 32 байт | Да | Уникальны
+'''mermaid
+classDiagram
+    class User{
+        +uuid ID
+        +string FirstName
+        +string LastName
+        +string Login
+        +string Password
+        +string Email
+        +uuid RoleID
+    }
+    
+    class Role{
+        +uuid ID
+        +string RoleName
+        +string Permission
+    }
+    
+    class StockOperation{
+        +uuid ID
+        +uuid UserID
+        +date Date
+        +string OperationType
+    }
+    
+    class Product{
+        +uuid ID
+        +string Name
+        +string Description
+        +int inStock
+        +float Price
+    }
+    
+    class OperationComposition{
+        +uuid ID
+        +uuid StockOperationID
+        +uuid ProductID
+        +int Quantity
+    }
+
+    User "1" -- "1" Role : has
+    User "1" -- "0..*" StockOperation : operation
+    StockOperation "1" -- "0..*" OperationComposition : has
+    Product "1" -- "0..*" OperationComposition : composed_of
+    
+'''
+    
