@@ -1,64 +1,8 @@
-### Диаграмма классов
-
-```mermaid
-classDiagram
-    class User{
-        +uuid ID
-        +string FirstName
-        +string LastName
-        +string Login
-        +string Password
-        +string Email
-        +uuid RoleID
-        +Login()
-        +Logout()
-        +ChangePassword(oldPassword, newPassword)
-        +GetAllUsers()
-    }
-    
-    class Role{
-        +uuid ID
-        +string RoleName
-        +string Permission
-        +AssignPermission(permission)
-        +RemovePermission(permission)
-        +Role.GetAllRoles()
-    }
-    
-    class StockOperation{
-        +uuid ID
-        +uuid UserID
-        +date Date
-        +string OperationType
-        +ExecuteOperation()
-        +CancelOperation()
-        +GetAllOperations()
-    }
-    
-    class Product{
-        +uuid ID
-        +string Name
-        +string Description
-        +int inStock
-        +float Price
-        +AddStock(quantity)
-        +RemoveStock(quantity)
-        +UpdatePrice(newPrice)
-        +GetAllProducts()
-    }
-    
-    class OperationComposition{
-        +uuid ID
-        +uuid StockOperationID
-        +uuid ProductID
-        +int Quantity
-        +AddProduct(productID, quantity)
-        +RemoveProduct(productID)
-    }
-
-    User "0..*" -- "1" Role : has
-    User "1" -- "0..*" StockOperation : operation
-    StockOperation "1" -- "0..*" OperationComposition : has
-    Product "1" -- "0..*" OperationComposition : composed_of
-
-```
+| Business Use Case Управление складскими операциями|  
+|--|
+| **Название:** UC 1.1 Провести складскую операцию  |
+| **Актор** Работник склада  |
+| **Предусловия** Работник склада получил задание из системы на проведение складской операции в телеграмм-боте  |
+| **Триггер** Работник склада вызывает функцию регистрации складской операции |
+| **Постусловие** Складская операция проведена. Информация (тип операции, наименование, код, количество товара( о складской операции сохранена в системе  |
+| **Основной поток** 1.Работник склада открывает функцию регистрации складской операции в системе  2.Система предоставляет интерфейс для ввода информации о складской операции  3.Работник склада вводит информацию о складской операции: тип операции (приход или расход), код товара и количество товара. 4.Работник склада подтверждает ввод информации. 5.Система проверяет введенную информацию и сохраняет складскую операцию в БД  6.Система сообщает об успешном завершении складской операции |
