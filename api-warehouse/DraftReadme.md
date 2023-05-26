@@ -1,6 +1,6 @@
 ```mermaid
 sequenceDiagram
-participant R as Работник склада
+actor R as Работник склада
 participant W as Web
 participant S as Система:
 participant D as DB
