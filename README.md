@@ -13,9 +13,18 @@ Person(mgr, "Manager")
 Person(employee, "Employee")
 }
 
+System_Boundary("Internet_shop") {
 
 System(i_shop, "Internet_shop")
+
+}
+System_Boundary("Deliverym") {
+
 System(delivery, "Delivery")
+
+}
+
+
 
 
 Rel(i_shop, delivery , "Ordeds")
