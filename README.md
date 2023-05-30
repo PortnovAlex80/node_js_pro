@@ -1,4 +1,4 @@
-```@startuml C4_Elements
+```@startuml
 !include  https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
 Person(personAlias, "Label", "Optional Description")
