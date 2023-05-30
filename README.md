@@ -766,7 +766,7 @@ end
 | ... | Создать нового пользователя | POST [https://v1/route/users](https://v1/route/users) <br> Тело запроса: <br> `{ "firstName": "<first_name>", "lastName": "<last_name>", "login": "<login>", "password": "<password>", "email": "<email>", "roleID": "<role_uuid>" }` | Информация о созданном пользователе или ошибка |
 | ...| Получить информацию о пользователе | GET [https://v1/route/users/{uuid}](https://v1/route/users/) | Информация о пользователе или ошибка |
 | ...| Создать новый товар | POST [https://v1/route/products](https://v1/route/products) <br> Тело запроса: <br> `{ "name": "<product_name>", "description": "<description>", "inStock": <in_stock>, "price": <price>, "barcode": "<barcode>" }` | Информация о созданном товаре или ошибка |
-| ...| Создать новую операцию на складе | POST [https://v1/route/operations](https://v1/route/operations) <br> Тело запроса: <br> `{ "userID": "<user_uuid>", "date": "<date>", "operationType": "<operation_type>", "justification": "<justification>" }` | Информация о созданной операции или ошибка |
+
 
 ### Спецификация методов
 
