@@ -1,22 +1,18 @@
-```plantuml
+The background color is `#ffffff` for light mode and `#000000` for dark mode.
 
-actor User
-participant "GitHub" as GH
-participant "Repository" as Repo
-participant "README.md" as Readme
+`rgb(9, 105, 218)`ЦВЕТ 
 
-User -> GH: Push changes
-activate GH
-GH -> Repo: Update repository
-activate Repo
-Repo -> GH: Notify about changes
-deactivate Repo
-GH -> Readme: Render README.md
-activate Readme
-Readme -> GH: Display rendered README
-deactivate Readme
-GH -> User: Notify about successful render
-deactivate GH
+<details>
+<summary>Tips for collapsed sections</summary>
 
+### You can add a header
 
+You can add text within a collapsed section. 
+
+You can add an image or a code block, too.
+
+```ruby
+   puts "Hello World"
 ```
+
+</details>
