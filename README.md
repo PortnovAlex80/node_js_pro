@@ -28,7 +28,7 @@ System(delivery, "Delivery")
 
 
 Rel(i_shop, delivery , "Ordeds")
-Rel(wms, i_shop , "Информация о наличии товара")
+Rel_D(wms, i_shop , "Информация о наличии товара")
 
 UpdateRelStyle(i_shop, delivery, $offsetX="-20", $offsetY="-20")
 UpdateRelStyle(delivery, wms, $textColor="red", $lineColor="red", $offsetX="-50", $offsetY="-20")
