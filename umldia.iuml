@@ -1,7 +1,7 @@
 @startuml
 scale 750 width
 skinparam componentStyle rectangle
-skinparam BackgroundColor transparent
+
 [Склад] as WMS
 
 Пользователь -down-> WMS #line:red;line.bold;text:red  : Данные о товаре 
