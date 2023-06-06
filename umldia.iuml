@@ -14,8 +14,9 @@ skinparam BackgroundColor transparent
 WMS -up-> Employeer : Каталог товаров,\nТоварная накладная,\nЗаказ на сборку
 Employeer -down-> WMS  : Складские \nоперации 
 
-Mgr -down-> WMS : Каталог товаров
 WMS -up-> Mgr : Каталог товаров,\nИнформация об остатках,\nОтчет по складским\nоперациям
+Mgr -down-> WMS : Каталог товаров
+
 
 Admin -down-> WMS : Пользователи,\nГруппы доступа
 WMS -up-> Admin  : Отчет о \nпользователях
