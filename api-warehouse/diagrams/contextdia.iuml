@@ -1,0 +1,30 @@
+@startuml
+scale 750 width
+skinparam componentStyle rectangle
+
+[WMS] as WMS #line:red;line.bold;text:red
+
+[Работник склада] as Employeer
+[Администратор] as Admin
+[Менеджер склада] as Mgr
+[Интернет-магазин] as IShop
+[Delivery Service] as Delivery 
+
+WMS -up-> Employeer : Каталог товаров,\nТоварная накладная,\nЗаказ на сборку
+Employeer -down-> WMS  : Складские \nоперации 
+
+WMS -up-> Mgr : Каталог товаров,\nИнформация об остатках,\nОтчет по складским\nоперациям
+Mgr -down-> WMS : Каталог товаров
+
+
+Admin -down-> WMS : Пользователи,\nГруппы доступа
+WMS -up-> Admin  : Отчет о \nпользователях
+
+Delivery  -up-> WMS : Заявка \nна сборку\n заказа
+WMS -down-> Delivery  : График\n и место\n погрузки
+
+IShop -up-> WMS : Заказ
+WMS -down-> IShop : Информация о \nналичии \nтовара
+
+IShop -.-left-> Delivery : Заказы
+@enduml
