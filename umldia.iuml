@@ -1,17 +1,30 @@
 @startuml
 scale 750 width
 skinparam componentStyle rectangle
-[Склад] as WMS
+skinparam BackgroundColor transparent
 
-Пользователь -down-> WMS #line:red;line.bold;text:red  : Данные о товаре 
-WMS -up-> Пользователь : Код
-Вася --> WMS : Данные о товаре
-WMS --> Вася : Код
-[Delivery Service] -left-> WMS : Данные о товаре
-WMS -right-> [Delivery Service] : Код
-[Интернет-магазин] -right-> WMS : Данные о товаре
-WMS -left-> [Интернет-магазин] : Код
+[WMS] as WMS #line:red;line.bold;text:red
 
-:Главный админ: -down-> WMS : Еще одна\nнебольшая\nзаметка
-WMS -up-> :Главный админ:  : Еще одна\nнебольшая\nзаметка
+[Работник склада] as Employeer
+[Администратор] as Admin
+[Менеджер склада] as Mgr
+[Интернет-магазин] as IShop
+[Delivery Service] as Delivery 
+
+WMS -up-> Employeer : Каталог товаров,\nТоварная накладная,\nЗаказ на сборку
+Employeer -down-> WMS  : Складские \nоперации 
+
+Mgr -down-> WMS : Каталог товаров
+WMS -up-> Mgr : Каталог товаров,\nИнформация об остатках,\nОтчет по складским\nоперациям
+
+Admin -down-> WMS : Пользователи,\nГруппы доступа
+WMS -up-> Admin  : Отчет о \nпользователях
+
+Delivery  -up-> WMS : Заявка \nна сборку\n заказа
+WMS -down-> Delivery  : График\n и место\n погрузки
+
+IShop -up-> WMS : Заказ
+WMS -down-> IShop : Информация о \nналичии \nтовара
+
+IShop -.-left-> Delivery : Заказы
 @enduml
