@@ -1,7 +1,6 @@
 @startuml
 scale 750 width
 skinparam componentStyle rectangle
-skinparam BackgroundColor transparent
 
 [WMS] as WMS #line:red;line.bold;text:red
 
