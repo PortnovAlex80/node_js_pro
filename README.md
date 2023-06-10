@@ -1,7 +1,7 @@
 
 # Система управления складом (WMS) - серверная часть (backend NodeJS/TS)
 
-В рамках проекта имитируется проект разработки WMS для интернет-магазина. Необходимо учитывать, что реальная система складского учета очень сложная, поэтому в проекте используется очень упрощенная модель, задача которой демонстрация навыков, перечисленных в  [Описание портфолио](#Описание-портфолио). 
+В рамках проекта имитируется проект разработки WMS для интернет-магазина. Необходимо учитывать, что реальная система складского учета очень сложная, поэтому в проекте используется очень упрощенная модель, задача которой демонстрация навыков, перечисленных в  [Описание портфолио](#описание-портфолио). 
 
 **Краткая суть проекта**: в репозитории предоставлена документация на учебный проект WMS, включающая в себя артефакты: бизнес-требования,  Use cases, Context diagram, ERD, Class diagram, SD, спецификация REST API и т.д. Те, представлена и проектная работа и [реализация проектного решения на NodeJS/TS](https://github.com/PortnovAlex80/node_js_pro/tree/developer/api-warehouse).
 
@@ -9,7 +9,7 @@
 
 1. [Введение](#введение-в-проект)
 2. [Run](#RUN-APP)
-3. [Описание портфолио](#Описание-портфолио)
+3. [Описание портфолио](#описание-портфолио)
 4. [Введение в проект](#Введение-в-проект)
 5. [Бизнес требования](#бизнес-требования)
 6. [Концепция системы](#концепция-системы-фрагмент-карточки-проекта)
@@ -995,6 +995,9 @@ Stock data = {
 поискать что можно взять отсюда:
 https://github.com/rmanguinho/clean-ts-api
 
+![your-UML-diagram-name](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/PortnovAlex80/node_js_pro/developer/api-warehouse/diagrams/apparchi.iuml)
+
+
 В основе приложения лежит слоеная архитектура, с выделением следующих модулей:
 - слой бизнес-логики (services Products service, Users service)
 - слой контроллеров (Products controller, Users controller)
@@ -1190,3 +1193,70 @@ Documentation :active, 2019-05-03, 2019-05-16
 12. EN 50600-1:2012 Information technology -- Data centre facilities and infrastructures -- Part 1: General concepts and requirements
 13. ISO/IEC 15504-5:2012 Information technology -- Process assessment -- Part 5: An exemplar Process Assessment Model for IT service management (ISO/IEC 20000-1)
 14. EN 62304:2006 Medical device software -- Software life cycle processes.
+
+app
+`Holds all the code that's specific to this particular application.`
+
+app/assets
+  Contains subdirectories for images, stylesheets, and JavaScript files.
+
+app/controllers
+  Holds controllers that should be named like weblogs_controller.rb for
+  automated URL mapping. All controllers should descend from
+  ApplicationController which itself descends from ActionController::Base.
+
+app/models
+  Holds models that should be named like post.rb. Models descend from
+  ActiveRecord::Base by default.
+
+app/views
+  Holds the template files for the view that should be named like
+  weblogs/index.html.erb for the WeblogsController#index action. All views use
+  eRuby syntax by default.
+
+app/views/layouts
+  Holds the template files for layouts to be used with views. This models the
+  common header/footer method of wrapping views. In your views, define a layout
+  using the <tt>layout :default</tt> and create a file named default.html.erb.
+  Inside default.html.erb, call <% yield %> to render the view using this
+  layout.
+
+app/helpers
+  Holds view helpers that should be named like weblogs_helper.rb. These are
+  generated for you automatically when using generators for controllers.
+  Helpers can be used to wrap functionality for your views into methods.
+
+config
+  Configuration files for the Rails environment, the routing map, the database,
+  and other dependencies.
+
+db
+  Contains the database schema in schema.rb. db/migrate contains all the
+  sequence of Migrations for your schema.
+
+doc
+  This directory is where your application documentation will be stored when
+  generated using <tt>rake doc:app</tt>
+
+lib
+  Application specific libraries. Basically, any kind of custom code that
+  doesn't belong under controllers, models, or helpers. This directory is in
+  the load path.
+
+public
+  The directory available for the web server. Also contains the dispatchers and the
+  default HTML files. This should be set as the DOCUMENT_ROOT of your web
+  server.
+
+script
+  Helper scripts for automation and generation.
+
+test
+  Unit and functional tests along with fixtures. When using the rails generate
+  command, template test files will be generated for you and placed in this
+  directory.
+
+vendor
+  External libraries that the application depends on. Also includes the plugins
+  subdirectory. If the app has frozen rails, those gems also go here, under
+  vendor/rails/. This directory is in the load path.
