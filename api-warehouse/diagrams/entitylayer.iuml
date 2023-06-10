@@ -2,6 +2,19 @@
 !theme mars
 * api-warehouse
 ** users layer
-***
+*** users.service.spec.ts
+**** This module defines a test suite for the UserService, including tests for creating a user, \n validating a user's credentials. It uses mock implementations for the ConfigService and UsersRepository, \n and sets up a container with dependency injections.
+*** users.repository.ts
+**** The UsersRepository class is responsible for interacting with the database to perform CRUD \n operations on user entities. \n It implements the IUsersRepository interface and uses the PrismaService for database access.
+*** users.controller.ts
+**** The UserController class is responsible for handling HTTP requests related to user operations. \n  It extends the BaseController class and implements the IUserController interface. \n It uses the ILogger, IUserService, and IConfigService dependencies through dependency injection.
+*** user.service.ts
+**** The UsersService class is responsible for handling the business logic and database interactions related to user operations. \n It implements the IUsersService interface and is decorated with the @injectable() decorator for dependency injection.
+*** user.entity.ts
+**** The `UserEntity` class is used to represent a user entity and provides methods for hashing and comparing passwords.
+*** interfaces
+*** dto
 ** products layer
+*** the product layer follows a similar structure and principles as the user layer,  \nwith components dedicated to handling product logic,  \n database interactions, and HTTP requests.
+
 @endmindmap
