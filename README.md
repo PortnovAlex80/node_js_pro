@@ -1007,43 +1007,14 @@ https://github.com/specialorange/FDXCM/blob/master/README.rdoc
 ![your-UML-diagram-name](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/PortnovAlex80/node_js_pro/developer/api-warehouse/diagrams/entitylayer.iuml)
 
 # График подготовки релиза MVP
-в график вогнать мой флоу из екомм
 
-```mermaid
-%%{init: {"mermaid": {"theme": "forest", "fontSize": 16, "gantt": {"padding": {"top": 20, "right": 40, "bottom": 20, "left": 150}}}}}%%
+**⚠️**  Внимание!**⚠️**  
+> Пример разработки по waterflow!  Пример планирования
+> разработки по гибким методологиям планируется предоставить в другом
+> портфолио. Сроки и продолжительность работ  - условные.
 
-gantt  
-dateFormat YYYY-MM-DD  
-title A 2-Month Project Timeline  
-
-section Requirements gathering  
-Requirements gathering :active, 2019-01-01, 2019-01-14  
-
-section Project planning and design  
-Project planning and design :active, 2019-01-15, 2019-01-28  
-
-section System architecture  
-System architecture :active, 2019-01-29, 2019-02-11  
-
-section Development of core modules  
-Development of core modules :active, 2019-02-12, 2019-03-07  
-
-section Testing and bug fixing  
-Testing and bug fixing :active, 2019-03-08, 2019-03-21  
-
-section User interface design  
-User interface design :active, 2019-03-22, 2019-04-04  
-
-section Deployment and integration  
-Deployment and integration :active, 2019-04-05, 2019-04-18  
-
-section User training and support  
-User training and support :active, 2019-04-19, 2019-05-02  
-
-section Documentation  
-Documentation :active, 2019-05-03, 2019-05-16
-
-```
+Диаграмма Ганта процесса разработки MVP
+![your-UML-diagram-name](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/PortnovAlex80/node_js_pro/developer/api-warehouse/diagrams/ganttflow.iuml)
 
 ## Используемая литература в ходе подготовки проекта
 
