@@ -1,14 +1,18 @@
 @startmindmap
-* Debian
-** Ubuntu
-*** Linux Mint
-*** Kubuntu
+* api-warehouse
+** src
+*** main
+**** Initializes and configures \nlication dependencies using InversifyJS.
+*** app
+**** Sets up an Express application with middleware, routes, and exception filters. \n also initializes and starts the server on a specified port.
 *** Lubuntu
 *** KDE Neon
-** LMDE
-** SolydXK
-** SteamOS
+** prisma
+*** schema
+*** migrations
+** tests
+*** products.e2e-spec.ts
+*** users.e2e-spec.ts
 ** Raspbian with a very long name
 *** <s>Raspmbc</s> => OSMC
-*** <s>Raspyfi</s> => Volumio
 @endmindmap
