@@ -1,12 +1,35 @@
 @startmindmap
+!theme mars
 * api-warehouse
 ** src
 *** main
 **** Initializes and configures \nlication dependencies using InversifyJS.
 *** app
 **** Sets up an Express application with middleware, routes, and exception filters. \n also initializes and starts the server on a specified port.
-*** Lubuntu
-*** KDE Neon
+*** types
+**** Defines symbols for dependency injection using InversifyJS.
+*** logger
+**** The `LoggerService` class implements the `ILogger` interface and \n provides logging functionality using the `tslog` library.
+*** errors
+**** The `ExceptionFilter` class is responsible for handling errors in an \n Express application by logging them and returning appropriate responses, \n while the `HTTPError` class extends the `Error` class \n to provide additional information for HTTP-related errors.
+*** database
+**** The `PrismaService` class manages the connection to a database using Prisma ORM, \n providing methods for connecting, disconnecting, and logging the connection status.
+*** config
+**** The `ConfigService` class implements the `IConfigService` interface and is responsible \n for loading and accessing configuration values from a `.env` file using the `dotenv` library. \nIt logs the status of the `.env` file loading process and provides a method to retrieve configuration values by key.
+*** common
+**** auth.guard.ts
+**** auth.middleware.ts
+**** base.controller.ts
+*****  the BaseController class \n providing basic methods and a router for creating web application controllers,\n such as route binding and JSON response handling
+**** jwt.payload.interface.ts
+**** role.middleware.ts
+**** validate.middleware.ts
+*** bot
+**** This code sets up a Telegram bot using Telegraf, defines scenes and commands, \n launches the bot, and handles process termination.
+**** scenes
+***** This code defines a Telegram bot scenes
+*** users layer
+*** products layer
 ** prisma
 *** schema
 *** migrations
