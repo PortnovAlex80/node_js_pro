@@ -991,83 +991,20 @@ Stock data = {
 
 
 ## Архитектура приложения
-⚠️ Описание реализованного приложения
-поискать что можно взять отсюда:
-https://github.com/rmanguinho/clean-ts-api
 
+<details>
+<summary>&#128736;  Учебные пометки </summary>
+
+Примеры:
+https://github.com/rmanguinho/clean-ts-api
+https://github.com/specialorange/FDXCM/blob/master/README.rdoc
+
+</details>
+### Описание общей структуры приложения 
 ![your-UML-diagram-name](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/PortnovAlex80/node_js_pro/developer/api-warehouse/diagrams/apparchi.iuml)
 
-
-В основе приложения лежит слоеная архитектура, с выделением следующих модулей:
-- слой бизнес-логики (services Products service, Users service)
-- слой контроллеров (Products controller, Users controller)
-- слой работы с репозиторием (Products repository, Users repository)
-- слой middleware, DTO
-- cлой для работы с Telegram ботом (bot.connector)
-
-- Пользовательский интерфейс
-  - Представлен RESTful API на Node.js с использованием пакета express
-- Middleware
-  - Обрабатывает запросы и валидирует параметры запроса на наличие обязательного параметра
-- Controller
-  - Использует маршрутизацию запросов с помощью пакета express и вызывает методы слоя бизнес-логики
-- Бизнес-логика
-  - Получает запрос от Controller;
-  - Обрабатывает полученные данные, согласно бизнес-логике, обращается к слою Репозитория;
-- Exceprion handler
-  - Обрабатывает ошибки, возникающие в Middleware, Controller и Business Logic.
-  - Возврат пользователю ответа в едином формате с уведомлением об ошибке
-  - Логирование ошибок для последующего анализа
- - Авторизация и ролевая модель:
-  - используется JWT token.
-
-описать DI, для чего используется, сингл тоне, как работает JWT, 
-
-The default directory structure of a generated Ruby on Rails application:
-https://github.com/specialorange/FDXCM/blob/master/README.rdoc
-|-- app
-|   |-- assets
-|       |-- images
-|       |-- javascripts
-|       `-- stylesheets
-|   |-- controllers
-|   |-- helpers
-|   |-- mailers
-|   |-- models
-|   `-- views
-|       `-- layouts
-|-- config
-|   |-- environments
-|   |-- initializers
-|   `-- locales
-|-- db
-|-- doc
-|-- lib
-|   `-- tasks
-|-- log
-|-- public
-|-- script
-|-- test
-|   |-- fixtures
-|   |-- functional
-|   |-- integration
-|   |-- performance
-|   `-- unit
-|-- tmp
-|   |-- cache
-|   |-- pids
-|   |-- sessions
-|   `-- sockets
-`-- vendor
-    |-- assets
-        `-- stylesheets
-    `-- plugins
-
-**app**
-Holds all the code that's specific to this particular application.
-
-**app/assets**
-Contains subdirectories for images, stylesheets, and JavaScript files.
+### Описание доменных слоев Users and Producs layers
+![your-UML-diagram-name](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/PortnovAlex80/node_js_pro/developer/api-warehouse/diagrams/entitylayer.iuml)
 
 **app/controllers**
 Holds controllers that should be named like weblogs_controller.rb for
