@@ -455,9 +455,6 @@ erDiagram
 	Product ||--o{ OperationComposition : composed_of
 ```
 
-<details>
-<summary>&#128736;  Дополнительный материал (ERD + attr) and Class diagram</summary>
-
 ### Entity Relationship Diagram (ERD) с атрибутами
 ```mermaid
 erDiagram
@@ -510,8 +507,6 @@ erDiagram
     }
 ```
 ### Диаграмма классов
-<details>
-<summary>&#128736;  Примечание </summary>
 
 Диаграмма классов представлена без методов. Команда разработки не приветствует проработку методов. Тимлид попросил оставить им свободу для решений.
 
@@ -570,7 +565,6 @@ classDiagram
     StockOperation  --  OperationLineItem : modify
     OperationLineItem  --  Product : modify
 ```
-</details>
 
 ### Use case для первого релиза (MVP)
 
