@@ -1000,6 +1000,7 @@ https://github.com/rmanguinho/clean-ts-api
 https://github.com/specialorange/FDXCM/blob/master/README.rdoc
 
 </details>
+
 ### Описание общей структуры приложения 
 ![your-UML-diagram-name](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/PortnovAlex80/node_js_pro/developer/api-warehouse/diagrams/apparchi.iuml)
 
