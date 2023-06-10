@@ -1011,7 +1011,11 @@ https://github.com/specialorange/FDXCM/blob/master/README.rdoc
 **⚠️**  Внимание!**⚠️**  
 > Пример разработки по waterfall!  Пример планирования
 > разработки по гибким методологиям планируется предоставить в другом
-> портфолио. Сроки и продолжительность работ  - условные.
+> портфолио. Сроки и продолжительность работ  - **условные**.
+
+Диаграмма Ганта доставки ценности Заказчику
+![your-UML-diagram-name](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/PortnovAlex80/node_js_pro/developer/api-warehouse/diagrams/businessgant.iuml)
+
 
 Диаграмма Ганта процесса разработки MVP
 ![your-UML-diagram-name](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/PortnovAlex80/node_js_pro/developer/api-warehouse/diagrams/ganttflow.iuml)
