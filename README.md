@@ -358,14 +358,7 @@ Use cases используются для проектирования и выя
 
 ### Диаграмма бизнес Use cases 
 
-![Business Use case diagramm](https://github.com/PortnovAlex80/node_js_pro/blob/developer/api-warehouse/Use%20cases%20dia-Use%20case%20%D0%98%D1%82%D0%B0%D0%BB%D1%8C%D1%8F%D0%BD%D1%81%D0%BA%D0%B8%D0%B5%20%D0%B4%D0%B8%D0%B2%D0%B0%D0%BD%D1%8B.drawio.svg)
-
 ![your-UML-diagram-name](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/PortnovAlex80/node_js_pro/developer/api-warehouse/diagrams/businessusecase.iuml)
-
-
-
-
-переделать связь Службы доставки на менеджера, так манагер управляет графиком сборки.
 
 > **Бизнес Use-case** 
 > Бизнес use-case определяет бизнес-возможность. 
@@ -1011,23 +1004,21 @@ https://github.com/specialorange/FDXCM/blob/master/README.rdoc
 ### Описание доменных слоев Users and Producs layers
 ![your-UML-diagram-name](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/PortnovAlex80/node_js_pro/developer/api-warehouse/diagrams/entitylayer.iuml)
 
-# График подготовки релиза MVP
+# График разработки проектных артефактов
 
 **⚠️**  Внимание!**⚠️**  
 > Пример разработки по waterfall!  Пример планирования
 > разработки по гибким методологиям планируется предоставить в другом
-> портфолио. Сроки и продолжительность работ  - **условные**.
+> портфолио. Сроки и продолжительность работ  - **условные**. 
+> Задача текущего графика - показать последовательность разработки артефактов командами аналитиков, разработки, тестирования. 
 
-Диаграмма Ганта процесса разработки MVP для команды разработки
-
+Диаграмма Ганта процесса разработки артефактов команд.
 ![your-UML-diagram-name](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/PortnovAlex80/node_js_pro/developer/api-warehouse/diagrams/ganttflow.iuml)
 
 ## Используемая литература в ходе подготовки проекта
 
 > Примечание: приведенный список литературы был использован при
-> подготовке проекта в той или иной мере. Но не гарантирует свободное
-> владение содержимым каждого приведенного источника.
-
+> подготовке проекта в той или иной мере.
  
 1. Dean, L. Managing Software Requirements.
 2. Wiegers, K. and Bitti, L. Cars: Requirements Analysis and Specification for Software Engineers. Second Edition. Microsoft Press.
