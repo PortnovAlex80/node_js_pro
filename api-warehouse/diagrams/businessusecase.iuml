@@ -12,7 +12,7 @@ title Business Use Case Diagram
 [Служба доставки] as Delivery
 [Интернет-магазин] as EShop
 
-rectangle  :Business: {
+rectangle  :WMS: {
 usecase (Управление складскими \nоперациями) as UC1
 usecase (Обрбаботка заявок \nна сборку заказа) as UC2
 
