@@ -995,7 +995,7 @@ Stock data = {
 Примеры:
 https://github.com/rmanguinho/clean-ts-api
 https://github.com/specialorange/FDXCM/blob/master/README.rdoc
-
+https://habr.com/ru/articles/740796/ - Телеграмм боты
 </details>
 
 ### Описание общей структуры приложения 
