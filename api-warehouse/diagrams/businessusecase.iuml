@@ -1,0 +1,43 @@
+@startuml
+
+skin rose
+left to right direction
+
+title Business Use Case Diagram 
+
+:Работник склада: as EMP
+:Менеджер склада: as MGR
+:Администратор \nсистемы: as ADMIN
+
+[Служба доставки] as Delivery
+[Интернет-магазин] as EShop
+
+rectangle  :Business: {
+usecase (Управление складскими \nоперациями) as UC1
+usecase (Обрбаботка заявок \nна сборку заказа) as UC2
+
+usecase (Планирование \nсборки заказов) as UC3
+usecase (Мониторинг \nостатков товаров) as UC4
+usecase (Управление \nкаталогом товаров) as UC5
+usecase (Отчетность \nо работе склада) as UC6
+
+usecase (Управление пользователями \nи группами доступа) as UC7
+}
+
+
+EMP --> UC1
+EMP --> UC2
+
+MGR --> UC3
+MGR --> UC4
+MGR --> UC5
+MGR --> UC6
+
+ADMIN --> UC7
+
+UC3 --> Delivery
+UC4 --> EShop
+
+
+@enduml
+
