@@ -360,6 +360,11 @@ Use cases используются для проектирования и выя
 
 ![Business Use case diagramm](https://github.com/PortnovAlex80/node_js_pro/blob/developer/api-warehouse/Use%20cases%20dia-Use%20case%20%D0%98%D1%82%D0%B0%D0%BB%D1%8C%D1%8F%D0%BD%D1%81%D0%BA%D0%B8%D0%B5%20%D0%B4%D0%B8%D0%B2%D0%B0%D0%BD%D1%8B.drawio.svg)
 
+![your-UML-diagram-name](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/PortnovAlex80/node_js_pro/developer/api-warehouse/diagrams/businessusecase.iuml)
+
+
+
+
 переделать связь Службы доставки на менеджера, так манагер управляет графиком сборки.
 
 > **Бизнес Use-case** 
