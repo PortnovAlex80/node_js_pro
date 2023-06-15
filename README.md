@@ -8,6 +8,7 @@
 Т.е. показан сквозной пример разработки ПО: анализ -> проектирование ->имплементация -> покрытие unit&e2e тестами. 
 Для отрисовки диаграмм использован plantUML (код диаграмм в данном [репозитории](https://github.com/PortnovAlex80/node_js_pro/tree/developer/api-warehouse/diagrams), рендеринг на [PlantUML Web Server](https://www.plantuml.com/plantuml/uml/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000)).  А также mermaid с рендерингом на github непосредственно в readme.md.
 
+Как проверить что репозиторий мой? См историю коммитов кода и readme.md
 ## Оглавление
 
 1. [Введение](#введение-в-проект)
