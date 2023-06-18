@@ -438,6 +438,18 @@ Use cases используются для проектирования и выя
   - [ ] Указать наличие установленных связей на схеме (построить модель структуры) 
   - [ ] Установить пропущенные информационные сущности 
 
+Выделение концептуальных классов модели предметной области:
+- анализ существующих моделей предметной области
+- список категорий концептуальных классов
+- выделение существительных
+
+|Категория концептуальных классов|Примеры|
+|--|--|
+|Транзакции: Критичный класс, так как описывают, например, финансовые операции | Продажа, Платеж, Резервирование|
+|Элементы транзакции|SaleLineItem|
+|Сущности которые учавствуют в транзакциях|Item, Flight, Seat|
+... см раздел 9.5 Как выделить концептуальные классы Ларман, C. (2004). UML 2 and the Unified Process: Practical Object-Oriented Analysis and Design. Prentice Hall.
+
 </details>
 
 ### Выделение сущностей из контекстной диаграммы
@@ -1032,11 +1044,12 @@ https://habr.com/ru/articles/740796/ - Телеграмм боты
  
 1. Dean, L. Managing Software Requirements.
 2. Wiegers, K. and Bitti, L. Cars: Requirements Analysis and Specification for Software Engineers. Second Edition. Microsoft Press.
-3. Rational Unified Process (RUP).
-4. Guide to the Software Engineering Body of Knowledge (SWEBOK).
-5. IEEE. (1998). IEEE Recommended Practice for Software Requirements Specifications (IEEE 830).
-6. ГОСТ 34.003 - 90. Информационная технология. Комплекс стандартов на автоматизированные системы. Основные положения.
-7. ГОСТ 34.604 - 92. Информационная технология. Комплекс стандартов на автоматизированные системы. Требования к программным средствам.
+3. Ларман, C. (2004). UML 2 and the Unified Process: Practical Object-Oriented Analysis and Design. Prentice Hall
+4. Rational Unified Process (RUP).
+5. Guide to the Software Engineering Body of Knowledge (SWEBOK).
+6. IEEE. (1998). IEEE Recommended Practice for Software Requirements Specifications (IEEE 830).
+7. ГОСТ 34.003 - 90. Информационная технология. Комплекс стандартов на автоматизированные системы. Основные положения.
+8. ГОСТ 34.604 - 92. Информационная технология. Комплекс стандартов на автоматизированные системы. Требования к программным средствам.
 
 Дополнительный список (планирую ознакомится):
 
