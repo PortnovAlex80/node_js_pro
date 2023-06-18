@@ -1,4 +1,4 @@
-# Система управления складом (WMS) - серверная часть (backend NodeJS/TS)
+# Система управления складом (WMS) - ядро приложения (backend NodeJS/TS)
 
 > ### "Hostis optimi est bonum." - Voltaire
 > _The best is the enemy of the good - "Лучшее - враг хорошего" Вольтер_
