@@ -1,5 +1,7 @@
-
 # Система управления складом (WMS) - серверная часть (backend NodeJS/TS)
+
+> ### "Hostis optimi est bonum." - Voltaire
+> _The best is the enemy of the good - "Лучшее - враг хорошего" Вольтер_
 
 Часть 1. Система управления складом (WMS/(backend NodeJS/TS)) - текущий репозиторий   
 Часть 2 [Разработка Enterprise-приложений](https://github.com/PortnovAlex80/enterprise/blob/main/README.md)
