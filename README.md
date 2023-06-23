@@ -3,10 +3,17 @@
 > ### "Hostis optimi est bonum." - Voltaire
 > _The best is the enemy of the good - "Лучшее - враг хорошего" Вольтер_
 
-Приветствую вас на странице репозитория моего проекта-портфолио, выполняемого в роли **software-engineer**.
-  
-Часть 1. Система управления складом (WMS/(backend NodeJS/TS)) - текущий репозиторий   
-Часть 2 [Разработка Enterprise-приложений(Общий флоу разработки. Java\Kotlin)](https://github.com/PortnovAlex80/enterprise/blob/main/README.md)
+Добро пожаловать на страницу репозитория моего проекта-портфолио, где я выступаю в роли **software-engineer**.  
+_Welcome to the repository page of my WMS project, where I act as a software engineer._ 
+
+Настоящий репозиторий представляет собой часть 1 проекта, связанную с разработкой системы управления складом (WMS) с использованием backend-технологий NodeJS/TS.  
+_This repository represents Part 1 of the project, focusing on the development of a Warehouse Management System (WMS) core application using NodeJS/TS as the backend technologies._  
+
+Кроме этого, в рамках проекта также выполняется **часть 2**, связанная с разработкой Enterprise-приложений с использованием общего флоу разработки на Java/Kotlin. Подробности можно найти в [этом разделе](https://github.com/PortnovAlex80/enterprise/blob/main/README.md).  
+_In addition, as part of the project, there is also Part 2 which involves the development of Enterprise applications following a general development flow using Java/Kotlin. You can find more details in this section._  
+
+Благодарю вас за интерес к моему проекту. Если у вас возникнут вопросы или комментарии, не стесняйтесь обращаться.   
+_Thank you for visiting our repository and showing interest in our project. If you have any questions or comments, feel free to reach out._  
 
 В рамках проекта имитируется проект разработки WMS для интернет-магазина. Необходимо учитывать, что реальная система складского учета очень сложная, поэтому в проекте используется очень упрощенная модель, задача которой демонстрация навыков, перечисленных в  [Описание портфолио](#описание-портфолио). 
 
