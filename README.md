@@ -10,7 +10,7 @@ _Welcome to the repository page of my WMS project, where I act as a software eng
 _This repository represents Part 1 of the project, focusing on the development of a Warehouse Management System (WMS) core application using NodeJS/TS as the backend technologies._  
 
 Кроме этого, в рамках проекта также выполняется **часть 2**, связанная с разработкой Enterprise-приложений с использованием общего флоу разработки на Java/Kotlin. Подробности можно найти в [этом разделе](https://github.com/PortnovAlex80/enterprise/blob/main/README.md).  
-_In addition, as part of the project, there is also Part 2 which involves the development of Enterprise applications following a general development flow using Java/Kotlin. You can find more details in this section._  
+_In addition, as part of the project, there is also Part 2 which involves the development of Enterprise applications following a general development flow using Java/Kotlin. You can find more details [in this section](https://github.com/PortnovAlex80/enterprise/blob/main/README.md)._  
 
 Благодарю вас за интерес к моему проекту. Если у вас возникнут вопросы или комментарии, не стесняйтесь обращаться.   
 _Thank you for visiting our repository and showing interest in our project. If you have any questions or comments, feel free to reach out._  
