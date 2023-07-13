@@ -1,4 +1,4 @@
-import { UserModel } from '@prisma/client';
+import { User } from '@prisma/client';
 import { Container } from 'inversify';
 import { IConfigService } from '../config/config.service.interface';
 import { TYPES } from '../types';
@@ -12,11 +12,11 @@ const ConfigServiceMock: IConfigService = {
 	get: jest.fn(),
 };
 
-const UsersRepositoryMock: IUsersRepository = {
-	findByEmail: jest.fn(),
-	findByLogin: jest.fn(),
-	create: jest.fn(),
-};
+// const UsersRepositoryMock: IUsersRepository = {
+// 	findByEmail: jest.fn(),
+// 	findByLogin: jest.fn(),
+// 	create: jest.fn(),
+// };
 
 const container = new Container();
 
@@ -31,20 +31,20 @@ beforeAll(() => {
 		.toConstantValue(ConfigServiceMock);
 	container
 		.bind<IUsersRepository>(TYPES.UsersRepository)
-		.toConstantValue(UsersRepositoryMock);
+//		.toConstantValue(UsersRepositoryMock);
 
 	configService = container.get<IConfigService>(TYPES.ConfigService);
 	usersRepository = container.get<IUsersRepository>(TYPES.UsersRepository);
 	usersService = container.get<IUserService>(TYPES.UserService);
 });
 
-let createdUser: UserModel | null;
+let createdUser: User | null;
 
 describe('User Service', () => {
 	it('createUser', async () => {
 		configService.get = jest.fn().mockResolvedValueOnce('1');
 		usersRepository.create = jest.fn().mockImplementationOnce(
-			(user: UserEntity): UserModel => ({
+			(user: UserEntity): User => ({
 				id: 1,
 				login: user.login,
 				password: user.password,

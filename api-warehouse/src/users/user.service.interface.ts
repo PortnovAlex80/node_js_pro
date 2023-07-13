@@ -1,4 +1,4 @@
-import { UserModel } from '@prisma/client';
+import { User } from '@prisma/client';
 import { NextFunction, Request, Response } from 'express';
 import { UserLoginDto } from './dto/user-login.dto';
 import { UserRegisterDto } from './dto/user-register.dto';
@@ -11,7 +11,7 @@ export interface IUserService {
 	// | 2     | /users/{id}                | GET        | -         | Информация о пользователе | Получить информацию о конкретном пользователе  |
 	//	getUserById: (req: Request, res: Response, next: NextFunction) => void;
 	// | 3     | /users                     | POST       | User data | Новый пользователь        | Создать нового пользователя                    |
-	createUser: (dto: UserRegisterDto) => Promise<UserModel | null>;
+	createUser: (dto: UserRegisterDto) => Promise<User | null>;
 	// | 4     | /users/{id}                | PUT        | User data | Обновленный пользователь  | Обновить информацию о пользователе             |
 	//	updateUserById: (req: Request, res: Response, next: NextFunction) => void;
 	// | 5     | /users/{id}                | DELETE     | -         | -                         | Удалить пользователя                           |
@@ -26,6 +26,6 @@ export interface IUserService {
 	//	login: (req: Request, res: Response, next: NextFunction) => void;
 	//	register: (req: Request, res: Response, next: NextFunction) => void;
 	validateUser: (dto: UserLoginDto) => Promise<boolean>;
-	getUserInfo: (email: string) => Promise<UserModel | null>;
+	getUserInfo: (email: string) => Promise<User | null>;
 	getUserRole: (email: string) => Promise<string | null>;
 }
