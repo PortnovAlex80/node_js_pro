@@ -1,1 +1,48 @@
-#palntuml
+@startuml
+skin rose
+left to right direction
+
+title Варианты использование системы 
+
+:Главврач: as MDOC
+:Врач: as DOC
+:Методист: as METOD
+:Маркетолог: as MARKET
+:Администратор \nсистемы: as ADMIN
+:Менеджер по продажам курсов: as MGR
+
+[Платежные системы] as Payments
+[Бухгалтерия] as Commercia
+
+rectangle  :Платформа: {
+usecase (Управление \nобучением сотрудников) as UC1
+
+usecase (Обучение и тестирование \nна курсах) as UC2
+usecase (Разработка авторских \nкурсов) as UC3
+
+usecase (Разработка программ обучения) as UC4
+
+usecase (Продвижение \nкурсов обучения) as UC5
+usecase (Продажа курсов и\nработа с клиентами) as UC6
+
+usecase (Управление пользователями \nи группами доступа) as UC7
+usecase (Техническая поддержка) as UC8
+}
+
+
+MDOC --> UC1
+
+DOC--> UC2
+DOC--> UC3
+
+METOD--> UC4
+MARKET--> UC5
+
+MGR --> UC6
+UC6 --> Payments
+UC6 --> Commercia
+
+ADMIN --> UC7
+ADMIN --> UC8
+
+@enduml
