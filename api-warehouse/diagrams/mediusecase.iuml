@@ -7,34 +7,36 @@ title Варианты использование системы
 :Слушатель: as STUDENT
 :Преподаватель: as LECTOR
 :Методист: as METOD
-:Маркетолог: as MARKET
-:Администратор \nсистемы: as ADMIN
+:Контент-менеджер: as CONTMGR
 :Менеджер по продажам курсов: as MGR
+:Администратор \nсистемы: as ADMIN
 
 [Платежные системы] as Payments
 [Бухгалтерия] as Commercia
 
 rectangle  :Платформа: {
-usecase (Обучение и тестирование \nна курсах) as UC2
-usecase (Разработка авторских \nкурсов) as UC3
 
-usecase (Сопровождение процесса обучения) as UC4
+usecase (Обучение) as UC1
+usecase (Приемка практических \n работ Слушателей) as UC2
+usecase (Просмотр списка слушатей,\n отчетов об успеваемости) as UC3
 
-usecase (Продвижение \nкурсов обучения) as UC5
+usecase (Управление контентом) as UC4
+
+usecase (Продажа курсов и\nработа с клиентами) as UC5
+
 usecase (Продажа курсов и\nработа с клиентами) as UC6
+
 
 usecase (Управление пользователями \nи группами доступа) as UC7
 usecase (Техническая поддержка) as UC8
 }
 
+STUDENT --> UC1
+LECTOR --> UC2
+METOD--> UC3
+CONTMGR--> UC4
+MGR --> UC5
 
-STUDENT --> UC2
-LECTOR --> UC3
-
-METOD--> UC4
-MARKET--> UC5
-
-MGR --> UC6
 UC6 --> Payments
 UC6 --> Commercia
 
