@@ -19,13 +19,8 @@ rectangle  :Платформа: {
 usecase (Обучение) as UC1
 usecase (Приемка практических \n работ Слушателей) as UC2
 usecase (Просмотр списка слушатей,\n отчетов об успеваемости) as UC3
-
 usecase (Управление контентом) as UC4
-
 usecase (Продажа курсов и\nработа с клиентами) as UC5
-
-usecase (Продажа курсов и\nработа с клиентами) as UC6
-
 
 usecase (Управление пользователями \nи группами доступа) as UC7
 usecase (Техническая поддержка) as UC8
@@ -37,8 +32,8 @@ METOD--> UC3
 CONTMGR--> UC4
 MGR --> UC5
 
-UC6 --> Payments
-UC6 --> Commercia
+UC5 --> Payments
+UC5 --> Commercia
 
 ADMIN --> UC7
 ADMIN --> UC8
