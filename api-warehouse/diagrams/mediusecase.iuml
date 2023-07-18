@@ -16,7 +16,9 @@ title Варианты использование системы
 
 rectangle  :Платформа: {
 
-usecase (Обучение) as UC1
+usecase (Обучение и \nпокупка курсов) as UC1
+usecase (Покупка курсов) as UC9
+
 usecase (Приемка практических \n работ Слушателей) as UC2
 usecase (Просмотр списка слушатей,\n отчетов об успеваемости) as UC3
 usecase (Управление контентом) as UC4
@@ -33,7 +35,8 @@ CONTMGR--> UC4
 MGR --> UC5
 
 UC5 --> Payments
-UC5 --> Commercia
+UC1 --> Payments
+UC9 --> Commercia
 
 ADMIN --> UC7
 ADMIN --> UC8
