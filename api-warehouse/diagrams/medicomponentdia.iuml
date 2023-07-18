@@ -3,7 +3,7 @@ skinparam minClassWidth 125
 skinparam nodesep 10
 skinparam ranksep 10
 
-title "Cуществующее решения"
+title "Cуществующее решение"
 
 rectangle "Слой приложений" {
 rectangle Mirapolis as MP   #Application 
