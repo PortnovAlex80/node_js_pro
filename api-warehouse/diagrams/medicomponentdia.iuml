@@ -1,1 +1,38 @@
-plant
+@startuml
+skinparam minClassWidth 125
+skinparam nodesep 10
+skinparam ranksep 10
+
+title "Структура существующего решения"
+
+rectangle "Слой приложений" {
+rectangle Mirapolis as MP   #Application 
+rectangle УчиПро as UPR #Application 
+rectangle Сбербанк as SBRPAY #Application
+rectangle "Витрина программ обучения" as SITE  #Application
+}
+
+rectangle "Слой бизнес-процессов" {
+rectangle "Заочные уроки" as OFFLINE #Business 
+rectangle "Вебинары" as WEBINAR #Business 
+rectangle "Платеж" as PAY #Business 
+rectangle "Выбор Программы обучения" as EDUPROG #Business
+}
+
+EDUPROG ...-Right....>  PAY 
+PAY ....-Right...>  OFFLINE 
+OFFLINE ....-Right...>  WEBINAR
+
+EDUPROG <.......> SITE  
+PAY <.......> SBRPAY
+OFFLINE <.......> MP
+WEBINAR <.......> UPR
+
+
+legend left
+    |Color| Type |
+    |<#FEFECE>| Бизнес-процесс|
+    |<#A9DCDF>| Приложение|
+endlegend
+
+@enduml
