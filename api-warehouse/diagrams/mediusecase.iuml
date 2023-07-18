@@ -37,10 +37,9 @@ CONTMGR--> UC4
 MGR --> UC5
 
 UC5 --> Payments
-UC1 --> Payments
+UC9 --> Payments
 UC5 --> Commercia
 
 ADMIN --> UC7
 ADMIN --> UC8
-
 @enduml
