@@ -29,6 +29,8 @@ usecase (Техническая поддержка) as UC8
 }
 
 STUDENT --> UC1
+STUDENT --> UC9
+
 LECTOR --> UC2
 METOD--> UC3
 CONTMGR--> UC4
@@ -36,7 +38,7 @@ MGR --> UC5
 
 UC5 --> Payments
 UC1 --> Payments
-UC9 --> Commercia
+UC5 --> Commercia
 
 ADMIN --> UC7
 ADMIN --> UC8
