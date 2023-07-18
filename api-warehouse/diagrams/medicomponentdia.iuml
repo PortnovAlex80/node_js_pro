@@ -9,7 +9,7 @@ rectangle "Слой приложений" {
 rectangle Mirapolis as MP   #Application 
 rectangle УчиПро as UPR #Application 
 rectangle Сбербанк as SBRPAY #Application
-rectangle "Витрина программ обучения" as SITE  #Application
+rectangle "Сайт. \nВитрина программ обучения" as SITE  #Application
 }
 
 rectangle "Слой бизнес-процессов" {
