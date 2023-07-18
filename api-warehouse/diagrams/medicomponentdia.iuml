@@ -3,7 +3,7 @@ skinparam minClassWidth 125
 skinparam nodesep 10
 skinparam ranksep 10
 
-title "Структура существующего решения"
+title "Cуществующее решения"
 
 rectangle "Слой приложений" {
 rectangle Mirapolis as MP   #Application 
@@ -34,5 +34,4 @@ legend left
     |<#FEFECE>| Бизнес-процесс|
     |<#A9DCDF>| Приложение|
 endlegend
-
 @enduml
