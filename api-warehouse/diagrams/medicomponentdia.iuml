@@ -20,13 +20,14 @@ rectangle "Выбор Программы обучения" as EDUPROG #Business
 }
 
 EDUPROG ...-Right....>  PAY 
-PAY ....-Right...>  OFFLINE 
-OFFLINE ....-Right...>  WEBINAR
+PAY ....-Right...>  WEBINAR
+WEBINAR ....-Right...>  OFFLINE : Перевод записи \n на другую платформу
+MP ....-Right...>  UPR: Перевод записи \n на другую платформу
 
 EDUPROG <.......> SITE  
 PAY <.......> SBRPAY
-OFFLINE <.......> MP
-WEBINAR <.......> UPR
+OFFLINE <.......> UPR 
+WEBINAR <.......> MP
 
 
 legend left
